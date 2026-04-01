@@ -1,8 +1,8 @@
 """
 Global Supply Chain Intelligence — Streamlit Dashboard
 =======================================================
-Premium intelligence platform with glassmorphism UI,
-blue-slate analytical palette, and refined typography.
+Premium light-mode intelligence platform with warm cream
+backgrounds, white glass cards, and refined typography.
 """
 
 import sys
@@ -30,29 +30,29 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Color System ─────────────────────────────────────────────────
-BG_BASE = '#080C14'
-SURFACE_1 = '#0F1520'
-SURFACE_2 = '#141D2E'
-SURFACE_3 = '#1A2540'
+# ── Color System — Light Mode ────────────────────────────────────
+BG_BASE = '#FAFAF7'           # Warm cream / ivory
+SURFACE_1 = '#FFFFFF'          # Pure white cards
+SURFACE_2 = '#F5F5F0'          # Light warm gray (hover, nested)
+SURFACE_3 = '#EEEDE8'          # Slightly deeper (inputs, dropdowns)
 
-ACCENT_PRIMARY = '#63B3ED'     # Slate blue
-ACCENT_SECONDARY = '#76E4F7'   # Cyan-teal
-SUCCESS = '#68D391'            # Muted green
-WARNING = '#F6AD55'            # Warm amber (warning only)
-CRITICAL = '#FC8181'           # Soft coral red
+ACCENT_PRIMARY = '#2563EB'     # Strong blue (readable on light)
+ACCENT_SECONDARY = '#0891B2'   # Teal-cyan
+SUCCESS = '#16A34A'            # Clean green
+WARNING = '#D97706'            # Rich amber
+CRITICAL = '#DC2626'           # Clean red
 
-TEXT_PRIMARY = '#E2E8F0'
-TEXT_SECONDARY = '#94A3B8'
-TEXT_TERTIARY = '#4A5568'
+TEXT_PRIMARY = '#1A1A2E'       # Deep navy-charcoal
+TEXT_SECONDARY = '#64748B'     # Slate gray
+TEXT_TERTIARY = '#94A3B8'      # Light gray for captions
 
-BORDER_DEFAULT = 'rgba(255, 255, 255, 0.06)'
-BORDER_ACTIVE = 'rgba(99, 179, 237, 0.15)'
+BORDER_DEFAULT = 'rgba(0, 0, 0, 0.06)'
+BORDER_ACTIVE = 'rgba(37, 99, 235, 0.2)'
 
 # Chart color sequence
-CHART_COLORS = [ACCENT_PRIMARY, ACCENT_SECONDARY, SUCCESS, '#B794F4', WARNING, CRITICAL]
+CHART_COLORS = [ACCENT_PRIMARY, ACCENT_SECONDARY, SUCCESS, '#7C3AED', WARNING, CRITICAL]
 
-# ── Premium CSS Theme ────────────────────────────────────────────
+# ── Premium CSS Theme — Light ────────────────────────────────────
 st.markdown("""
 <style>
     /* ─── Google Fonts ─── */
@@ -60,45 +60,45 @@ st.markdown("""
 
     /* ─── Base ─── */
     .stApp {
-        background-color: #080C14;
-        color: #E2E8F0;
+        background-color: #FAFAF7;
+        color: #1A1A2E;
         font-family: 'Inter', sans-serif;
     }
 
     /* ─── Scrollbar ─── */
-    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb {
-        background: rgba(99, 179, 237, 0.2);
-        border-radius: 2px;
+        background: rgba(37, 99, 235, 0.15);
+        border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(99, 179, 237, 0.4);
+        background: rgba(37, 99, 235, 0.3);
     }
 
     /* ─── Hide Streamlit branding ─── */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header[data-testid="stHeader"] {
-        background: rgba(8, 12, 20, 0.95);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(250, 250, 247, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     /* ─── Tab Navigation ─── */
     .stTabs [data-baseweb="tab-list"] {
         gap: 0px;
-        background: rgba(8, 12, 20, 0.95);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(250, 250, 247, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 0;
         padding: 0 8px;
     }
     .stTabs [data-baseweb="tab"] {
         background: transparent;
-        color: #4A5568;
+        color: #94A3B8;
         border-radius: 8px 8px 0 0;
         padding: 12px 20px;
         font-family: 'Inter', sans-serif;
@@ -110,79 +110,78 @@ st.markdown("""
         transition: all 0.2s ease;
     }
     .stTabs [data-baseweb="tab"]:hover {
-        color: #94A3B8;
-        background: rgba(255, 255, 255, 0.03);
+        color: #64748B;
+        background: rgba(0, 0, 0, 0.02);
     }
     .stTabs [aria-selected="true"] {
-        background: rgba(99, 179, 237, 0.08) !important;
-        color: #63B3ED !important;
+        background: rgba(37, 99, 235, 0.05) !important;
+        color: #2563EB !important;
         font-weight: 600;
-        border-bottom: 2px solid #63B3ED !important;
+        border-bottom: 2px solid #2563EB !important;
     }
 
-    /* ─── Glass Card Base ─── */
+    /* ─── Glass Card Base (Light) ─── */
     .glass-card {
-        background: rgba(15, 21, 32, 0.7);
+        background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 16px;
         box-shadow:
-            0 4px 6px rgba(0, 0, 0, 0.3),
-            0 1px 3px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            0 1px 3px rgba(0, 0, 0, 0.04),
+            0 4px 12px rgba(0, 0, 0, 0.03);
         padding: 24px;
     }
 
     /* ─── KPI Metric Cards ─── */
     .kpi-card {
-        background: rgba(15, 21, 32, 0.8);
-        border: 1px solid rgba(99, 179, 237, 0.1);
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 14px;
-        padding: 20px 24px;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        padding: 24px 24px;
         text-align: center;
         position: relative;
         overflow: hidden;
-        transition: transform 0.2s ease, border-color 0.3s ease;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
     }
     .kpi-card::before {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(99, 179, 237, 0.4), transparent);
+        height: 3px;
+        background: linear-gradient(90deg, #2563EB, #0891B2);
+        border-radius: 14px 14px 0 0;
     }
     .kpi-card:hover {
         transform: translateY(-2px);
-        border-color: rgba(99, 179, 237, 0.25);
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.10), 0 1px 4px rgba(0,0,0,0.05);
     }
     .kpi-card-success::before {
-        background: linear-gradient(90deg, transparent, rgba(104, 211, 145, 0.4), transparent);
+        background: linear-gradient(90deg, #16A34A, #22D3EE);
     }
     .kpi-card-critical::before {
-        background: linear-gradient(90deg, transparent, rgba(252, 129, 129, 0.4), transparent);
+        background: linear-gradient(90deg, #DC2626, #F59E0B);
     }
     .kpi-card-warning::before {
-        background: linear-gradient(90deg, transparent, rgba(246, 173, 85, 0.4), transparent);
+        background: linear-gradient(90deg, #D97706, #F59E0B);
     }
     .kpi-value {
         font-family: 'JetBrains Mono', monospace;
         font-size: 2.5rem;
         font-weight: 700;
-        color: #63B3ED;
+        color: #1A1A2E;
         margin: 0;
         line-height: 1.2;
     }
-    .kpi-value-success { color: #68D391; }
-    .kpi-value-critical { color: #FC8181; }
-    .kpi-value-warning { color: #F6AD55; }
+    .kpi-value-success { color: #16A34A; }
+    .kpi-value-critical { color: #DC2626; }
+    .kpi-value-warning { color: #D97706; }
     .kpi-label {
         font-family: 'Inter', sans-serif;
         font-size: 10px;
         font-weight: 500;
-        color: #4A5568;
+        color: #94A3B8;
         margin-top: 8px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -191,14 +190,14 @@ st.markdown("""
     /* ─── Section Headers ─── */
     .section-header {
         font-family: 'Syne', sans-serif;
-        color: #63B3ED;
+        color: #1A1A2E;
         font-size: 18px;
         font-weight: 600;
         margin-top: 28px;
         margin-bottom: 16px;
         padding-bottom: 12px;
         padding-left: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         position: relative;
     }
     .section-header::before {
@@ -208,7 +207,7 @@ st.markdown("""
         top: 3px;
         width: 3px;
         height: 18px;
-        background: #63B3ED;
+        background: linear-gradient(180deg, #2563EB, #0891B2);
         border-radius: 2px;
     }
 
@@ -217,7 +216,7 @@ st.markdown("""
         font-family: 'Syne', sans-serif;
         font-size: 28px;
         font-weight: 700;
-        color: #E2E8F0;
+        color: #1A1A2E;
         letter-spacing: -0.5px;
         margin-bottom: 0;
         display: flex;
@@ -228,17 +227,17 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border: 1.5px solid #63B3ED;
-        color: #63B3ED;
-        border-radius: 6px;
-        width: 28px;
-        height: 28px;
+        background: linear-gradient(135deg, #2563EB, #0891B2);
+        color: #FFFFFF;
+        border-radius: 8px;
+        width: 32px;
+        height: 32px;
         font-size: 14px;
         font-weight: 700;
     }
     .subtitle {
         font-family: 'Inter', sans-serif;
-        color: #4A5568;
+        color: #94A3B8;
         font-size: 13px;
         font-weight: 400;
         line-height: 1.6;
@@ -248,119 +247,122 @@ st.markdown("""
     /* ─── Risk Badges ─── */
     .risk-badge-high {
         display: inline-block;
-        border: 1px solid #FC8181;
-        color: #FC8181;
+        background: rgba(220, 38, 38, 0.08);
+        border: 1px solid rgba(220, 38, 38, 0.3);
+        color: #DC2626;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
         font-size: 10px;
-        font-weight: 500;
+        font-weight: 600;
     }
     .risk-badge-medium {
         display: inline-block;
-        border: 1px solid #F6AD55;
-        color: #F6AD55;
+        background: rgba(217, 119, 6, 0.08);
+        border: 1px solid rgba(217, 119, 6, 0.3);
+        color: #D97706;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
         font-size: 10px;
-        font-weight: 500;
+        font-weight: 600;
     }
     .risk-badge-low {
         display: inline-block;
-        border: 1px solid #63B3ED;
-        color: #63B3ED;
+        background: rgba(37, 99, 235, 0.06);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        color: #2563EB;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
         font-size: 10px;
-        font-weight: 500;
+        font-weight: 600;
     }
 
     /* ─── Sidebar ─── */
     [data-testid="stSidebar"] {
-        background-color: #0F1520;
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        background-color: #FFFFFF;
+        border-right: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     /* ─── Streamlit Metric Override ─── */
     [data-testid="stMetric"] {
-        background: rgba(15, 21, 32, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 12px;
         padding: 16px;
-        backdrop-filter: blur(16px);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
     [data-testid="stMetricValue"] {
-        color: #63B3ED;
+        color: #1A1A2E;
         font-family: 'JetBrains Mono', monospace;
     }
     [data-testid="stMetricLabel"] {
-        color: #94A3B8;
+        color: #64748B;
         font-family: 'Inter', sans-serif;
         font-size: 11px;
     }
 
     /* ─── Tables ─── */
     .stDataFrame {
-        background: rgba(15, 21, 32, 0.5);
+        background: #FFFFFF;
         border-radius: 12px;
         overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.06);
     }
     .stDataFrame thead tr th {
-        background: rgba(20, 29, 46, 0.9) !important;
-        color: #4A5568 !important;
+        background: #F8F8F5 !important;
+        color: #64748B !important;
         font-family: 'Inter', sans-serif !important;
         font-size: 10px !important;
         letter-spacing: 1.5px !important;
         text-transform: uppercase !important;
-        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+        border-bottom: 1px solid rgba(0,0,0,0.06) !important;
         padding: 10px 12px !important;
     }
     .stDataFrame tbody tr td {
-        color: #94A3B8 !important;
+        color: #1A1A2E !important;
         font-family: 'Inter', sans-serif !important;
         font-size: 12px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+        border-bottom: 1px solid rgba(0,0,0,0.04) !important;
         padding: 8px 12px !important;
         background: transparent !important;
     }
     .stDataFrame tbody tr:hover td {
-        background: rgba(99, 179, 237, 0.04) !important;
-        color: #E2E8F0 !important;
+        background: rgba(37, 99, 235, 0.03) !important;
     }
 
     /* ─── Selectbox / Inputs ─── */
     .stSelectbox > div > div {
-        background: #1A2540;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        color: #94A3B8;
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #1A1A2E;
         border-radius: 8px;
     }
     .stSelectbox label {
-        color: #94A3B8 !important;
+        color: #64748B !important;
         font-family: 'Inter', sans-serif;
         font-size: 12px;
     }
 
     /* ─── Slider ─── */
     .stSlider label {
-        color: #94A3B8 !important;
+        color: #64748B !important;
         font-family: 'Inter', sans-serif;
     }
 
     /* ─── Divider ─── */
     hr {
-        border-color: rgba(255, 255, 255, 0.04) !important;
+        border-color: rgba(0, 0, 0, 0.06) !important;
         margin: 28px 0 !important;
     }
 
     /* ─── Info/Warning boxes ─── */
     .stAlert {
-        background: rgba(15, 21, 32, 0.7);
-        border: 1px solid rgba(99, 179, 237, 0.15);
+        background: #FFFFFF;
+        border: 1px solid rgba(37, 99, 235, 0.15);
         border-radius: 12px;
-        color: #94A3B8;
+        color: #64748B;
     }
 
     /* ─── Block container spacing ─── */
@@ -372,7 +374,7 @@ st.markdown("""
     /* ─── Footer ─── */
     .footer-text {
         text-align: center;
-        color: #4A5568;
+        color: #94A3B8;
         font-family: 'Inter', sans-serif;
         font-size: 11px;
         letter-spacing: 0.5px;
@@ -382,37 +384,37 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ── Plotly Theme Function ────────────────────────────────────────
+# ── Plotly Theme Function — Light ────────────────────────────────
 def apply_theme(fig):
-    """Apply the premium intelligence platform theme to a Plotly figure."""
+    """Apply the premium light-mode theme to a Plotly figure."""
     fig.update_layout(
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
-        font=dict(family='Inter, JetBrains Mono, sans-serif', color='#94A3B8', size=11),
+        font=dict(family='Inter, JetBrains Mono, sans-serif', color='#64748B', size=11),
         xaxis=dict(
-            gridcolor='rgba(255,255,255,0.04)',
-            linecolor='rgba(255,255,255,0.08)',
-            tickfont=dict(family='JetBrains Mono', size=10, color='#4A5568'),
+            gridcolor='rgba(0,0,0,0.05)',
+            linecolor='rgba(0,0,0,0.1)',
+            tickfont=dict(family='JetBrains Mono', size=10, color='#94A3B8'),
             zeroline=False,
         ),
         yaxis=dict(
-            gridcolor='rgba(255,255,255,0.04)',
-            linecolor='rgba(255,255,255,0.08)',
-            tickfont=dict(family='JetBrains Mono', size=10, color='#4A5568'),
+            gridcolor='rgba(0,0,0,0.05)',
+            linecolor='rgba(0,0,0,0.1)',
+            tickfont=dict(family='JetBrains Mono', size=10, color='#94A3B8'),
             zeroline=False,
         ),
         margin=dict(l=48, r=24, t=32, b=40),
         hoverlabel=dict(
-            bgcolor='rgba(15,21,32,0.95)',
-            bordercolor='rgba(99,179,237,0.3)',
-            font=dict(family='Inter', size=12, color='#E2E8F0'),
+            bgcolor='rgba(255,255,255,0.97)',
+            bordercolor='rgba(37,99,235,0.2)',
+            font=dict(family='Inter', size=12, color='#1A1A2E'),
         ),
         legend=dict(
             bgcolor='rgba(0,0,0,0)',
-            bordercolor='rgba(255,255,255,0.06)',
-            font=dict(color='#94A3B8', family='Inter', size=11),
+            bordercolor='rgba(0,0,0,0.06)',
+            font=dict(color='#64748B', family='Inter', size=11),
         ),
-        title=dict(font=dict(family='Syne', size=16, color='#E2E8F0')),
+        title=dict(font=dict(family='Syne', size=16, color='#1A1A2E')),
     )
     return fig
 
@@ -549,12 +551,12 @@ with tab1:
             z=country_risk['risk_score'],
             text=country_risk.apply(lambda r: f"{r['country']}<br>{r['sku_count']} SKUs<br>{r['high_risk']} high risk", axis=1),
             colorscale=[
-                [0.0, '#0D1B2E'],
-                [0.2, '#1A3A5C'],
-                [0.4, '#2D6A9F'],
-                [0.6, '#F6AD55'],
-                [0.8, '#FC8181'],
-                [1.0, '#E53E3E'],
+                [0.0, '#E0F2FE'],   # light blue — safe
+                [0.2, '#93C5FD'],   # sky blue
+                [0.4, '#3B82F6'],   # blue
+                [0.6, '#FBBF24'],   # amber — watch
+                [0.8, '#F97316'],   # orange — high
+                [1.0, '#DC2626'],   # red — critical
             ],
             colorbar=dict(
                 title=dict(text='Risk', font=dict(color=TEXT_SECONDARY, family='Inter')),
@@ -569,15 +571,15 @@ with tab1:
                        font=dict(family='Syne', color=TEXT_PRIMARY, size=16)),
             geo=dict(
                 bgcolor='rgba(0,0,0,0)',
-                lakecolor=BG_BASE,
-                landcolor='#0D1B2E',
+                lakecolor='#E8E8E3',
+                landcolor='#EEEDE8',
                 showframe=False,
                 showcoastlines=True,
-                coastlinecolor='rgba(99, 179, 237, 0.15)',
-                countrycolor='rgba(99, 179, 237, 0.15)',
+                coastlinecolor='rgba(0,0,0,0.1)',
+                countrycolor='rgba(0,0,0,0.08)',
                 projection_type='natural earth',
                 showocean=True,
-                oceancolor=BG_BASE,
+                oceancolor='#F0F4F8',
             ),
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
@@ -605,7 +607,7 @@ with tab1:
                         fig_spark.add_trace(go.Scatter(
                             y=last_6m.values, mode='lines',
                             line=dict(color=ACCENT_PRIMARY, width=2),
-                            fill='tozeroy', fillcolor='rgba(99,179,237,0.08)',
+                            fill='tozeroy', fillcolor='rgba(37,99,235,0.06)',
                         ))
                         fig_spark.update_layout(
                             height=60, margin=dict(l=0, r=0, t=0, b=0),
@@ -613,9 +615,9 @@ with tab1:
                             xaxis=dict(visible=False), yaxis=dict(visible=False),
                             showlegend=False,
                         )
-                        st.markdown(f'<span style="font-family:Inter;font-size:12px;color:#94A3B8;font-weight:500;">{sid}</span>', unsafe_allow_html=True)
+                        st.markdown(f'<span style="font-family:Inter;font-size:12px;color:#64748B;font-weight:500;">{sid}</span>', unsafe_allow_html=True)
                         st.plotly_chart(fig_spark, use_container_width=True, key=f"spark_{sid}")
-                        st.markdown(f'<span style="font-family:JetBrains Mono;font-size:12px;color:#E2E8F0;">{current:,.2f}</span>', unsafe_allow_html=True)
+                        st.markdown(f'<span style="font-family:JetBrains Mono;font-size:12px;color:#1A1A2E;">{current:,.2f}</span>', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -656,8 +658,8 @@ with tab2:
         risk_colors = {
             'Critical': CRITICAL,
             'High': WARNING,
-            'Medium': '#2D6A9F',
-            'Low': SUCCESS
+            'Medium': ACCENT_PRIMARY,
+            'Low': SUCCESS,
         }
 
         edge_x, edge_y = [], []
@@ -672,7 +674,7 @@ with tab2:
 
         fig_net.add_trace(go.Scatter(
             x=edge_x, y=edge_y, mode='lines',
-            line=dict(width=0.3, color='rgba(255,255,255,0.06)'),
+            line=dict(width=0.4, color='rgba(0,0,0,0.07)'),
             hoverinfo='none', name='Links',
         ))
 
@@ -699,8 +701,8 @@ with tab2:
                     sizes.append(max(6, min(35, bc * 400 + 6)))
                     texts.append(
                         f"<b>{nid}</b><br>"
-                        f"<span style='color:#94A3B8'>Betweenness:</span> {bc:.4f}<br>"
-                        f"<span style='color:#94A3B8'>PageRank:</span> {row['pagerank']:.4f}"
+                        f"<span style='color:#64748B'>Betweenness:</span> {bc:.4f}<br>"
+                        f"<span style='color:#64748B'>PageRank:</span> {row['pagerank']:.4f}"
                     )
 
             if x_vals:
@@ -708,7 +710,8 @@ with tab2:
                     x=x_vals, y=y_vals, mode='markers',
                     marker=dict(
                         size=sizes, color=color,
-                        line=dict(width=0.5, color='rgba(255,255,255,0.15)'),
+                        line=dict(width=0.5, color='rgba(255,255,255,0.8)'),
+                        opacity=0.85,
                     ),
                     hovertext=texts, hoverinfo='text', name=f'{tier} Risk',
                 ))
@@ -768,7 +771,6 @@ with tab3:
                     subplot_titles=[f'{selected_series} — Raw Signal', 'CUSUM Control Chart'],
                     vertical_spacing=0.12,
                 )
-                # Subplot title styling
                 for annotation in fig_cusum.layout.annotations:
                     annotation.font = dict(family='Syne', size=14, color=TEXT_SECONDARY)
 
@@ -788,13 +790,13 @@ with tab3:
                 threshold_h = cdata['threshold_h'].iloc[0]
                 fig_cusum.add_hline(
                     y=threshold_h,
-                    line=dict(color='rgba(252,129,129,0.5)', dash='dash', width=1),
+                    line=dict(color='rgba(220,38,38,0.4)', dash='dash', width=1),
                     annotation_text=f'h={threshold_h:.0f}',
-                    annotation=dict(font=dict(color=TEXT_TERTIARY, family='JetBrains Mono', size=10)),
+                    annotation=dict(font=dict(color=CRITICAL, family='JetBrains Mono', size=10)),
                     row=2, col=1,
                 )
 
-                # Disruption highlight shading
+                # Disruption shading
                 flags = cdata[cdata['cusum_flag']]
                 if len(flags) > 0:
                     flag_groups = []
@@ -807,10 +809,10 @@ with tab3:
                         prev = idx
                     flag_groups.append((start, prev))
 
-                    for gs, ge in flag_groups[:5]:  # Limit to 5 shading regions
+                    for gs, ge in flag_groups[:5]:
                         fig_cusum.add_vrect(
                             x0=gs, x1=ge,
-                            fillcolor='rgba(252,129,129,0.04)',
+                            fillcolor='rgba(220,38,38,0.05)',
                             line_width=0,
                             row=1, col=1,
                         )
@@ -824,20 +826,20 @@ with tab3:
             fig_mahal.add_trace(go.Scatter(
                 x=mahal_data.index, y=mahal_data['mahalanobis_distance'],
                 mode='lines', line=dict(color=ACCENT_PRIMARY, width=1.5),
-                fill='tozeroy', fillcolor='rgba(99,179,237,0.08)', name='Distance',
+                fill='tozeroy', fillcolor='rgba(37,99,235,0.06)', name='Distance',
             ))
             threshold = mahal_data['threshold'].iloc[0]
             fig_mahal.add_hline(
                 y=threshold,
-                line=dict(color='rgba(246,173,85,0.4)', dash='dash', width=1),
+                line=dict(color='rgba(217,119,6,0.5)', dash='dash', width=1),
                 annotation_text=f'99th pct: {threshold:.1f}',
-                annotation=dict(font=dict(color=TEXT_TERTIARY, family='JetBrains Mono', size=10)),
+                annotation=dict(font=dict(color=WARNING, family='JetBrains Mono', size=10)),
             )
 
             anomalies = mahal_data[mahal_data['anomaly_flag']]
             fig_mahal.add_trace(go.Scatter(
                 x=anomalies.index, y=anomalies['mahalanobis_distance'],
-                mode='markers', marker=dict(color=CRITICAL, size=5, opacity=0.8), name='Anomaly',
+                mode='markers', marker=dict(color=CRITICAL, size=5, opacity=0.7), name='Anomaly',
             ))
             fig_mahal.update_layout(
                 height=320,
@@ -852,12 +854,12 @@ with tab3:
             fig_score.add_trace(go.Scatter(
                 x=disruption_scores.index, y=disruption_scores['disruption_score'],
                 mode='lines', line=dict(color=ACCENT_PRIMARY, width=2),
-                fill='tozeroy', fillcolor='rgba(99,179,237,0.06)',
+                fill='tozeroy', fillcolor='rgba(37,99,235,0.05)',
             ))
-            fig_score.add_hline(y=0.6, line=dict(color='rgba(252,129,129,0.5)', dash='dash'),
+            fig_score.add_hline(y=0.6, line=dict(color='rgba(220,38,38,0.4)', dash='dash'),
                                 annotation_text='Critical',
                                 annotation=dict(font=dict(color=CRITICAL, family='Inter', size=10)))
-            fig_score.add_hline(y=0.4, line=dict(color='rgba(246,173,85,0.4)', dash='dash'),
+            fig_score.add_hline(y=0.4, line=dict(color='rgba(217,119,6,0.4)', dash='dash'),
                                 annotation_text='High',
                                 annotation=dict(font=dict(color=WARNING, family='Inter', size=10)))
             fig_score.update_layout(
@@ -921,7 +923,7 @@ with tab4:
             fig_forecast.add_trace(go.Scatter(
                 x=train['week_start_date'], y=train['demand_units'],
                 mode='lines', name='Historical',
-                line=dict(color='rgba(148,163,184,0.5)', width=1),
+                line=dict(color='#CBD5E1', width=1),
             ))
             fig_forecast.add_trace(go.Scatter(
                 x=test['week_start_date'], y=test['demand_units'],
@@ -938,7 +940,7 @@ with tab4:
             fig_forecast.add_trace(go.Scatter(
                 x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
                 y=list(upper_95) + list(lower_95[::-1]),
-                fill='toself', fillcolor='rgba(99,179,237,0.06)',
+                fill='toself', fillcolor='rgba(37,99,235,0.06)',
                 line=dict(width=0), name='95% PI',
             ))
 
@@ -946,7 +948,7 @@ with tab4:
             fig_forecast.add_trace(go.Scatter(
                 x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
                 y=list(upper_80) + list(lower_80[::-1]),
-                fill='toself', fillcolor='rgba(99,179,237,0.12)',
+                fill='toself', fillcolor='rgba(37,99,235,0.12)',
                 line=dict(width=0), name='80% PI',
             ))
 
@@ -1002,7 +1004,6 @@ with tab5:
             mean_demand = sku_demand['demand_units'].mean()
             std_demand = sku_demand['demand_units'].std()
 
-            # Generate Monte Carlo simulation results for display
             rng = np.random.RandomState(42)
             n_sim = 5000
 
@@ -1030,7 +1031,7 @@ with tab5:
                     costs.append(holding + stockout + ordering)
 
                 fig_mc.add_trace(go.Histogram(
-                    x=costs, name=scenario, opacity=0.75,
+                    x=costs, name=scenario, opacity=0.7,
                     marker_color=scenario_colors[scenario],
                     nbinsx=40,
                     marker_line_width=0,
@@ -1072,12 +1073,10 @@ with tab6:
     demand = data.get('demand', pd.DataFrame())
 
     if len(skus) > 0 and len(demand) > 0:
-        # Generate synthetic prediction results for display
         rng = np.random.RandomState(42)
         pred_df = skus.copy()
         pred_df['stockout_probability'] = rng.beta(2, 8, len(pred_df))
 
-        # Boost probabilities for high-risk SKUs
         high_risk_mask = pred_df['disruption_sensitivity'] == 'High'
         pred_df.loc[high_risk_mask, 'stockout_probability'] *= 2.5
         pred_df['stockout_probability'] = pred_df['stockout_probability'].clip(0, 1)
@@ -1115,22 +1114,13 @@ with tab6:
 
         st.markdown("---")
 
-        # Risk ranking table with styled badges
+        # Risk ranking table
         st.markdown('<p class="section-header">SKU Stockout Risk Ranking</p>', unsafe_allow_html=True)
 
         display_df = pred_df[['sku_id', 'category', 'supplier_country',
                                'stockout_probability', 'risk_level',
                                'disruption_sensitivity']].head(50).copy()
         display_df['stockout_probability'] = display_df['stockout_probability'].apply(lambda x: f"{x:.1%}")
-
-        # Convert risk_level to styled badges
-        def style_risk(val):
-            if val == 'High':
-                return '<span class="risk-badge-high">HIGH</span>'
-            elif val == 'Medium':
-                return '<span class="risk-badge-medium">MEDIUM</span>'
-            else:
-                return '<span class="risk-badge-low">LOW</span>'
 
         st.dataframe(display_df, use_container_width=True, height=400)
 
@@ -1152,7 +1142,6 @@ with tab6:
             'clustering_coefficient': 0.02,
         }
 
-        # Gradient colors from blue (low) to coral (high) based on value
         shap_vals = list(shap_features.values())
         max_shap = max(shap_vals)
         min_shap = min(shap_vals)
@@ -1160,9 +1149,10 @@ with tab6:
         bar_colors = []
         for v in shap_vals:
             t = (v - min_shap) / (max_shap - min_shap) if max_shap != min_shap else 0
-            r = int(99 + (252 - 99) * t)
-            g = int(179 + (129 - 179) * t)
-            b = int(237 + (129 - 237) * t)
+            # Blue to red gradient
+            r = int(37 + (220 - 37) * t)
+            g = int(99 + (38 - 99) * t)
+            b = int(235 + (38 - 235) * t)
             bar_colors.append(f'rgb({r},{g},{b})')
 
         fig_shap = go.Figure()
@@ -1189,7 +1179,7 @@ with tab6:
             fig_cm = go.Figure(data=go.Heatmap(
                 z=cm, x=['Pred: No Stockout', 'Pred: Stockout'],
                 y=['Actual: No Stockout', 'Actual: Stockout'],
-                colorscale=[[0, SURFACE_2], [1, ACCENT_PRIMARY]],
+                colorscale=[[0, '#F0F4F8'], [1, ACCENT_PRIMARY]],
                 texttemplate='%{z}',
                 textfont=dict(size=18, color=TEXT_PRIMARY, family='JetBrains Mono'),
                 showscale=False,
@@ -1213,7 +1203,7 @@ with tab6:
                 hole=0.55,
                 marker=dict(
                     colors=[group_colors[k] for k in groups.keys()],
-                    line=dict(width=1, color=BG_BASE),
+                    line=dict(width=2, color='#FFFFFF'),
                 ),
                 textfont=dict(color=TEXT_PRIMARY, family='Inter', size=11),
                 hovertemplate='%{label}<br>%{value:.0%}<extra></extra>',
