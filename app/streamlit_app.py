@@ -30,17 +30,17 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Color System — Light Mode ────────────────────────────────────
+# ── Color System — Unified Blue Palette ──────────────────────────
 BG_BASE = '#FAFAF7'           # Warm cream / ivory
 SURFACE_1 = '#FFFFFF'          # Pure white cards
 SURFACE_2 = '#F5F5F0'          # Light warm gray (hover, nested)
 SURFACE_3 = '#EEEDE8'          # Slightly deeper (inputs, dropdowns)
 
-ACCENT_PRIMARY = '#2563EB'     # Strong blue (readable on light)
-ACCENT_SECONDARY = '#0891B2'   # Teal-cyan
-SUCCESS = '#16A34A'            # Clean green
-WARNING = '#D97706'            # Rich amber
-CRITICAL = '#DC2626'           # Clean red
+ACCENT_PRIMARY = '#2563EB'     # Strong blue — THE accent
+ACCENT_LIGHT = '#60A5FA'       # Lighter blue for secondary elements
+ACCENT_MUTED = '#93C5FD'       # Muted blue for fills/backgrounds
+ACCENT_DEEP = '#1D4ED8'        # Deep blue for emphasis
+ACCENT_PALE = '#DBEAFE'        # Very pale blue for subtle fills
 
 TEXT_PRIMARY = '#1A1A2E'       # Deep navy-charcoal
 TEXT_SECONDARY = '#64748B'     # Slate gray
@@ -49,8 +49,8 @@ TEXT_TERTIARY = '#94A3B8'      # Light gray for captions
 BORDER_DEFAULT = 'rgba(0, 0, 0, 0.06)'
 BORDER_ACTIVE = 'rgba(37, 99, 235, 0.2)'
 
-# Chart color sequence
-CHART_COLORS = [ACCENT_PRIMARY, ACCENT_SECONDARY, SUCCESS, '#7C3AED', WARNING, CRITICAL]
+# Chart color sequence — all blue tonal
+CHART_COLORS = ['#1D4ED8', '#2563EB', '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE']
 
 # ── Premium CSS Theme — Light ────────────────────────────────────
 st.markdown("""
@@ -150,21 +150,12 @@ st.markdown("""
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #2563EB, #0891B2);
+        background: linear-gradient(90deg, #2563EB, #60A5FA);
         border-radius: 14px 14px 0 0;
     }
     .kpi-card:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 16px rgba(37, 99, 235, 0.10), 0 1px 4px rgba(0,0,0,0.05);
-    }
-    .kpi-card-success::before {
-        background: linear-gradient(90deg, #16A34A, #22D3EE);
-    }
-    .kpi-card-critical::before {
-        background: linear-gradient(90deg, #DC2626, #F59E0B);
-    }
-    .kpi-card-warning::before {
-        background: linear-gradient(90deg, #D97706, #F59E0B);
     }
     .kpi-value {
         font-family: 'JetBrains Mono', monospace;
@@ -174,9 +165,6 @@ st.markdown("""
         margin: 0;
         line-height: 1.2;
     }
-    .kpi-value-success { color: #16A34A; }
-    .kpi-value-critical { color: #DC2626; }
-    .kpi-value-warning { color: #D97706; }
     .kpi-label {
         font-family: 'Inter', sans-serif;
         font-size: 10px;
@@ -244,12 +232,12 @@ st.markdown("""
         margin-top: 4px;
     }
 
-    /* ─── Risk Badges ─── */
+    /* ─── Risk Badges — all blue tonal ─── */
     .risk-badge-high {
         display: inline-block;
-        background: rgba(220, 38, 38, 0.08);
-        border: 1px solid rgba(220, 38, 38, 0.3);
-        color: #DC2626;
+        background: rgba(29, 78, 216, 0.10);
+        border: 1px solid rgba(29, 78, 216, 0.35);
+        color: #1D4ED8;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
@@ -258,9 +246,9 @@ st.markdown("""
     }
     .risk-badge-medium {
         display: inline-block;
-        background: rgba(217, 119, 6, 0.08);
-        border: 1px solid rgba(217, 119, 6, 0.3);
-        color: #D97706;
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(37, 99, 235, 0.25);
+        color: #2563EB;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
@@ -269,9 +257,9 @@ st.markdown("""
     }
     .risk-badge-low {
         display: inline-block;
-        background: rgba(37, 99, 235, 0.06);
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        color: #2563EB;
+        background: rgba(96, 165, 250, 0.08);
+        border: 1px solid rgba(96, 165, 250, 0.25);
+        color: #60A5FA;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
@@ -501,15 +489,15 @@ with tab1:
 
     with col1:
         st.markdown(f"""
-        <div class="kpi-card kpi-card-critical">
-            <p class="kpi-value kpi-value-critical">{active_events}</p>
+        <div class="kpi-card">
+            <p class="kpi-value">{active_events}</p>
             <p class="kpi-label">Active Disruption Events</p>
         </div>""", unsafe_allow_html=True)
 
     with col2:
         st.markdown(f"""
-        <div class="kpi-card kpi-card-warning">
-            <p class="kpi-value kpi-value-warning">{high_risk_skus}</p>
+        <div class="kpi-card">
+            <p class="kpi-value">{high_risk_skus}</p>
             <p class="kpi-label">SKUs at High Risk (30-day)</p>
         </div>""", unsafe_allow_html=True)
 
@@ -522,8 +510,8 @@ with tab1:
 
     with col4:
         st.markdown(f"""
-        <div class="kpi-card kpi-card-success">
-            <p class="kpi-value kpi-value-success">{avg_lt_deviation:.1f}%</p>
+        <div class="kpi-card">
+            <p class="kpi-value">{avg_lt_deviation:.1f}%</p>
             <p class="kpi-label">Avg Lead Time Deviation</p>
         </div>""", unsafe_allow_html=True)
 
@@ -551,12 +539,12 @@ with tab1:
             z=country_risk['risk_score'],
             text=country_risk.apply(lambda r: f"{r['country']}<br>{r['sku_count']} SKUs<br>{r['high_risk']} high risk", axis=1),
             colorscale=[
-                [0.0, '#E0F2FE'],   # light blue — safe
-                [0.2, '#93C5FD'],   # sky blue
-                [0.4, '#3B82F6'],   # blue
-                [0.6, '#FBBF24'],   # amber — watch
-                [0.8, '#F97316'],   # orange — high
-                [1.0, '#DC2626'],   # red — critical
+                [0.0, '#EFF6FF'],   # barely-there blue
+                [0.2, '#BFDBFE'],   # pale blue
+                [0.4, '#60A5FA'],   # light blue
+                [0.6, '#3B82F6'],   # medium blue
+                [0.8, '#2563EB'],   # strong blue
+                [1.0, '#1D4ED8'],   # deep blue
             ],
             colorbar=dict(
                 title=dict(text='Risk', font=dict(color=TEXT_SECONDARY, family='Inter')),
@@ -656,10 +644,10 @@ with tab2:
         pos = nx.spring_layout(G, k=2, iterations=50, seed=42)
 
         risk_colors = {
-            'Critical': CRITICAL,
-            'High': WARNING,
-            'Medium': ACCENT_PRIMARY,
-            'Low': SUCCESS,
+            'Critical': '#1D4ED8',
+            'High': '#2563EB',
+            'Medium': '#60A5FA',
+            'Low': '#93C5FD',
         }
 
         edge_x, edge_y = [], []
@@ -790,9 +778,9 @@ with tab3:
                 threshold_h = cdata['threshold_h'].iloc[0]
                 fig_cusum.add_hline(
                     y=threshold_h,
-                    line=dict(color='rgba(220,38,38,0.4)', dash='dash', width=1),
+                    line=dict(color='rgba(29,78,216,0.5)', dash='dash', width=1),
                     annotation_text=f'h={threshold_h:.0f}',
-                    annotation=dict(font=dict(color=CRITICAL, family='JetBrains Mono', size=10)),
+                    annotation=dict(font=dict(color='#1D4ED8', family='JetBrains Mono', size=10)),
                     row=2, col=1,
                 )
 
@@ -812,7 +800,7 @@ with tab3:
                     for gs, ge in flag_groups[:5]:
                         fig_cusum.add_vrect(
                             x0=gs, x1=ge,
-                            fillcolor='rgba(220,38,38,0.05)',
+                            fillcolor='rgba(37,99,235,0.06)',
                             line_width=0,
                             row=1, col=1,
                         )
@@ -831,15 +819,15 @@ with tab3:
             threshold = mahal_data['threshold'].iloc[0]
             fig_mahal.add_hline(
                 y=threshold,
-                line=dict(color='rgba(217,119,6,0.5)', dash='dash', width=1),
+                line=dict(color='rgba(29,78,216,0.5)', dash='dash', width=1),
                 annotation_text=f'99th pct: {threshold:.1f}',
-                annotation=dict(font=dict(color=WARNING, family='JetBrains Mono', size=10)),
+                annotation=dict(font=dict(color='#1D4ED8', family='JetBrains Mono', size=10)),
             )
 
             anomalies = mahal_data[mahal_data['anomaly_flag']]
             fig_mahal.add_trace(go.Scatter(
                 x=anomalies.index, y=anomalies['mahalanobis_distance'],
-                mode='markers', marker=dict(color=CRITICAL, size=5, opacity=0.7), name='Anomaly',
+                mode='markers', marker=dict(color='#1D4ED8', size=5, opacity=0.7), name='Anomaly',
             ))
             fig_mahal.update_layout(
                 height=320,
@@ -856,12 +844,12 @@ with tab3:
                 mode='lines', line=dict(color=ACCENT_PRIMARY, width=2),
                 fill='tozeroy', fillcolor='rgba(37,99,235,0.05)',
             ))
-            fig_score.add_hline(y=0.6, line=dict(color='rgba(220,38,38,0.4)', dash='dash'),
+            fig_score.add_hline(y=0.6, line=dict(color='rgba(29,78,216,0.5)', dash='dash'),
                                 annotation_text='Critical',
-                                annotation=dict(font=dict(color=CRITICAL, family='Inter', size=10)))
-            fig_score.add_hline(y=0.4, line=dict(color='rgba(217,119,6,0.4)', dash='dash'),
+                                annotation=dict(font=dict(color='#1D4ED8', family='Inter', size=10)))
+            fig_score.add_hline(y=0.4, line=dict(color='rgba(37,99,235,0.35)', dash='dash'),
                                 annotation_text='High',
-                                annotation=dict(font=dict(color=WARNING, family='Inter', size=10)))
+                                annotation=dict(font=dict(color=ACCENT_PRIMARY, family='Inter', size=10)))
             fig_score.update_layout(
                 height=320,
                 title=dict(text='Disruption Score Timeline',
@@ -1015,9 +1003,9 @@ with tab5:
 
             fig_mc = go.Figure()
             scenario_colors = {
-                'Baseline': SUCCESS,
-                'Moderate Disruption': WARNING,
-                'Severe Disruption': CRITICAL,
+                'Baseline': '#93C5FD',
+                'Moderate Disruption': '#3B82F6',
+                'Severe Disruption': '#1D4ED8',
             }
 
             for scenario, lt_mult in scenarios.items():
@@ -1107,8 +1095,8 @@ with tab6:
                 <p class="kpi-label">Avg Lead Time (weeks)</p>
             </div>""", unsafe_allow_html=True)
         with col4:
-            st.markdown(f"""<div class="kpi-card kpi-card-success">
-                <p class="kpi-value kpi-value-success">87%</p>
+            st.markdown(f"""<div class="kpi-card">
+                <p class="kpi-value">87%</p>
                 <p class="kpi-label">Recall</p>
             </div>""", unsafe_allow_html=True)
 
@@ -1149,10 +1137,10 @@ with tab6:
         bar_colors = []
         for v in shap_vals:
             t = (v - min_shap) / (max_shap - min_shap) if max_shap != min_shap else 0
-            # Blue to red gradient
-            r = int(37 + (220 - 37) * t)
-            g = int(99 + (38 - 99) * t)
-            b = int(235 + (38 - 235) * t)
+            # Light blue to deep blue gradient
+            r = int(191 + (29 - 191) * t)
+            g = int(219 + (78 - 219) * t)
+            b = int(254 + (216 - 254) * t)
             bar_colors.append(f'rgb({r},{g},{b})')
 
         fig_shap = go.Figure()
@@ -1179,7 +1167,7 @@ with tab6:
             fig_cm = go.Figure(data=go.Heatmap(
                 z=cm, x=['Pred: No Stockout', 'Pred: Stockout'],
                 y=['Actual: No Stockout', 'Actual: Stockout'],
-                colorscale=[[0, '#F0F4F8'], [1, ACCENT_PRIMARY]],
+                colorscale=[[0, '#EFF6FF'], [1, '#1D4ED8']],
                 texttemplate='%{z}',
                 textfont=dict(size=18, color=TEXT_PRIMARY, family='JetBrains Mono'),
                 showscale=False,
@@ -1192,10 +1180,10 @@ with tab6:
             st.markdown('<p class="section-header">Feature Group Contribution</p>', unsafe_allow_html=True)
             groups = {'Graph': 0.27, 'Detection': 0.32, 'Forecast': 0.22, 'Inventory': 0.19}
             group_colors = {
-                'Graph': ACCENT_PRIMARY,
-                'Detection': CRITICAL,
-                'Forecast': WARNING,
-                'Inventory': SUCCESS,
+                'Graph': '#1D4ED8',
+                'Detection': '#2563EB',
+                'Forecast': '#60A5FA',
+                'Inventory': '#93C5FD',
             }
             fig_groups = go.Figure(data=[go.Pie(
                 labels=list(groups.keys()),
