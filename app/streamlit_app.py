@@ -30,27 +30,27 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Color System — Unified Blue Palette ──────────────────────────
+# ── Color System — Unified Olive Green Palette ──────────────────────────
 BG_BASE = '#FAFAF7'           # Warm cream / ivory
 SURFACE_1 = '#FFFFFF'          # Pure white cards
 SURFACE_2 = '#F5F5F0'          # Light warm gray (hover, nested)
 SURFACE_3 = '#EEEDE8'          # Slightly deeper (inputs, dropdowns)
 
-ACCENT_PRIMARY = '#2563EB'     # Strong blue — THE accent
-ACCENT_LIGHT = '#60A5FA'       # Lighter blue for secondary elements
-ACCENT_MUTED = '#93C5FD'       # Muted blue for fills/backgrounds
-ACCENT_DEEP = '#1D4ED8'        # Deep blue for emphasis
-ACCENT_PALE = '#DBEAFE'        # Very pale blue for subtle fills
+ACCENT_PRIMARY = '#6B8E23'     # Olive drab — THE accent
+ACCENT_LIGHT = '#8DB060'       # Lighter olive for secondary elements
+ACCENT_MUTED = '#B5CC84'       # Muted olive for fills/backgrounds
+ACCENT_DEEP = '#4A6741'        # Deep olive for emphasis
+ACCENT_PALE = '#E8F0D4'        # Very pale olive for subtle fills
 
 TEXT_PRIMARY = '#1A1A2E'       # Deep navy-charcoal
 TEXT_SECONDARY = '#64748B'     # Slate gray
 TEXT_TERTIARY = '#94A3B8'      # Light gray for captions
 
 BORDER_DEFAULT = 'rgba(0, 0, 0, 0.06)'
-BORDER_ACTIVE = 'rgba(37, 99, 235, 0.2)'
+BORDER_ACTIVE = 'rgba(107, 142, 35, 0.2)'
 
-# Chart color sequence — all blue tonal
-CHART_COLORS = ['#1D4ED8', '#2563EB', '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE']
+# Chart color sequence — all olive tonal
+CHART_COLORS = ['#3D5A1F', '#4A6741', '#6B8E23', '#8DB060', '#B5CC84', '#D4E4B0']
 
 # ── Premium CSS Theme — Light ────────────────────────────────────
 st.markdown("""
@@ -69,11 +69,11 @@ st.markdown("""
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb {
-        background: rgba(37, 99, 235, 0.15);
+        background: rgba(107, 142, 35, 0.15);
         border-radius: 3px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(37, 99, 235, 0.3);
+        background: rgba(107, 142, 35, 0.3);
     }
 
     /* ─── Hide Streamlit branding ─── */
@@ -114,10 +114,10 @@ st.markdown("""
         background: rgba(0, 0, 0, 0.02);
     }
     .stTabs [aria-selected="true"] {
-        background: rgba(37, 99, 235, 0.05) !important;
-        color: #2563EB !important;
+        background: rgba(107, 142, 35, 0.05) !important;
+        color: #6B8E23 !important;
         font-weight: 600;
-        border-bottom: 2px solid #2563EB !important;
+        border-bottom: 2px solid #6B8E23 !important;
     }
 
     /* ─── Glass Card Base (Light) ─── */
@@ -150,12 +150,12 @@ st.markdown("""
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #2563EB, #60A5FA);
+        background: linear-gradient(90deg, #6B8E23, #8DB060);
         border-radius: 14px 14px 0 0;
     }
     .kpi-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.10), 0 1px 4px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 16px rgba(107, 142, 35, 0.10), 0 1px 4px rgba(0,0,0,0.05);
     }
     .kpi-value {
         font-family: 'JetBrains Mono', monospace;
@@ -195,7 +195,7 @@ st.markdown("""
         top: 3px;
         width: 3px;
         height: 18px;
-        background: linear-gradient(180deg, #2563EB, #0891B2);
+        background: linear-gradient(180deg, #6B8E23, #4A6741);
         border-radius: 2px;
     }
 
@@ -215,7 +215,7 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #2563EB, #0891B2);
+        background: linear-gradient(135deg, #6B8E23, #4A6741);
         color: #FFFFFF;
         border-radius: 8px;
         width: 32px;
@@ -235,9 +235,9 @@ st.markdown("""
     /* ─── Risk Badges — all blue tonal ─── */
     .risk-badge-high {
         display: inline-block;
-        background: rgba(29, 78, 216, 0.10);
-        border: 1px solid rgba(29, 78, 216, 0.35);
-        color: #1D4ED8;
+        background: rgba(74, 103, 65, 0.10);
+        border: 1px solid rgba(74, 103, 65, 0.35);
+        color: #4A6741;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
@@ -246,9 +246,9 @@ st.markdown("""
     }
     .risk-badge-medium {
         display: inline-block;
-        background: rgba(37, 99, 235, 0.08);
-        border: 1px solid rgba(37, 99, 235, 0.25);
-        color: #2563EB;
+        background: rgba(107, 142, 35, 0.08);
+        border: 1px solid rgba(107, 142, 35, 0.25);
+        color: #6B8E23;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
@@ -257,9 +257,9 @@ st.markdown("""
     }
     .risk-badge-low {
         display: inline-block;
-        background: rgba(96, 165, 250, 0.08);
-        border: 1px solid rgba(96, 165, 250, 0.25);
-        color: #60A5FA;
+        background: rgba(141, 176, 96, 0.08);
+        border: 1px solid rgba(141, 176, 96, 0.25);
+        color: #8DB060;
         border-radius: 4px;
         padding: 2px 8px;
         font-family: 'Inter', sans-serif;
@@ -317,7 +317,7 @@ st.markdown("""
         background: transparent !important;
     }
     .stDataFrame tbody tr:hover td {
-        background: rgba(37, 99, 235, 0.03) !important;
+        background: rgba(107, 142, 35, 0.03) !important;
     }
 
     /* ─── Selectbox / Inputs ─── */
@@ -348,7 +348,7 @@ st.markdown("""
     /* ─── Info/Warning boxes ─── */
     .stAlert {
         background: #FFFFFF;
-        border: 1px solid rgba(37, 99, 235, 0.15);
+        border: 1px solid rgba(107, 142, 35, 0.15);
         border-radius: 12px;
         color: #64748B;
     }
@@ -394,7 +394,7 @@ def apply_theme(fig):
         margin=dict(l=48, r=24, t=32, b=40),
         hoverlabel=dict(
             bgcolor='rgba(255,255,255,0.97)',
-            bordercolor='rgba(37,99,235,0.2)',
+            bordercolor='rgba(107,142,35,0.2)',
             font=dict(family='Inter', size=12, color='#1A1A2E'),
         ),
         legend=dict(
@@ -539,12 +539,12 @@ with tab1:
             z=country_risk['risk_score'],
             text=country_risk.apply(lambda r: f"{r['country']}<br>{r['sku_count']} SKUs<br>{r['high_risk']} high risk", axis=1),
             colorscale=[
-                [0.0, '#EFF6FF'],   # barely-there blue
-                [0.2, '#BFDBFE'],   # pale blue
-                [0.4, '#60A5FA'],   # light blue
-                [0.6, '#3B82F6'],   # medium blue
-                [0.8, '#2563EB'],   # strong blue
-                [1.0, '#1D4ED8'],   # deep blue
+                [0.0, '#F2F7EA'],   # barely-there olive
+                [0.2, '#D4E4B0'],   # pale olive
+                [0.4, '#8DB060'],   # light olive
+                [0.6, '#7A9E3C'],   # medium olive
+                [0.8, '#6B8E23'],   # strong olive
+                [1.0, '#4A6741'],   # deep olive
             ],
             colorbar=dict(
                 title=dict(text='Risk', font=dict(color=TEXT_SECONDARY, family='Inter')),
@@ -595,7 +595,7 @@ with tab1:
                         fig_spark.add_trace(go.Scatter(
                             y=last_6m.values, mode='lines',
                             line=dict(color=ACCENT_PRIMARY, width=2),
-                            fill='tozeroy', fillcolor='rgba(37,99,235,0.06)',
+                            fill='tozeroy', fillcolor='rgba(107,142,35,0.06)',
                         ))
                         fig_spark.update_layout(
                             height=60, margin=dict(l=0, r=0, t=0, b=0),
@@ -644,10 +644,10 @@ with tab2:
         pos = nx.spring_layout(G, k=2, iterations=50, seed=42)
 
         risk_colors = {
-            'Critical': '#1D4ED8',
-            'High': '#2563EB',
-            'Medium': '#60A5FA',
-            'Low': '#93C5FD',
+            'Critical': '#4A6741',
+            'High': '#6B8E23',
+            'Medium': '#8DB060',
+            'Low': '#B5CC84',
         }
 
         edge_x, edge_y = [], []
@@ -778,9 +778,9 @@ with tab3:
                 threshold_h = cdata['threshold_h'].iloc[0]
                 fig_cusum.add_hline(
                     y=threshold_h,
-                    line=dict(color='rgba(29,78,216,0.5)', dash='dash', width=1),
+                    line=dict(color='rgba(74,103,65,0.5)', dash='dash', width=1),
                     annotation_text=f'h={threshold_h:.0f}',
-                    annotation=dict(font=dict(color='#1D4ED8', family='JetBrains Mono', size=10)),
+                    annotation=dict(font=dict(color='#4A6741', family='JetBrains Mono', size=10)),
                     row=2, col=1,
                 )
 
@@ -800,7 +800,7 @@ with tab3:
                     for gs, ge in flag_groups[:5]:
                         fig_cusum.add_vrect(
                             x0=gs, x1=ge,
-                            fillcolor='rgba(37,99,235,0.06)',
+                            fillcolor='rgba(107,142,35,0.06)',
                             line_width=0,
                             row=1, col=1,
                         )
@@ -814,20 +814,20 @@ with tab3:
             fig_mahal.add_trace(go.Scatter(
                 x=mahal_data.index, y=mahal_data['mahalanobis_distance'],
                 mode='lines', line=dict(color=ACCENT_PRIMARY, width=1.5),
-                fill='tozeroy', fillcolor='rgba(37,99,235,0.06)', name='Distance',
+                fill='tozeroy', fillcolor='rgba(107,142,35,0.06)', name='Distance',
             ))
             threshold = mahal_data['threshold'].iloc[0]
             fig_mahal.add_hline(
                 y=threshold,
-                line=dict(color='rgba(29,78,216,0.5)', dash='dash', width=1),
+                line=dict(color='rgba(74,103,65,0.5)', dash='dash', width=1),
                 annotation_text=f'99th pct: {threshold:.1f}',
-                annotation=dict(font=dict(color='#1D4ED8', family='JetBrains Mono', size=10)),
+                annotation=dict(font=dict(color='#4A6741', family='JetBrains Mono', size=10)),
             )
 
             anomalies = mahal_data[mahal_data['anomaly_flag']]
             fig_mahal.add_trace(go.Scatter(
                 x=anomalies.index, y=anomalies['mahalanobis_distance'],
-                mode='markers', marker=dict(color='#1D4ED8', size=5, opacity=0.7), name='Anomaly',
+                mode='markers', marker=dict(color='#4A6741', size=5, opacity=0.7), name='Anomaly',
             ))
             fig_mahal.update_layout(
                 height=320,
@@ -842,12 +842,12 @@ with tab3:
             fig_score.add_trace(go.Scatter(
                 x=disruption_scores.index, y=disruption_scores['disruption_score'],
                 mode='lines', line=dict(color=ACCENT_PRIMARY, width=2),
-                fill='tozeroy', fillcolor='rgba(37,99,235,0.05)',
+                fill='tozeroy', fillcolor='rgba(107,142,35,0.05)',
             ))
-            fig_score.add_hline(y=0.6, line=dict(color='rgba(29,78,216,0.5)', dash='dash'),
+            fig_score.add_hline(y=0.6, line=dict(color='rgba(74,103,65,0.5)', dash='dash'),
                                 annotation_text='Critical',
-                                annotation=dict(font=dict(color='#1D4ED8', family='Inter', size=10)))
-            fig_score.add_hline(y=0.4, line=dict(color='rgba(37,99,235,0.35)', dash='dash'),
+                                annotation=dict(font=dict(color='#4A6741', family='Inter', size=10)))
+            fig_score.add_hline(y=0.4, line=dict(color='rgba(107,142,35,0.35)', dash='dash'),
                                 annotation_text='High',
                                 annotation=dict(font=dict(color=ACCENT_PRIMARY, family='Inter', size=10)))
             fig_score.update_layout(
@@ -928,7 +928,7 @@ with tab4:
             fig_forecast.add_trace(go.Scatter(
                 x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
                 y=list(upper_95) + list(lower_95[::-1]),
-                fill='toself', fillcolor='rgba(37,99,235,0.06)',
+                fill='toself', fillcolor='rgba(107,142,35,0.06)',
                 line=dict(width=0), name='95% PI',
             ))
 
@@ -936,7 +936,7 @@ with tab4:
             fig_forecast.add_trace(go.Scatter(
                 x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
                 y=list(upper_80) + list(lower_80[::-1]),
-                fill='toself', fillcolor='rgba(37,99,235,0.12)',
+                fill='toself', fillcolor='rgba(107,142,35,0.12)',
                 line=dict(width=0), name='80% PI',
             ))
 
@@ -1003,9 +1003,9 @@ with tab5:
 
             fig_mc = go.Figure()
             scenario_colors = {
-                'Baseline': '#93C5FD',
-                'Moderate Disruption': '#3B82F6',
-                'Severe Disruption': '#1D4ED8',
+                'Baseline': '#B5CC84',
+                'Moderate Disruption': '#7A9E3C',
+                'Severe Disruption': '#4A6741',
             }
 
             for scenario, lt_mult in scenarios.items():
@@ -1167,7 +1167,7 @@ with tab6:
             fig_cm = go.Figure(data=go.Heatmap(
                 z=cm, x=['Pred: No Stockout', 'Pred: Stockout'],
                 y=['Actual: No Stockout', 'Actual: Stockout'],
-                colorscale=[[0, '#EFF6FF'], [1, '#1D4ED8']],
+                colorscale=[[0, '#F2F7EA'], [1, '#4A6741']],
                 texttemplate='%{z}',
                 textfont=dict(size=18, color=TEXT_PRIMARY, family='JetBrains Mono'),
                 showscale=False,
@@ -1180,10 +1180,10 @@ with tab6:
             st.markdown('<p class="section-header">Feature Group Contribution</p>', unsafe_allow_html=True)
             groups = {'Graph': 0.27, 'Detection': 0.32, 'Forecast': 0.22, 'Inventory': 0.19}
             group_colors = {
-                'Graph': '#1D4ED8',
-                'Detection': '#2563EB',
-                'Forecast': '#60A5FA',
-                'Inventory': '#93C5FD',
+                'Graph': '#4A6741',
+                'Detection': '#6B8E23',
+                'Forecast': '#8DB060',
+                'Inventory': '#B5CC84',
             }
             fig_groups = go.Figure(data=[go.Pie(
                 labels=list(groups.keys()),
