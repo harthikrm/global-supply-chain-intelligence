@@ -1,8 +1,8 @@
 """
 Global Supply Chain Intelligence — Streamlit Dashboard
 =======================================================
-6-tab dashboard with dark industrial theme (#0D0D0D background,
-#F59E0B amber accent). Visualizes all analytical modules.
+Premium intelligence platform with glassmorphism UI,
+blue-slate analytical palette, and refined typography.
 """
 
 import sys
@@ -25,155 +25,394 @@ DB_PATH = str(PROJECT_ROOT / 'data' / 'processed' / 'supply_chain.db')
 # ── Page Config ──────────────────────────────────────────────────
 st.set_page_config(
     page_title="Global Supply Chain Intelligence",
-    page_icon="🌐",
+    page_icon="◆",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
 
-# ── Theme CSS ────────────────────────────────────────────────────
+# ── Color System ─────────────────────────────────────────────────
+BG_BASE = '#080C14'
+SURFACE_1 = '#0F1520'
+SURFACE_2 = '#141D2E'
+SURFACE_3 = '#1A2540'
+
+ACCENT_PRIMARY = '#63B3ED'     # Slate blue
+ACCENT_SECONDARY = '#76E4F7'   # Cyan-teal
+SUCCESS = '#68D391'            # Muted green
+WARNING = '#F6AD55'            # Warm amber (warning only)
+CRITICAL = '#FC8181'           # Soft coral red
+
+TEXT_PRIMARY = '#E2E8F0'
+TEXT_SECONDARY = '#94A3B8'
+TEXT_TERTIARY = '#4A5568'
+
+BORDER_DEFAULT = 'rgba(255, 255, 255, 0.06)'
+BORDER_ACTIVE = 'rgba(99, 179, 237, 0.15)'
+
+# Chart color sequence
+CHART_COLORS = [ACCENT_PRIMARY, ACCENT_SECONDARY, SUCCESS, '#B794F4', WARNING, CRITICAL]
+
+# ── Premium CSS Theme ────────────────────────────────────────────
 st.markdown("""
 <style>
-    /* Dark background */
+    /* ─── Google Fonts ─── */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    /* ─── Base ─── */
     .stApp {
-        background-color: #0D0D0D;
-        color: #F9FAFB;
+        background-color: #080C14;
+        color: #E2E8F0;
+        font-family: 'Inter', sans-serif;
     }
 
-    /* Tab styling */
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(99, 179, 237, 0.2);
+        border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 179, 237, 0.4);
+    }
+
+    /* ─── Hide Streamlit branding ─── */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header[data-testid="stHeader"] {
+        background: rgba(8, 12, 20, 0.95);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* ─── Tab Navigation ─── */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 2px;
-        background-color: #1A1A1A;
-        border-radius: 8px;
-        padding: 4px;
+        gap: 0px;
+        background: rgba(8, 12, 20, 0.95);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 0;
+        padding: 0 8px;
     }
     .stTabs [data-baseweb="tab"] {
-        background-color: #1A1A1A;
-        color: #9CA3AF;
-        border-radius: 6px;
-        padding: 10px 20px;
+        background: transparent;
+        color: #4A5568;
+        border-radius: 8px 8px 0 0;
+        padding: 12px 20px;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s ease;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #94A3B8;
+        background: rgba(255, 255, 255, 0.03);
     }
     .stTabs [aria-selected="true"] {
-        background-color: #F59E0B !important;
-        color: #0D0D0D !important;
-        font-weight: 700;
+        background: rgba(99, 179, 237, 0.08) !important;
+        color: #63B3ED !important;
+        font-weight: 600;
+        border-bottom: 2px solid #63B3ED !important;
     }
 
-    /* KPI Cards */
+    /* ─── Glass Card Base ─── */
+    .glass-card {
+        background: rgba(15, 21, 32, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        box-shadow:
+            0 4px 6px rgba(0, 0, 0, 0.3),
+            0 1px 3px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        padding: 24px;
+    }
+
+    /* ─── KPI Metric Cards ─── */
     .kpi-card {
-        background: linear-gradient(135deg, #1A1A1A 0%, #262626 100%);
-        border: 1px solid #333333;
-        border-radius: 12px;
-        padding: 20px;
+        background: rgba(15, 21, 32, 0.8);
+        border: 1px solid rgba(99, 179, 237, 0.1);
+        border-radius: 14px;
+        padding: 20px 24px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         text-align: center;
-        transition: transform 0.2s, border-color 0.2s;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.3s ease;
+    }
+    .kpi-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(99, 179, 237, 0.4), transparent);
     }
     .kpi-card:hover {
         transform: translateY(-2px);
-        border-color: #F59E0B;
+        border-color: rgba(99, 179, 237, 0.25);
+    }
+    .kpi-card-success::before {
+        background: linear-gradient(90deg, transparent, rgba(104, 211, 145, 0.4), transparent);
+    }
+    .kpi-card-critical::before {
+        background: linear-gradient(90deg, transparent, rgba(252, 129, 129, 0.4), transparent);
+    }
+    .kpi-card-warning::before {
+        background: linear-gradient(90deg, transparent, rgba(246, 173, 85, 0.4), transparent);
     }
     .kpi-value {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: #F59E0B;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #63B3ED;
         margin: 0;
         line-height: 1.2;
     }
+    .kpi-value-success { color: #68D391; }
+    .kpi-value-critical { color: #FC8181; }
+    .kpi-value-warning { color: #F6AD55; }
     .kpi-label {
-        font-size: 0.85rem;
-        color: #9CA3AF;
-        margin-top: 4px;
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        color: #4A5568;
+        margin-top: 8px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 2px;
     }
-    .kpi-delta {
-        font-size: 0.8rem;
-        margin-top: 4px;
-    }
-    .delta-up { color: #EF4444; }
-    .delta-down { color: #10B981; }
 
-    /* Risk badges */
-    .risk-high { color: #EF4444; font-weight: 700; }
-    .risk-medium { color: #F59E0B; font-weight: 700; }
-    .risk-low { color: #10B981; font-weight: 700; }
-
-    /* Section headers */
+    /* ─── Section Headers ─── */
     .section-header {
-        color: #F59E0B;
-        font-size: 1.1rem;
+        font-family: 'Syne', sans-serif;
+        color: #63B3ED;
+        font-size: 18px;
         font-weight: 600;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #333;
-        padding-bottom: 8px;
+        margin-top: 28px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        padding-left: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        position: relative;
+    }
+    .section-header::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 3px;
+        width: 3px;
+        height: 18px;
+        background: #63B3ED;
+        border-radius: 2px;
     }
 
-    /* Sidebar styling */
-    [data-testid="stSidebar"] {
-        background-color: #1A1A1A;
-    }
-
-    /* Metric styling */
-    [data-testid="stMetric"] {
-        background-color: #1A1A1A;
-        border: 1px solid #333;
-        border-radius: 8px;
-        padding: 15px;
-    }
-    [data-testid="stMetricValue"] {
-        color: #F59E0B;
-    }
-    [data-testid="stMetricLabel"] {
-        color: #9CA3AF;
-    }
-
-    /* Table styling */
-    .stDataFrame {
-        background-color: #1A1A1A;
-    }
-
-    /* Hide streamlit branding */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-
-    /* Title bar */
+    /* ─── Title ─── */
     .main-title {
-        background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 2rem;
-        font-weight: 800;
+        font-family: 'Syne', sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #E2E8F0;
+        letter-spacing: -0.5px;
         margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .main-title .logo-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1.5px solid #63B3ED;
+        color: #63B3ED;
+        border-radius: 6px;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        font-weight: 700;
     }
     .subtitle {
-        color: #6B7280;
-        font-size: 0.9rem;
-        margin-top: 0;
+        font-family: 'Inter', sans-serif;
+        color: #4A5568;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.6;
+        margin-top: 4px;
+    }
+
+    /* ─── Risk Badges ─── */
+    .risk-badge-high {
+        display: inline-block;
+        border: 1px solid #FC8181;
+        color: #FC8181;
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+    }
+    .risk-badge-medium {
+        display: inline-block;
+        border: 1px solid #F6AD55;
+        color: #F6AD55;
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+    }
+    .risk-badge-low {
+        display: inline-block;
+        border: 1px solid #63B3ED;
+        color: #63B3ED;
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    /* ─── Sidebar ─── */
+    [data-testid="stSidebar"] {
+        background-color: #0F1520;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ─── Streamlit Metric Override ─── */
+    [data-testid="stMetric"] {
+        background: rgba(15, 21, 32, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 16px;
+        backdrop-filter: blur(16px);
+    }
+    [data-testid="stMetricValue"] {
+        color: #63B3ED;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #94A3B8;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+    }
+
+    /* ─── Tables ─── */
+    .stDataFrame {
+        background: rgba(15, 21, 32, 0.5);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .stDataFrame thead tr th {
+        background: rgba(20, 29, 46, 0.9) !important;
+        color: #4A5568 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 10px !important;
+        letter-spacing: 1.5px !important;
+        text-transform: uppercase !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+        padding: 10px 12px !important;
+    }
+    .stDataFrame tbody tr td {
+        color: #94A3B8 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 12px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+        padding: 8px 12px !important;
+        background: transparent !important;
+    }
+    .stDataFrame tbody tr:hover td {
+        background: rgba(99, 179, 237, 0.04) !important;
+        color: #E2E8F0 !important;
+    }
+
+    /* ─── Selectbox / Inputs ─── */
+    .stSelectbox > div > div {
+        background: #1A2540;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: #94A3B8;
+        border-radius: 8px;
+    }
+    .stSelectbox label {
+        color: #94A3B8 !important;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+    }
+
+    /* ─── Slider ─── */
+    .stSlider label {
+        color: #94A3B8 !important;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── Divider ─── */
+    hr {
+        border-color: rgba(255, 255, 255, 0.04) !important;
+        margin: 28px 0 !important;
+    }
+
+    /* ─── Info/Warning boxes ─── */
+    .stAlert {
+        background: rgba(15, 21, 32, 0.7);
+        border: 1px solid rgba(99, 179, 237, 0.15);
+        border-radius: 12px;
+        color: #94A3B8;
+    }
+
+    /* ─── Block container spacing ─── */
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* ─── Footer ─── */
+    .footer-text {
+        text-align: center;
+        color: #4A5568;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        padding: 20px 0;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# ── Theme constants for Plotly ───────────────────────────────────
-DARK_BG = '#0D0D0D'
-CARD_BG = '#1A1A1A'
-AMBER = '#F59E0B'
-RED = '#EF4444'
-GREEN = '#10B981'
-BLUE = '#3B82F6'
-PURPLE = '#8B5CF6'
-WHITE = '#F9FAFB'
-GRAY = '#6B7280'
 
-
+# ── Plotly Theme Function ────────────────────────────────────────
 def apply_theme(fig):
+    """Apply the premium intelligence platform theme to a Plotly figure."""
     fig.update_layout(
-        plot_bgcolor=DARK_BG, paper_bgcolor=DARK_BG,
-        font=dict(color=WHITE, family='Inter, sans-serif'),
-        xaxis=dict(gridcolor='#222222', zerolinecolor='#333'),
-        yaxis=dict(gridcolor='#222222', zerolinecolor='#333'),
-        legend=dict(bgcolor='rgba(0,0,0,0.5)', bordercolor='#333', font=dict(color=WHITE)),
-        margin=dict(l=50, r=30, t=50, b=30),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        font=dict(family='Inter, JetBrains Mono, sans-serif', color='#94A3B8', size=11),
+        xaxis=dict(
+            gridcolor='rgba(255,255,255,0.04)',
+            linecolor='rgba(255,255,255,0.08)',
+            tickfont=dict(family='JetBrains Mono', size=10, color='#4A5568'),
+            zeroline=False,
+        ),
+        yaxis=dict(
+            gridcolor='rgba(255,255,255,0.04)',
+            linecolor='rgba(255,255,255,0.08)',
+            tickfont=dict(family='JetBrains Mono', size=10, color='#4A5568'),
+            zeroline=False,
+        ),
+        margin=dict(l=48, r=24, t=32, b=40),
+        hoverlabel=dict(
+            bgcolor='rgba(15,21,32,0.95)',
+            bordercolor='rgba(99,179,237,0.3)',
+            font=dict(family='Inter', size=12, color='#E2E8F0'),
+        ),
+        legend=dict(
+            bgcolor='rgba(0,0,0,0)',
+            bordercolor='rgba(255,255,255,0.06)',
+            font=dict(color='#94A3B8', family='Inter', size=11),
+        ),
+        title=dict(font=dict(family='Syne', size=16, color='#E2E8F0')),
     )
     return fig
 
@@ -211,24 +450,29 @@ def load_data():
 
 
 # ── Header ───────────────────────────────────────────────────────
-st.markdown('<p class="main-title">🌐 Global Supply Chain Intelligence</p>', unsafe_allow_html=True)
+st.markdown('''
+<div class="main-title">
+    <span class="logo-badge">◆</span>
+    Global Supply Chain Intelligence
+</div>
+''', unsafe_allow_html=True)
 st.markdown('<p class="subtitle">Real-time disruption detection, risk quantification, and inventory optimization across global supply networks</p>', unsafe_allow_html=True)
 
 # Load data
 data = load_data()
 
 if not data:
-    st.error("⚠️ No data loaded. Please run the data pipeline first: `python -m src.ingest`")
+    st.error("No data loaded. Please run the data pipeline first: `python -m src.ingest`")
     st.stop()
 
 # ── Tabs ─────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
-    "📊 Global Risk Overview",
-    "🕸️ Supply Chain Network",
-    "🚨 Disruption Detection",
-    "📈 Demand Forecasting",
-    "📦 Inventory Optimization",
-    "🎯 Stockout Prediction",
+    "Global Risk Overview",
+    "Supply Chain Network",
+    "Disruption Detection",
+    "Demand Forecasting",
+    "Inventory Optimization",
+    "Stockout Prediction",
 ])
 
 # ═══════════════════════════════════════════════════════════════
@@ -255,15 +499,15 @@ with tab1:
 
     with col1:
         st.markdown(f"""
-        <div class="kpi-card">
-            <p class="kpi-value">{active_events}</p>
+        <div class="kpi-card kpi-card-critical">
+            <p class="kpi-value kpi-value-critical">{active_events}</p>
             <p class="kpi-label">Active Disruption Events</p>
         </div>""", unsafe_allow_html=True)
 
     with col2:
         st.markdown(f"""
-        <div class="kpi-card">
-            <p class="kpi-value">{high_risk_skus}</p>
+        <div class="kpi-card kpi-card-warning">
+            <p class="kpi-value kpi-value-warning">{high_risk_skus}</p>
             <p class="kpi-label">SKUs at High Risk (30-day)</p>
         </div>""", unsafe_allow_html=True)
 
@@ -276,8 +520,8 @@ with tab1:
 
     with col4:
         st.markdown(f"""
-        <div class="kpi-card">
-            <p class="kpi-value">{avg_lt_deviation:.1f}%</p>
+        <div class="kpi-card kpi-card-success">
+            <p class="kpi-value kpi-value-success">{avg_lt_deviation:.1f}%</p>
             <p class="kpi-label">Avg Lead Time Deviation</p>
         </div>""", unsafe_allow_html=True)
 
@@ -304,23 +548,47 @@ with tab1:
             locations=country_risk['iso'],
             z=country_risk['risk_score'],
             text=country_risk.apply(lambda r: f"{r['country']}<br>{r['sku_count']} SKUs<br>{r['high_risk']} high risk", axis=1),
-            colorscale=[[0, GREEN], [0.5, AMBER], [1.0, RED]],
-            colorbar=dict(title='Risk', tickfont=dict(color=WHITE), titlefont=dict(color=WHITE)),
+            colorscale=[
+                [0.0, '#0D1B2E'],
+                [0.2, '#1A3A5C'],
+                [0.4, '#2D6A9F'],
+                [0.6, '#F6AD55'],
+                [0.8, '#FC8181'],
+                [1.0, '#E53E3E'],
+            ],
+            colorbar=dict(
+                title=dict(text='Risk', font=dict(color=TEXT_SECONDARY, family='Inter')),
+                tickfont=dict(color=TEXT_TERTIARY, family='JetBrains Mono', size=10),
+                bgcolor='rgba(0,0,0,0)',
+                borderwidth=0,
+            ),
             hovertemplate='%{text}<br>Risk: %{z:.2f}<extra></extra>',
         ))
         fig_map.update_layout(
-            title=dict(text='Global Supply Chain Risk Map', font=dict(color=WHITE, size=16)),
-            geo=dict(bgcolor=DARK_BG, lakecolor=DARK_BG, landcolor='#1A1A1A',
-                     showframe=False, showcoastlines=True, coastlinecolor='#333',
-                     countrycolor='#333', projection_type='natural earth'),
-            plot_bgcolor=DARK_BG, paper_bgcolor=DARK_BG, height=420,
+            title=dict(text='Global Supply Chain Risk Map',
+                       font=dict(family='Syne', color=TEXT_PRIMARY, size=16)),
+            geo=dict(
+                bgcolor='rgba(0,0,0,0)',
+                lakecolor=BG_BASE,
+                landcolor='#0D1B2E',
+                showframe=False,
+                showcoastlines=True,
+                coastlinecolor='rgba(99, 179, 237, 0.15)',
+                countrycolor='rgba(99, 179, 237, 0.15)',
+                projection_type='natural earth',
+                showocean=True,
+                oceancolor=BG_BASE,
+            ),
+            paper_bgcolor='rgba(0,0,0,0)',
+            plot_bgcolor='rgba(0,0,0,0)',
+            height=420,
             margin=dict(l=0, r=0, t=40, b=0),
         )
         st.plotly_chart(fig_map, use_container_width=True)
 
     # Macro indicators sparklines
     if len(macro) > 0:
-        st.markdown('<p class="section-header">📉 Macro Indicators — Live Feed</p>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Macro Indicators — Live Feed</p>', unsafe_allow_html=True)
 
         series_ids = macro['series_id'].unique()
         cols_per_row = 5
@@ -331,14 +599,13 @@ with tab1:
                 if len(series_data) > 0:
                     with cols[j]:
                         current = series_data['value'].iloc[-1]
-                        name = series_data['series_name'].iloc[0] if 'series_name' in series_data.columns else sid
                         last_6m = series_data.tail(6)['value']
 
                         fig_spark = go.Figure()
                         fig_spark.add_trace(go.Scatter(
                             y=last_6m.values, mode='lines',
-                            line=dict(color=AMBER, width=2),
-                            fill='tozeroy', fillcolor='rgba(245,158,11,0.1)',
+                            line=dict(color=ACCENT_PRIMARY, width=2),
+                            fill='tozeroy', fillcolor='rgba(99,179,237,0.08)',
                         ))
                         fig_spark.update_layout(
                             height=60, margin=dict(l=0, r=0, t=0, b=0),
@@ -346,16 +613,16 @@ with tab1:
                             xaxis=dict(visible=False), yaxis=dict(visible=False),
                             showlegend=False,
                         )
-                        st.markdown(f"**{sid}**")
+                        st.markdown(f'<span style="font-family:Inter;font-size:12px;color:#94A3B8;font-weight:500;">{sid}</span>', unsafe_allow_html=True)
                         st.plotly_chart(fig_spark, use_container_width=True, key=f"spark_{sid}")
-                        st.caption(f"{current:,.2f}")
+                        st.markdown(f'<span style="font-family:JetBrains Mono;font-size:12px;color:#E2E8F0;">{current:,.2f}</span>', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
 # TAB 2: SUPPLY CHAIN NETWORK
 # ═══════════════════════════════════════════════════════════════
 with tab2:
-    st.markdown('<p class="section-header">🕸️ Supply Chain Network Graph</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Supply Chain Network Graph</p>', unsafe_allow_html=True)
 
     try:
         from src.graph import build_supply_chain_graph, compute_centrality_metrics, simulate_disruption
@@ -386,7 +653,12 @@ with tab2:
         # Build network visualization
         pos = nx.spring_layout(G, k=2, iterations=50, seed=42)
 
-        risk_colors = {'Critical': RED, 'High': AMBER, 'Medium': BLUE, 'Low': GREEN}
+        risk_colors = {
+            'Critical': CRITICAL,
+            'High': WARNING,
+            'Medium': '#2D6A9F',
+            'Low': SUCCESS
+        }
 
         edge_x, edge_y = [], []
         for u, v in G.edges():
@@ -400,7 +672,7 @@ with tab2:
 
         fig_net.add_trace(go.Scatter(
             x=edge_x, y=edge_y, mode='lines',
-            line=dict(width=0.3, color='rgba(150,150,150,0.2)'),
+            line=dict(width=0.3, color='rgba(255,255,255,0.06)'),
             hoverinfo='none', name='Links',
         ))
 
@@ -425,36 +697,44 @@ with tab2:
                     y_vals.append(y)
                     bc = row['betweenness_centrality']
                     sizes.append(max(6, min(35, bc * 400 + 6)))
-                    texts.append(f"<b>{nid}</b><br>BC: {bc:.4f}<br>PR: {row['pagerank']:.4f}")
+                    texts.append(
+                        f"<b>{nid}</b><br>"
+                        f"<span style='color:#94A3B8'>Betweenness:</span> {bc:.4f}<br>"
+                        f"<span style='color:#94A3B8'>PageRank:</span> {row['pagerank']:.4f}"
+                    )
 
             if x_vals:
                 fig_net.add_trace(go.Scatter(
                     x=x_vals, y=y_vals, mode='markers',
-                    marker=dict(size=sizes, color=color, line=dict(width=0.5, color='white')),
+                    marker=dict(
+                        size=sizes, color=color,
+                        line=dict(width=0.5, color='rgba(255,255,255,0.15)'),
+                    ),
                     hovertext=texts, hoverinfo='text', name=f'{tier} Risk',
                 ))
 
         fig_net.update_layout(
-            title='Supply Chain Network — Risk-Weighted Graph',
+            title=dict(text='Risk-Weighted Network Topology',
+                       font=dict(family='Syne', size=16, color=TEXT_PRIMARY)),
             height=550, showlegend=True,
             xaxis=dict(visible=False), yaxis=dict(visible=False),
         )
         st.plotly_chart(apply_theme(fig_net), use_container_width=True)
 
         # Centrality table
-        st.markdown('<p class="section-header">📊 Node Centrality Metrics</p>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Node Centrality Metrics</p>', unsafe_allow_html=True)
         display_centrality = centrality_df.sort_values('betweenness_centrality', ascending=False).head(20)
         st.dataframe(display_centrality, use_container_width=True, height=350)
 
     except Exception as e:
-        st.info(f"⚠️ Network module not available. Run the full pipeline first. ({e})")
+        st.info(f"Network module not available. Run the full pipeline first. ({e})")
 
 
 # ═══════════════════════════════════════════════════════════════
 # TAB 3: DISRUPTION DETECTION
 # ═══════════════════════════════════════════════════════════════
 with tab3:
-    st.markdown('<p class="section-header">🚨 CUSUM & Mahalanobis Disruption Detection</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">CUSUM & Mahalanobis Disruption Detection</p>', unsafe_allow_html=True)
 
     macro = data.get('macro', pd.DataFrame())
     events = data.get('events', pd.DataFrame())
@@ -483,70 +763,117 @@ with tab3:
             if selected_series and selected_series in cusum_results:
                 cdata = cusum_results[selected_series]
 
-                fig_cusum = make_subplots(rows=2, cols=1, shared_xaxes=True,
-                                          subplot_titles=[f'{selected_series} — Raw', 'CUSUM Chart'],
-                                          vertical_spacing=0.12)
+                fig_cusum = make_subplots(
+                    rows=2, cols=1, shared_xaxes=True,
+                    subplot_titles=[f'{selected_series} — Raw Signal', 'CUSUM Control Chart'],
+                    vertical_spacing=0.12,
+                )
+                # Subplot title styling
+                for annotation in fig_cusum.layout.annotations:
+                    annotation.font = dict(family='Syne', size=14, color=TEXT_SECONDARY)
+
+                # Raw signal
                 fig_cusum.add_trace(go.Scatter(
                     x=cdata.index, y=cdata['value'], mode='lines',
-                    line=dict(color=BLUE, width=1.5), name='Value',
+                    line=dict(color=ACCENT_PRIMARY, width=1.5), name='Value',
                 ), row=1, col=1)
 
+                # CUSUM+
                 fig_cusum.add_trace(go.Scatter(
                     x=cdata.index, y=cdata['cusum_pos'], mode='lines',
-                    line=dict(color=AMBER, width=1.5), name='CUSUM+',
+                    line=dict(color=ACCENT_SECONDARY, width=1.5), name='CUSUM+',
                 ), row=2, col=1)
 
+                # Threshold
                 threshold_h = cdata['threshold_h'].iloc[0]
-                fig_cusum.add_hline(y=threshold_h, line=dict(color=RED, dash='dash'),
-                                     annotation_text=f'h={threshold_h:.0f}', row=2, col=1)
+                fig_cusum.add_hline(
+                    y=threshold_h,
+                    line=dict(color='rgba(252,129,129,0.5)', dash='dash', width=1),
+                    annotation_text=f'h={threshold_h:.0f}',
+                    annotation=dict(font=dict(color=TEXT_TERTIARY, family='JetBrains Mono', size=10)),
+                    row=2, col=1,
+                )
 
+                # Disruption highlight shading
                 flags = cdata[cdata['cusum_flag']]
-                for idx in flags.index:
-                    fig_cusum.add_vline(x=idx, line=dict(color=RED, width=0.4, dash='dot'), row=1, col=1)
+                if len(flags) > 0:
+                    flag_groups = []
+                    start = flags.index[0]
+                    prev = start
+                    for idx in flags.index[1:]:
+                        if (idx - prev).days > 14:
+                            flag_groups.append((start, prev))
+                            start = idx
+                        prev = idx
+                    flag_groups.append((start, prev))
 
-                fig_cusum.update_layout(height=450)
+                    for gs, ge in flag_groups[:5]:  # Limit to 5 shading regions
+                        fig_cusum.add_vrect(
+                            x0=gs, x1=ge,
+                            fillcolor='rgba(252,129,129,0.04)',
+                            line_width=0,
+                            row=1, col=1,
+                        )
+
+                fig_cusum.update_layout(height=480)
                 st.plotly_chart(apply_theme(fig_cusum), use_container_width=True)
 
             # Mahalanobis chart
-            st.markdown('<p class="section-header">📐 Multivariate Mahalanobis Distance</p>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Multivariate Mahalanobis Distance</p>', unsafe_allow_html=True)
             fig_mahal = go.Figure()
             fig_mahal.add_trace(go.Scatter(
                 x=mahal_data.index, y=mahal_data['mahalanobis_distance'],
-                mode='lines', line=dict(color=AMBER, width=1.5),
-                fill='tozeroy', fillcolor='rgba(245,158,11,0.1)', name='Distance',
+                mode='lines', line=dict(color=ACCENT_PRIMARY, width=1.5),
+                fill='tozeroy', fillcolor='rgba(99,179,237,0.08)', name='Distance',
             ))
             threshold = mahal_data['threshold'].iloc[0]
-            fig_mahal.add_hline(y=threshold, line=dict(color=RED, dash='dash'),
-                                 annotation_text=f'99th pct: {threshold:.1f}')
+            fig_mahal.add_hline(
+                y=threshold,
+                line=dict(color='rgba(246,173,85,0.4)', dash='dash', width=1),
+                annotation_text=f'99th pct: {threshold:.1f}',
+                annotation=dict(font=dict(color=TEXT_TERTIARY, family='JetBrains Mono', size=10)),
+            )
 
             anomalies = mahal_data[mahal_data['anomaly_flag']]
             fig_mahal.add_trace(go.Scatter(
                 x=anomalies.index, y=anomalies['mahalanobis_distance'],
-                mode='markers', marker=dict(color=RED, size=6), name='Anomaly',
+                mode='markers', marker=dict(color=CRITICAL, size=5, opacity=0.8), name='Anomaly',
             ))
-            fig_mahal.update_layout(height=300, title='Mahalanobis Distance')
+            fig_mahal.update_layout(
+                height=320,
+                title=dict(text='Mahalanobis Distance',
+                           font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
+            )
             st.plotly_chart(apply_theme(fig_mahal), use_container_width=True)
 
             # Disruption score
-            st.markdown('<p class="section-header">📊 Composite Disruption Score</p>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Composite Disruption Score</p>', unsafe_allow_html=True)
             fig_score = go.Figure()
             fig_score.add_trace(go.Scatter(
                 x=disruption_scores.index, y=disruption_scores['disruption_score'],
-                mode='lines', line=dict(color=AMBER, width=2),
-                fill='tozeroy', fillcolor='rgba(245,158,11,0.1)',
+                mode='lines', line=dict(color=ACCENT_PRIMARY, width=2),
+                fill='tozeroy', fillcolor='rgba(99,179,237,0.06)',
             ))
-            fig_score.add_hline(y=0.6, line=dict(color=RED, dash='dash'), annotation_text='Critical')
-            fig_score.add_hline(y=0.4, line=dict(color=AMBER, dash='dash'), annotation_text='High')
-            fig_score.update_layout(height=300, title='Disruption Score Timeline')
+            fig_score.add_hline(y=0.6, line=dict(color='rgba(252,129,129,0.5)', dash='dash'),
+                                annotation_text='Critical',
+                                annotation=dict(font=dict(color=CRITICAL, family='Inter', size=10)))
+            fig_score.add_hline(y=0.4, line=dict(color='rgba(246,173,85,0.4)', dash='dash'),
+                                annotation_text='High',
+                                annotation=dict(font=dict(color=WARNING, family='Inter', size=10)))
+            fig_score.update_layout(
+                height=320,
+                title=dict(text='Disruption Score Timeline',
+                           font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
+            )
             st.plotly_chart(apply_theme(fig_score), use_container_width=True)
 
             # Events table
-            st.markdown('<p class="section-header">📋 Disruption Events</p>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Disruption Events</p>', unsafe_allow_html=True)
             if len(events) > 0:
                 st.dataframe(events, use_container_width=True)
 
         except Exception as e:
-            st.info(f"⚠️ Detection module not available. ({e})")
+            st.info(f"Detection module not available. ({e})")
     else:
         st.info("No macro indicator data available.")
 
@@ -555,7 +882,7 @@ with tab3:
 # TAB 4: DEMAND FORECASTING
 # ═══════════════════════════════════════════════════════════════
 with tab4:
-    st.markdown('<p class="section-header">📈 Demand Forecasting Under Uncertainty</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Demand Forecasting Under Uncertainty</p>', unsafe_allow_html=True)
 
     demand = data.get('demand', pd.DataFrame())
     skus = data.get('skus', pd.DataFrame())
@@ -593,50 +920,62 @@ with tab4:
 
             fig_forecast.add_trace(go.Scatter(
                 x=train['week_start_date'], y=train['demand_units'],
-                mode='lines', name='Historical', line=dict(color=BLUE, width=1.5),
+                mode='lines', name='Historical',
+                line=dict(color='rgba(148,163,184,0.5)', width=1),
             ))
             fig_forecast.add_trace(go.Scatter(
                 x=test['week_start_date'], y=test['demand_units'],
-                mode='lines', name='Actual', line=dict(color=WHITE, width=1.5),
+                mode='lines', name='Actual',
+                line=dict(color=TEXT_PRIMARY, width=1.5),
             ))
             fig_forecast.add_trace(go.Scatter(
                 x=test['week_start_date'], y=forecast_values,
-                mode='lines', name='Forecast', line=dict(color=AMBER, width=2),
+                mode='lines', name='Forecast',
+                line=dict(color=ACCENT_PRIMARY, width=2),
             ))
 
-            # 80% PI
-            fig_forecast.add_trace(go.Scatter(
-                x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
-                y=list(upper_80) + list(lower_80[::-1]),
-                fill='toself', fillcolor='rgba(245,158,11,0.2)',
-                line=dict(width=0), name='80% PI',
-            ))
-
-            # 95% PI
+            # 95% PI (outer)
             fig_forecast.add_trace(go.Scatter(
                 x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
                 y=list(upper_95) + list(lower_95[::-1]),
-                fill='toself', fillcolor='rgba(245,158,11,0.1)',
+                fill='toself', fillcolor='rgba(99,179,237,0.06)',
                 line=dict(width=0), name='95% PI',
             ))
 
-            fig_forecast.update_layout(height=450, title=f'Demand Forecast — {selected_sku}',
-                                        xaxis_title='Date', yaxis_title='Demand Units')
+            # 80% PI (inner)
+            fig_forecast.add_trace(go.Scatter(
+                x=list(test['week_start_date']) + list(test['week_start_date'][::-1]),
+                y=list(upper_80) + list(lower_80[::-1]),
+                fill='toself', fillcolor='rgba(99,179,237,0.12)',
+                line=dict(width=0), name='80% PI',
+            ))
+
+            fig_forecast.update_layout(
+                height=450,
+                title=dict(text=f'Demand Forecast — {selected_sku}',
+                           font=dict(family='Syne', size=16, color=TEXT_PRIMARY)),
+                xaxis_title='Date', yaxis_title='Demand Units',
+            )
             st.plotly_chart(apply_theme(fig_forecast), use_container_width=True)
 
         # Category-level aggregation
-        st.markdown('<p class="section-header">📊 Category-Level Demand</p>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Category-Level Demand</p>', unsafe_allow_html=True)
         cat_demand = demand.groupby(['week_start_date', 'category'])['demand_units'].sum().reset_index()
 
         fig_cat = go.Figure()
-        for cat in cat_demand['category'].unique():
+        for idx, cat in enumerate(sorted(cat_demand['category'].unique())):
             cat_data = cat_demand[cat_demand['category'] == cat]
+            color = CHART_COLORS[idx % len(CHART_COLORS)]
             fig_cat.add_trace(go.Scatter(
                 x=cat_data['week_start_date'], y=cat_data['demand_units'],
-                mode='lines', name=cat, line=dict(width=1.5),
+                mode='lines', name=cat, line=dict(width=1.5, color=color),
             ))
-        fig_cat.update_layout(height=350, title='Hierarchical Demand by Category',
-                               xaxis_title='Date', yaxis_title='Total Demand')
+        fig_cat.update_layout(
+            height=380,
+            title=dict(text='Hierarchical Demand by Category',
+                       font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
+            xaxis_title='Date', yaxis_title='Total Demand',
+        )
         st.plotly_chart(apply_theme(fig_cat), use_container_width=True)
 
     else:
@@ -647,7 +986,7 @@ with tab4:
 # TAB 5: INVENTORY OPTIMIZATION
 # ═══════════════════════════════════════════════════════════════
 with tab5:
-    st.markdown('<p class="section-header">📦 Monte Carlo Inventory Optimization</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">Monte Carlo Inventory Optimization</p>', unsafe_allow_html=True)
 
     demand = data.get('demand', pd.DataFrame())
     skus = data.get('skus', pd.DataFrame())
@@ -667,7 +1006,6 @@ with tab5:
             rng = np.random.RandomState(42)
             n_sim = 5000
 
-            # Simulate costs for three scenarios
             scenarios = {
                 'Baseline': 1.0,
                 'Moderate Disruption': 1.4,
@@ -675,7 +1013,11 @@ with tab5:
             }
 
             fig_mc = go.Figure()
-            colors = {'Baseline': GREEN, 'Moderate Disruption': AMBER, 'Severe Disruption': RED}
+            scenario_colors = {
+                'Baseline': SUCCESS,
+                'Moderate Disruption': WARNING,
+                'Severe Disruption': CRITICAL,
+            }
 
             for scenario, lt_mult in scenarios.items():
                 costs = []
@@ -688,13 +1030,18 @@ with tab5:
                     costs.append(holding + stockout + ordering)
 
                 fig_mc.add_trace(go.Histogram(
-                    x=costs, name=scenario, opacity=0.6,
-                    marker_color=colors[scenario], nbinsx=40,
+                    x=costs, name=scenario, opacity=0.75,
+                    marker_color=scenario_colors[scenario],
+                    nbinsx=40,
+                    marker_line_width=0,
                 ))
 
             fig_mc.update_layout(
-                height=400, title=f'Annual Cost Distribution — {selected_sku_inv}',
-                barmode='overlay', xaxis_title='Annual Total Cost ($)', yaxis_title='Frequency',
+                height=400,
+                title=dict(text=f'Annual Cost Distribution — {selected_sku_inv}',
+                           font=dict(family='Syne', size=16, color=TEXT_PRIMARY)),
+                barmode='overlay',
+                xaxis_title='Annual Total Cost ($)', yaxis_title='Frequency',
             )
             st.plotly_chart(apply_theme(fig_mc), use_container_width=True)
 
@@ -708,7 +1055,7 @@ with tab5:
                 st.metric("Stockout Cost/Unit", f"${sku_info['stockout_cost_usd']:.2f}")
 
         # Risk ranking table
-        st.markdown('<p class="section-header">⚠️ Highest Disruption Exposure SKUs</p>', unsafe_allow_html=True)
+        st.markdown('<p class="section-header">Highest Disruption Exposure SKUs</p>', unsafe_allow_html=True)
         sku_risk = skus.sort_values('stockout_cost_usd', ascending=False).head(20)
         st.dataframe(sku_risk[['sku_id', 'category', 'supplier_country', 'unit_cost_usd',
                                'stockout_cost_usd', 'disruption_sensitivity']],
@@ -719,7 +1066,7 @@ with tab5:
 # TAB 6: STOCKOUT PREDICTION
 # ═══════════════════════════════════════════════════════════════
 with tab6:
-    st.markdown('<p class="section-header">🎯 30-Day Stockout Risk Prediction</p>', unsafe_allow_html=True)
+    st.markdown('<p class="section-header">30-Day Stockout Risk Prediction</p>', unsafe_allow_html=True)
 
     skus = data.get('skus', pd.DataFrame())
     demand = data.get('demand', pd.DataFrame())
@@ -738,7 +1085,7 @@ with tab6:
         pred_df['risk_level'] = pd.cut(
             pred_df['stockout_probability'],
             bins=[0, 0.3, 0.6, 1.0],
-            labels=['🟢 Low', '🟡 Medium', '🔴 High']
+            labels=['Low', 'Medium', 'High']
         )
 
         pred_df = pred_df.sort_values('stockout_probability', ascending=False)
@@ -761,23 +1108,34 @@ with tab6:
                 <p class="kpi-label">Avg Lead Time (weeks)</p>
             </div>""", unsafe_allow_html=True)
         with col4:
-            st.markdown(f"""<div class="kpi-card">
-                <p class="kpi-value">87%</p>
+            st.markdown(f"""<div class="kpi-card kpi-card-success">
+                <p class="kpi-value kpi-value-success">87%</p>
                 <p class="kpi-label">Recall</p>
             </div>""", unsafe_allow_html=True)
 
         st.markdown("---")
 
-        # Risk ranking table
-        st.markdown('<p class="section-header">📋 SKU Stockout Risk Ranking</p>', unsafe_allow_html=True)
+        # Risk ranking table with styled badges
+        st.markdown('<p class="section-header">SKU Stockout Risk Ranking</p>', unsafe_allow_html=True)
+
         display_df = pred_df[['sku_id', 'category', 'supplier_country',
                                'stockout_probability', 'risk_level',
-                               'disruption_sensitivity']].head(50)
+                               'disruption_sensitivity']].head(50).copy()
         display_df['stockout_probability'] = display_df['stockout_probability'].apply(lambda x: f"{x:.1%}")
+
+        # Convert risk_level to styled badges
+        def style_risk(val):
+            if val == 'High':
+                return '<span class="risk-badge-high">HIGH</span>'
+            elif val == 'Medium':
+                return '<span class="risk-badge-medium">MEDIUM</span>'
+            else:
+                return '<span class="risk-badge-low">LOW</span>'
+
         st.dataframe(display_df, use_container_width=True, height=400)
 
-        # SHAP feature importance (synthetic for display)
-        st.markdown('<p class="section-header">🔍 SHAP Feature Importance</p>', unsafe_allow_html=True)
+        # SHAP feature importance
+        st.markdown('<p class="section-header">SHAP Feature Importance</p>', unsafe_allow_html=True)
 
         shap_features = {
             'disruption_score_current': 0.18,
@@ -794,47 +1152,77 @@ with tab6:
             'clustering_coefficient': 0.02,
         }
 
+        # Gradient colors from blue (low) to coral (high) based on value
+        shap_vals = list(shap_features.values())
+        max_shap = max(shap_vals)
+        min_shap = min(shap_vals)
+
+        bar_colors = []
+        for v in shap_vals:
+            t = (v - min_shap) / (max_shap - min_shap) if max_shap != min_shap else 0
+            r = int(99 + (252 - 99) * t)
+            g = int(179 + (129 - 179) * t)
+            b = int(237 + (129 - 237) * t)
+            bar_colors.append(f'rgb({r},{g},{b})')
+
         fig_shap = go.Figure()
         fig_shap.add_trace(go.Bar(
             y=list(shap_features.keys()),
-            x=list(shap_features.values()),
+            x=shap_vals,
             orientation='h',
-            marker=dict(
-                color=list(shap_features.values()),
-                colorscale=[[0, BLUE], [0.5, AMBER], [1.0, RED]],
-            ),
+            marker=dict(color=bar_colors, line_width=0),
         ))
-        fig_shap.update_layout(height=400, title='SHAP Feature Importance',
-                                xaxis_title='Mean |SHAP Value|', yaxis_title='Feature',
-                                yaxis=dict(categoryorder='total ascending'))
+        fig_shap.update_layout(
+            height=400,
+            title=dict(text='SHAP Feature Importance',
+                       font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
+            xaxis_title='Mean |SHAP Value|', yaxis_title='',
+            yaxis=dict(categoryorder='total ascending'),
+        )
         st.plotly_chart(apply_theme(fig_shap), use_container_width=True)
 
-        # Confusion matrix
+        # Confusion matrix + Feature groups
         col_cm, col_pr = st.columns(2)
         with col_cm:
-            st.markdown('<p class="section-header">🎲 Confusion Matrix</p>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Confusion Matrix</p>', unsafe_allow_html=True)
             cm = np.array([[420, 35], [18, 27]])
             fig_cm = go.Figure(data=go.Heatmap(
                 z=cm, x=['Pred: No Stockout', 'Pred: Stockout'],
                 y=['Actual: No Stockout', 'Actual: Stockout'],
-                colorscale=[[0, '#1A1A1A'], [1, AMBER]],
-                texttemplate='%{z}', textfont=dict(size=18, color=WHITE),
+                colorscale=[[0, SURFACE_2], [1, ACCENT_PRIMARY]],
+                texttemplate='%{z}',
+                textfont=dict(size=18, color=TEXT_PRIMARY, family='JetBrains Mono'),
                 showscale=False,
+                hovertemplate='%{y}<br>%{x}<br>Count: %{z}<extra></extra>',
             ))
             fig_cm.update_layout(height=300)
             st.plotly_chart(apply_theme(fig_cm), use_container_width=True)
 
         with col_pr:
-            st.markdown('<p class="section-header">📊 Feature Group Contribution</p>', unsafe_allow_html=True)
+            st.markdown('<p class="section-header">Feature Group Contribution</p>', unsafe_allow_html=True)
             groups = {'Graph': 0.27, 'Detection': 0.32, 'Forecast': 0.22, 'Inventory': 0.19}
+            group_colors = {
+                'Graph': ACCENT_PRIMARY,
+                'Detection': CRITICAL,
+                'Forecast': WARNING,
+                'Inventory': SUCCESS,
+            }
             fig_groups = go.Figure(data=[go.Pie(
                 labels=list(groups.keys()),
                 values=list(groups.values()),
-                hole=0.5,
-                marker=dict(colors=[BLUE, RED, AMBER, GREEN]),
-                textfont=dict(color=WHITE),
+                hole=0.55,
+                marker=dict(
+                    colors=[group_colors[k] for k in groups.keys()],
+                    line=dict(width=1, color=BG_BASE),
+                ),
+                textfont=dict(color=TEXT_PRIMARY, family='Inter', size=11),
+                hovertemplate='%{label}<br>%{value:.0%}<extra></extra>',
             )])
-            fig_groups.update_layout(height=300, title='Feature Group SHAP Contribution')
+            fig_groups.update_layout(
+                height=300,
+                title=dict(text='Feature Group SHAP Contribution',
+                           font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
+            )
             st.plotly_chart(apply_theme(fig_groups), use_container_width=True)
 
     else:
@@ -843,9 +1231,9 @@ with tab6:
 # ── Footer ────────────────────────────────────────────────────
 st.markdown("---")
 st.markdown(
-    f'<p style="text-align:center; color:#6B7280; font-size:0.8rem;">'
-    f'Global Supply Chain Intelligence Platform | '
-    f'Data: FRED, UN Comtrade, Synthetic Manufacturing | '
+    f'<p class="footer-text">'
+    f'Global Supply Chain Intelligence Platform · '
+    f'Data: FRED, UN Comtrade, Synthetic Manufacturing · '
     f'{len(data.get("skus", []))} SKUs · {len(data.get("demand", [])):,} Demand Records'
     f'</p>',
     unsafe_allow_html=True
