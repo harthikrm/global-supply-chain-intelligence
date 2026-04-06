@@ -1,4 +1,4 @@
-# 🌐 Global Supply Chain Intelligence
+# Global Supply Chain Intelligence
 
 > **When a geopolitical disruption hits — a conflict, a port closure, a trade route blockage — which products are most at risk, how bad is the downstream cost impact, and what is the optimal inventory response before the stockout happens?**
 
@@ -6,7 +6,7 @@ A multi-source supply chain intelligence platform integrating UN Comtrade trade 
 
 ---
 
-## 📊 Key Numbers
+## Key Numbers
 
 | Metric | Value |
 |--------|-------|
@@ -21,7 +21,7 @@ A multi-source supply chain intelligence platform integrating UN Comtrade trade 
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -60,7 +60,7 @@ A multi-source supply chain intelligence platform integrating UN Comtrade trade 
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone & Install
 
@@ -100,7 +100,7 @@ streamlit run app/streamlit_app.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 global-supply-chain-intelligence/
@@ -141,7 +141,7 @@ global-supply-chain-intelligence/
 
 ---
 
-## 🔬 Module Deep Dives
+## Module Deep Dives
 
 ### Module A — Supply Chain Network Graph
 - **Directed weighted graph** with 4 node layers: Supplier → Manufacturer → Distributor → Retailer
@@ -185,7 +185,7 @@ global-supply-chain-intelligence/
 
 ---
 
-## 🛢️ SQL Feature Engineering
+## SQL Feature Engineering
 
 | View | Description |
 |------|-------------|
@@ -198,25 +198,6 @@ global-supply-chain-intelligence/
 
 ---
 
-## 📝 Resume Bullet Angles
-
-**Supply Chain / Operations (Toyota, Amazon):**
-> Multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data — detecting geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifying network chokepoints via NetworkX betweenness centrality, and predicting stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.2884) across a 50-SKU representative sample and 78,000 demand records.
-
-**ML/DS Roles:**
-> XGBoost + LightGBM champion-challenger ensemble with stacked meta-learner trained on 20+ features spanning graph centrality, disruption detection signals, hierarchical forecast outputs, and inventory state — chronological train/test split with SHAP TreeExplainer attribution showing graph features as primary stockout predictors.
-
-**Data Engineering Roles:**
-> Multi-API ETL pipeline (FRED + UN Comtrade + synthetic generation) into DuckDB schema with 6 SQL feature engineering views including HHI supplier concentration index, CUSUM disruption scores, and rolling demand statistics using LAG/LEAD window functions.
-
----
-
-## 🔗 LinkedIn Hook
-
-> "Red Sea shipping disruptions added 12 days to Asia-Europe freight in 2024. I built a system to detect supply chain disruptions before they peak, quantify which products are most at risk, and recommend the optimal inventory response. Here's what global trade data found."
-
----
-
-## 📜 License
+## License
 
 MIT License — see [LICENSE](LICENSE) for details.
