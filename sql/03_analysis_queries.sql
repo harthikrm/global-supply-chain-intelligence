@@ -62,7 +62,7 @@ SELECT
     mi.value AS bdi_value,
     mi.yoy_change AS bdi_yoy_change
 FROM macro_indicators mi
-WHERE mi.series_id = 'BDIY'
+WHERE mi.series_id = 'BDIY' AND mi.yoy_change IS NOT NULL
 ORDER BY mi.date;
 
 

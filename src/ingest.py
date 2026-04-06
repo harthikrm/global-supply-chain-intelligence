@@ -146,7 +146,7 @@ def ingest_fred(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     # Fallback to synthetic
     if fred_data is None:
         print("  → Using synthetic FRED data (no API key or API unavailable)")
-        synthetic_path = PROJECT_ROOT / 'data' / 'raw' / 'synthetic' / 'fred_synthetic.csv'
+        synthetic_path = PROJECT_ROOT / 'data' / 'raw' / 'synthetic' / 'fred_data.csv'
         if synthetic_path.exists():
             fred_data = pd.read_csv(synthetic_path)
         else:
@@ -263,7 +263,7 @@ def ingest_comtrade(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     # Fallback to synthetic
     if trade_data is None:
         print("  → Using synthetic trade flow data (no API key or API unavailable)")
-        synthetic_path = PROJECT_ROOT / 'data' / 'raw' / 'synthetic' / 'comtrade_synthetic.csv'
+        synthetic_path = PROJECT_ROOT / 'data' / 'raw' / 'synthetic' / 'comtrade_data.csv'
         if synthetic_path.exists():
             trade_data = pd.read_csv(synthetic_path)
         else:
@@ -424,7 +424,14 @@ def run_pipeline():
         print("║  ⚠ Pipeline Complete — Some checks need attention   ║")
     print("╚══════════════════════════════════════════════════════╝")
 
-    con.close()
+    try:
+        con.execute("CHECKPOINT")
+    except Exception:
+        pass  # DuckDB checkpoint can segfault on some versions; data is in WAL
+    try:
+        con.close()
+    except Exception:
+        pass
     return all_good
 
 

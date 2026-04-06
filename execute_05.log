@@ -1,0 +1,166 @@
+[NbConvertApp] Converting notebook notebooks/05_disruption_prediction.ipynb to notebook
+Traceback (most recent call last):
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+    ~~~~~~~~~^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        notebook_filename, resources, input_buffer=input_buffer
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        notebook_filename, resources=resources
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        nbformat.read(file_stream, as_version=4), resources=resources, **kw
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import sys
+sys.path.insert(0, '..')
+
+import numpy as np
+import pandas as pd
+from src.features import build_feature_matrix, split_chronological
+from src.models import (
+    train_xgboost, train_lightgbm, build_ensemble, compute_shap_values
+)
+from src.viz import create_shap_summary, create_confusion_matrix_chart
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mXGBoostError[39m                              Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 7[39m
+[32m      3[39m 
+[32m      4[39m [38;5;28;01mimport[39;00m numpy [38;5;28;01mas[39;00m np
+[32m      5[39m [38;5;28;01mimport[39;00m pandas [38;5;28;01mas[39;00m pd
+[32m      6[39m [38;5;28;01mfrom[39;00m src.features [38;5;28;01mimport[39;00m build_feature_matrix, split_chronological
+[32m----> [39m[32m7[39m from src.models import (
+[32m      8[39m     train_xgboost, train_lightgbm, build_ensemble, compute_shap_values
+[32m      9[39m )
+[32m     10[39m [38;5;28;01mfrom[39;00m src.viz [38;5;28;01mimport[39;00m create_shap_summary, create_confusion_matrix_chart
+
+[36mFile [39m[32m~/Desktop/global-supply-chain-intelligence/notebooks/../src/models.py:11[39m
+[32m      9[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m     10[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m---> [39m[32m11[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mxgboost[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mxgb[39;00m
+[32m     12[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mlightgbm[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mlgb[39;00m
+[32m     13[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mlinear_model[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m LogisticRegression
+
+[36mFile [39m[32m~/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/xgboost/__init__.py:6[39m
+[32m      1[39m [33;03m"""XGBoost: eXtreme Gradient Boosting library.[39;00m
+[32m      2[39m 
+[32m      3[39m [33;03mContributors: https://github.com/dmlc/xgboost/blob/master/CONTRIBUTORS.md[39;00m
+[32m      4[39m [33;03m"""[39;00m
+[32m----> [39m[32m6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m tracker  [38;5;66;03m# noqa[39;00m
+[32m      7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m collective
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mcore[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
+[32m      9[39m     Booster,
+[32m     10[39m     DataIter,
+[32m   (...)[39m[32m     15[39m     build_info,
+[32m     16[39m )
+
+[36mFile [39m[32m~/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/xgboost/tracker.py:9[39m
+[32m      6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01menum[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m IntEnum, unique
+[32m      7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtyping[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Dict, Optional, Union
+[32m----> [39m[32m9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mcore[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m _LIB, _check_call, _deprecate_positional_args, make_jcargs
+[32m     12[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mget_family[39m(addr: [38;5;28mstr[39m) -> [38;5;28mint[39m:
+[32m     13[39m [38;5;250m    [39m[33;03m"""Get network family from address."""[39;00m
+
+[36mFile [39m[32m~/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/xgboost/core.py:309[39m
+[32m    305[39m     [38;5;28;01mreturn[39;00m lib
+[32m    308[39m [38;5;66;03m# load the XGBoost library globally[39;00m
+[32m--> [39m[32m309[39m _LIB = [43m_load_lib[49m[43m([49m[43m)[49m
+[32m    312[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_check_call[39m(ret: [38;5;28mint[39m) -> [38;5;28;01mNone[39;00m:
+[32m    313[39m [38;5;250m    [39m[33;03m"""Check the return value of C API call[39;00m
+[32m    314[39m 
+[32m    315[39m [33;03m    This function will raise exception when error occurs.[39;00m
+[32m   (...)[39m[32m    321[39m [33;03m        return value from API calls[39;00m
+[32m    322[39m [33;03m    """[39;00m
+
+[36mFile [39m[32m~/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/xgboost/core.py:273[39m, in [36m_load_lib[39m[34m()[39m
+[32m    271[39m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m lib_success:
+[32m    272[39m         libname = os.path.basename(lib_paths[[32m0[39m])
+[32m--> [39m[32m273[39m         [38;5;28;01mraise[39;00m XGBoostError([33mf[39m[33m"""[39m
+[32m    274[39m [33mXGBoost Library ([39m[38;5;132;01m{[39;00mlibname[38;5;132;01m}[39;00m[33m) could not be loaded.[39m
+[32m    275[39m [33mLikely causes:[39m
+[32m    276[39m [33m  * OpenMP runtime is not installed[39m
+[32m    277[39m [33m    - vcomp140.dll or libgomp-1.dll for Windows[39m
+[32m    278[39m [33m    - libomp.dylib for Mac OSX[39m
+[32m    279[39m [33m    - libgomp.so for Linux and other UNIX-like OSes[39m
+[32m    280[39m [33m    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.[39m
+[32m    281[39m 
+[32m    282[39m [33m  * You are running 32-bit Python on a 64-bit OS[39m
+[32m    283[39m 
+[32m    284[39m [33mError message(s): [39m[38;5;132;01m{[39;00mos_error_list[38;5;132;01m}[39;00m
+[32m    285[39m [33m"""[39m)
+[32m    286[39m     _register_log_callback(lib)
+[32m    288[39m     libver = _lib_version(lib)
+
+[31mXGBoostError[39m: 
+XGBoost Library (libxgboost.dylib) could not be loaded.
+Likely causes:
+  * OpenMP runtime is not installed
+    - vcomp140.dll or libgomp-1.dll for Windows
+    - libomp.dylib for Mac OSX
+    - libgomp.so for Linux and other UNIX-like OSes
+    Mac OSX users: Run `brew install libomp` to install OpenMP runtime.
+
+  * You are running 32-bit Python on a 64-bit OS
+
+Error message(s): ["dlopen(/Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/xgboost/lib/libxgboost.dylib, 0x0006): Library not loaded: @rpath/libomp.dylib\n  Referenced from: <1A0D8152-BF46-3BE0-B651-EE965C187777> /Users/harthikmallichetty/Desktop/global-supply-chain-intelligence/.venv/lib/python3.13/site-packages/xgboost/lib/libxgboost.dylib\n  Reason: tried: '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/libomp/lib/libomp.dylib' (no such file)"]
+
+

@@ -1,0 +1,4 @@
+event_id,event_name,start_date,end_date,affected_countries,affected_hs_codes,severity_score
+EVT001,Ukraine Conflict Onset,2022-02-21,2022-04-18,"Turkey,Germany","1001,1512,2814,2804,7601,7502",0.85
+EVT002,Red Sea Shipping Disruption,2023-10-02,2023-12-25,"China,India,Vietnam,Thailand,Taiwan,South Korea,Japan","8541,8703,8708,2709,7601,7502",0.75
+EVT003,Port of Singapore Congestion,2024-05-13,2024-07-08,"China,Vietnam,Thailand,Taiwan,South Korea,Japan,India","8541,8703,8708,2804",0.65

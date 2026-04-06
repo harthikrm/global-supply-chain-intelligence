@@ -1,0 +1,841 @@
+year,reporter_code,reporter_name,partner_code,partner_name,hs_code,commodity_name,trade_value_usd,net_weight_kg,flow_type
+2018,842,USA,643,Russian Federation,1001,Wheat and meslin,751468939.8,3100911.61,Import
+2018,842,USA,276,Germany,1001,Wheat and meslin,758252661.81,2037016.08,Export
+2019,842,USA,276,Germany,1001,Wheat and meslin,1167486852.15,1851485.25,Import
+2019,842,USA,842,USA,1001,Wheat and meslin,815607524.68,3752040.96,Export
+2020,842,USA,0,World,1001,Wheat and meslin,723415959.46,2738510.83,Import
+2020,842,USA,643,Russian Federation,1001,Wheat and meslin,953979472.8,1791418.63,Export
+2021,842,USA,0,World,1001,Wheat and meslin,788029749.4,1191518.96,Import
+2021,842,USA,276,Germany,1001,Wheat and meslin,1040674856.14,429193.9,Export
+2022,842,USA,156,China,1001,Wheat and meslin,724939945.29,1251367.79,Import
+2022,842,USA,842,USA,1001,Wheat and meslin,1219238817.96,1864220.52,Export
+2023,842,USA,276,Germany,1001,Wheat and meslin,1228260801.85,5666601.2,Import
+2023,842,USA,842,USA,1001,Wheat and meslin,872701946.87,4360104.82,Export
+2024,842,USA,643,Russian Federation,1001,Wheat and meslin,1267207809.67,5254594.47,Import
+2024,842,USA,804,Ukraine,1001,Wheat and meslin,890476683.96,3769502.57,Export
+2018,276,Germany,842,USA,1001,Wheat and meslin,422516921.62,1774497.46,Import
+2018,276,Germany,156,China,1001,Wheat and meslin,491827071.1,979432.69,Export
+2019,276,Germany,392,Japan,1001,Wheat and meslin,684052563.48,1125839.15,Import
+2019,276,Germany,156,China,1001,Wheat and meslin,576385311.6,589757.78,Export
+2020,276,Germany,643,Russian Federation,1001,Wheat and meslin,504488241.26,2150172.22,Import
+2020,276,Germany,643,Russian Federation,1001,Wheat and meslin,545267189.54,2575998.45,Export
+2021,276,Germany,156,China,1001,Wheat and meslin,848713813.04,2160437.93,Import
+2021,276,Germany,804,Ukraine,1001,Wheat and meslin,747350797.65,2480551.51,Export
+2022,276,Germany,276,Germany,1001,Wheat and meslin,363610412.73,160658.89,Import
+2022,276,Germany,804,Ukraine,1001,Wheat and meslin,693494519.83,2678577.84,Export
+2023,276,Germany,643,Russian Federation,1001,Wheat and meslin,495482881.89,1545652.83,Import
+2023,276,Germany,643,Russian Federation,1001,Wheat and meslin,664211585.97,1960693.85,Export
+2024,276,Germany,276,Germany,1001,Wheat and meslin,615727811.07,2241905.99,Import
+2024,276,Germany,643,Russian Federation,1001,Wheat and meslin,877954407.97,3619967.86,Export
+2018,392,Japan,392,Japan,1001,Wheat and meslin,698056097.42,2657355.38,Import
+2018,392,Japan,156,China,1001,Wheat and meslin,689420640.84,3387646.57,Export
+2019,392,Japan,392,Japan,1001,Wheat and meslin,732571807.09,3218132.7,Import
+2019,392,Japan,276,Germany,1001,Wheat and meslin,931083204.63,381678.37,Export
+2020,392,Japan,392,Japan,1001,Wheat and meslin,489470286.34,2042219.57,Import
+2020,392,Japan,0,World,1001,Wheat and meslin,470688224.77,92364.12,Export
+2021,392,Japan,842,USA,1001,Wheat and meslin,756805662.57,1696942.26,Import
+2021,392,Japan,276,Germany,1001,Wheat and meslin,685967056.88,2004997.29,Export
+2022,392,Japan,842,USA,1001,Wheat and meslin,434422407.78,914075.68,Import
+2022,392,Japan,392,Japan,1001,Wheat and meslin,896568229.69,1595504.61,Export
+2023,392,Japan,392,Japan,1001,Wheat and meslin,695167951.75,1382968.92,Import
+2023,392,Japan,0,World,1001,Wheat and meslin,1020001232.69,3215454.43,Export
+2024,392,Japan,276,Germany,1001,Wheat and meslin,768537095.47,1255087.06,Import
+2024,392,Japan,643,Russian Federation,1001,Wheat and meslin,871656066.86,1096040.97,Export
+2018,156,China,276,Germany,1001,Wheat and meslin,874818796.36,4373042.09,Import
+2018,156,China,276,Germany,1001,Wheat and meslin,1444819287.31,3026589.61,Export
+2019,156,China,643,Russian Federation,1001,Wheat and meslin,967511171.71,4704957.9,Import
+2019,156,China,842,USA,1001,Wheat and meslin,1199323789.0,1207345.96,Export
+2020,156,China,0,World,1001,Wheat and meslin,1263307528.15,1095973.12,Import
+2020,156,China,156,China,1001,Wheat and meslin,1307263377.65,3803263.74,Export
+2021,156,China,842,USA,1001,Wheat and meslin,1225810484.78,5809415.0,Import
+2021,156,China,0,World,1001,Wheat and meslin,944359733.86,3426691.32,Export
+2022,156,China,392,Japan,1001,Wheat and meslin,910051575.5,2591291.61,Import
+2022,156,China,276,Germany,1001,Wheat and meslin,1298470920.11,5174904.87,Export
+2023,156,China,804,Ukraine,1001,Wheat and meslin,1226013803.93,1335437.49,Import
+2023,156,China,392,Japan,1001,Wheat and meslin,1265289998.53,5393391.24,Export
+2024,156,China,156,China,1001,Wheat and meslin,1355932322.72,3002468.81,Import
+2024,156,China,0,World,1001,Wheat and meslin,1329752694.48,4830343.57,Export
+2018,699,India,156,China,1001,Wheat and meslin,352237515.71,130253.11,Import
+2018,699,India,276,Germany,1001,Wheat and meslin,435545681.46,1156887.58,Export
+2019,699,India,156,China,1001,Wheat and meslin,535221595.69,1833565.85,Import
+2019,699,India,0,World,1001,Wheat and meslin,340053936.42,912993.02,Export
+2020,699,India,643,Russian Federation,1001,Wheat and meslin,416019357.34,1869598.62,Import
+2020,699,India,0,World,1001,Wheat and meslin,283083313.64,831993.34,Export
+2021,699,India,0,World,1001,Wheat and meslin,393167118.11,1787235.71,Import
+2021,699,India,643,Russian Federation,1001,Wheat and meslin,488025079.03,1721246.91,Export
+2022,699,India,643,Russian Federation,1001,Wheat and meslin,251161838.67,1131892.07,Import
+2022,699,India,156,China,1001,Wheat and meslin,433922081.7,1024610.47,Export
+2023,699,India,0,World,1001,Wheat and meslin,555689824.22,2227042.13,Import
+2023,699,India,804,Ukraine,1001,Wheat and meslin,435020963.52,1297026.92,Export
+2024,699,India,276,Germany,1001,Wheat and meslin,422047205.39,2060091.0,Import
+2024,699,India,156,China,1001,Wheat and meslin,533094827.15,1770605.36,Export
+2018,410,South Korea,392,Japan,1001,Wheat and meslin,421778144.68,2086578.26,Import
+2018,410,South Korea,0,World,1001,Wheat and meslin,407415309.35,197559.59,Export
+2019,410,South Korea,643,Russian Federation,1001,Wheat and meslin,370645742.54,1379045.83,Import
+2019,410,South Korea,804,Ukraine,1001,Wheat and meslin,390652083.31,759184.91,Export
+2020,410,South Korea,842,USA,1001,Wheat and meslin,402655140.04,873420.82,Import
+2020,410,South Korea,0,World,1001,Wheat and meslin,313043926.59,1535083.02,Export
+2021,410,South Korea,156,China,1001,Wheat and meslin,498115497.78,1679802.46,Import
+2021,410,South Korea,804,Ukraine,1001,Wheat and meslin,489678115.2,1598322.66,Export
+2022,410,South Korea,804,Ukraine,1001,Wheat and meslin,398703097.37,1924204.73,Import
+2022,410,South Korea,276,Germany,1001,Wheat and meslin,512418599.2,1733225.09,Export
+2023,410,South Korea,276,Germany,1001,Wheat and meslin,513797756.51,888560.83,Import
+2023,410,South Korea,842,USA,1001,Wheat and meslin,676260521.55,1245551.6,Export
+2024,410,South Korea,804,Ukraine,1001,Wheat and meslin,634486177.46,2967803.65,Import
+2024,410,South Korea,156,China,1001,Wheat and meslin,543514740.99,2557727.76,Export
+2018,842,USA,156,China,1512,"Sunflower-seed, safflower oil",525648980.72,2478317.03,Import
+2018,842,USA,392,Japan,1512,"Sunflower-seed, safflower oil",646604040.69,2067803.46,Export
+2019,842,USA,276,Germany,1512,"Sunflower-seed, safflower oil",662875820.55,1937345.85,Import
+2019,842,USA,156,China,1512,"Sunflower-seed, safflower oil",581466250.73,1350809.73,Export
+2020,842,USA,392,Japan,1512,"Sunflower-seed, safflower oil",379107471.57,331315.55,Import
+2020,842,USA,0,World,1512,"Sunflower-seed, safflower oil",530653013.37,566129.65,Export
+2021,842,USA,156,China,1512,"Sunflower-seed, safflower oil",706306620.75,1422861.49,Import
+2021,842,USA,392,Japan,1512,"Sunflower-seed, safflower oil",541657099.02,1321023.82,Export
+2022,842,USA,0,World,1512,"Sunflower-seed, safflower oil",433572059.12,2061510.77,Import
+2022,842,USA,804,Ukraine,1512,"Sunflower-seed, safflower oil",603120929.2,2128481.81,Export
+2023,842,USA,804,Ukraine,1512,"Sunflower-seed, safflower oil",676859544.21,2183819.17,Import
+2023,842,USA,276,Germany,1512,"Sunflower-seed, safflower oil",592757805.74,436427.92,Export
+2024,842,USA,842,USA,1512,"Sunflower-seed, safflower oil",513729245.67,2560911.3,Import
+2024,842,USA,643,Russian Federation,1512,"Sunflower-seed, safflower oil",726987776.23,3419698.59,Export
+2018,276,Germany,804,Ukraine,1512,"Sunflower-seed, safflower oil",316530036.92,191716.1,Import
+2018,276,Germany,276,Germany,1512,"Sunflower-seed, safflower oil",280386343.14,846062.85,Export
+2019,276,Germany,392,Japan,1512,"Sunflower-seed, safflower oil",286453145.39,250534.96,Import
+2019,276,Germany,276,Germany,1512,"Sunflower-seed, safflower oil",378186798.14,86177.3,Export
+2020,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",251853468.28,597689.26,Import
+2020,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",198245432.02,190097.52,Export
+2021,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",308273033.78,1496474.39,Import
+2021,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",330369220.39,1418900.47,Export
+2022,276,Germany,643,Russian Federation,1512,"Sunflower-seed, safflower oil",212894361.48,715620.71,Import
+2022,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",527300809.21,809873.86,Export
+2023,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",410891906.31,876710.2,Import
+2023,276,Germany,804,Ukraine,1512,"Sunflower-seed, safflower oil",370698893.72,463618.09,Export
+2024,276,Germany,156,China,1512,"Sunflower-seed, safflower oil",285660783.0,1086945.93,Import
+2024,276,Germany,842,USA,1512,"Sunflower-seed, safflower oil",324179975.45,400932.09,Export
+2018,392,Japan,156,China,1512,"Sunflower-seed, safflower oil",312486819.52,123096.59,Import
+2018,392,Japan,842,USA,1512,"Sunflower-seed, safflower oil",387268475.54,1557053.79,Export
+2019,392,Japan,804,Ukraine,1512,"Sunflower-seed, safflower oil",442710382.04,1270875.65,Import
+2019,392,Japan,276,Germany,1512,"Sunflower-seed, safflower oil",344575862.6,1570773.51,Export
+2020,392,Japan,804,Ukraine,1512,"Sunflower-seed, safflower oil",282773025.19,570974.81,Import
+2020,392,Japan,842,USA,1512,"Sunflower-seed, safflower oil",288790301.02,779059.38,Export
+2021,392,Japan,392,Japan,1512,"Sunflower-seed, safflower oil",361556816.97,1120835.37,Import
+2021,392,Japan,276,Germany,1512,"Sunflower-seed, safflower oil",478265899.7,1945790.95,Export
+2022,392,Japan,0,World,1512,"Sunflower-seed, safflower oil",184936067.18,336369.2,Import
+2022,392,Japan,842,USA,1512,"Sunflower-seed, safflower oil",528357322.06,498815.54,Export
+2023,392,Japan,804,Ukraine,1512,"Sunflower-seed, safflower oil",296271079.91,1253001.15,Import
+2023,392,Japan,804,Ukraine,1512,"Sunflower-seed, safflower oil",500001821.95,2447088.23,Export
+2024,392,Japan,392,Japan,1512,"Sunflower-seed, safflower oil",463542252.06,1201426.91,Import
+2024,392,Japan,276,Germany,1512,"Sunflower-seed, safflower oil",437737069.17,1227562.45,Export
+2018,156,China,643,Russian Federation,1512,"Sunflower-seed, safflower oil",646871844.83,2019590.56,Import
+2018,156,China,842,USA,1512,"Sunflower-seed, safflower oil",448216476.99,300808.44,Export
+2019,156,China,0,World,1512,"Sunflower-seed, safflower oil",578668652.95,282424.55,Import
+2019,156,China,276,Germany,1512,"Sunflower-seed, safflower oil",546631162.64,120534.47,Export
+2020,156,China,842,USA,1512,"Sunflower-seed, safflower oil",439249430.53,1064336.84,Import
+2020,156,China,842,USA,1512,"Sunflower-seed, safflower oil",587049129.18,1631428.32,Export
+2021,156,China,842,USA,1512,"Sunflower-seed, safflower oil",644013418.99,2687653.12,Import
+2021,156,China,156,China,1512,"Sunflower-seed, safflower oil",723744395.33,3007562.83,Export
+2022,156,China,392,Japan,1512,"Sunflower-seed, safflower oil",457490342.12,878588.09,Import
+2022,156,China,0,World,1512,"Sunflower-seed, safflower oil",904966271.74,4243064.32,Export
+2023,156,China,0,World,1512,"Sunflower-seed, safflower oil",758327199.23,218478.85,Import
+2023,156,China,0,World,1512,"Sunflower-seed, safflower oil",657909105.44,2103682.86,Export
+2024,156,China,0,World,1512,"Sunflower-seed, safflower oil",499129141.68,1115193.7,Import
+2024,156,China,276,Germany,1512,"Sunflower-seed, safflower oil",821382247.47,688163.75,Export
+2018,699,India,392,Japan,1512,"Sunflower-seed, safflower oil",143306044.39,50755.07,Import
+2018,699,India,0,World,1512,"Sunflower-seed, safflower oil",236919773.33,590708.8,Export
+2019,699,India,276,Germany,1512,"Sunflower-seed, safflower oil",263433001.46,721873.58,Import
+2019,699,India,392,Japan,1512,"Sunflower-seed, safflower oil",181678331.7,279913.54,Export
+2020,699,India,392,Japan,1512,"Sunflower-seed, safflower oil",168065231.81,488932.97,Import
+2020,699,India,276,Germany,1512,"Sunflower-seed, safflower oil",167665122.85,67352.11,Export
+2021,699,India,276,Germany,1512,"Sunflower-seed, safflower oil",192486311.01,441753.27,Import
+2021,699,India,804,Ukraine,1512,"Sunflower-seed, safflower oil",202990260.63,419251.04,Export
+2022,699,India,392,Japan,1512,"Sunflower-seed, safflower oil",117731412.42,153107.38,Import
+2022,699,India,842,USA,1512,"Sunflower-seed, safflower oil",348183831.4,594702.65,Export
+2023,699,India,842,USA,1512,"Sunflower-seed, safflower oil",175692414.1,540036.37,Import
+2023,699,India,0,World,1512,"Sunflower-seed, safflower oil",283916108.34,1317555.49,Export
+2024,699,India,804,Ukraine,1512,"Sunflower-seed, safflower oil",250015604.79,654848.57,Import
+2024,699,India,804,Ukraine,1512,"Sunflower-seed, safflower oil",288056528.97,35577.7,Export
+2018,410,South Korea,643,Russian Federation,1512,"Sunflower-seed, safflower oil",198381270.32,110047.41,Import
+2018,410,South Korea,804,Ukraine,1512,"Sunflower-seed, safflower oil",310784885.78,1405397.63,Export
+2019,410,South Korea,276,Germany,1512,"Sunflower-seed, safflower oil",228446678.92,870751.19,Import
+2019,410,South Korea,156,China,1512,"Sunflower-seed, safflower oil",240338490.52,456758.49,Export
+2020,410,South Korea,392,Japan,1512,"Sunflower-seed, safflower oil",222312874.11,1055032.74,Import
+2020,410,South Korea,156,China,1512,"Sunflower-seed, safflower oil",210586839.56,759176.43,Export
+2021,410,South Korea,156,China,1512,"Sunflower-seed, safflower oil",234268797.08,804114.62,Import
+2021,410,South Korea,156,China,1512,"Sunflower-seed, safflower oil",227809715.69,684158.5,Export
+2022,410,South Korea,392,Japan,1512,"Sunflower-seed, safflower oil",212542198.41,997730.58,Import
+2022,410,South Korea,842,USA,1512,"Sunflower-seed, safflower oil",395971567.17,1967085.28,Export
+2023,410,South Korea,0,World,1512,"Sunflower-seed, safflower oil",289320895.93,671424.38,Import
+2023,410,South Korea,0,World,1512,"Sunflower-seed, safflower oil",352329631.62,70939.87,Export
+2024,410,South Korea,392,Japan,1512,"Sunflower-seed, safflower oil",274949078.06,836399.01,Import
+2024,410,South Korea,392,Japan,1512,"Sunflower-seed, safflower oil",226762174.24,360361.33,Export
+2018,842,USA,276,Germany,2814,"Ammonia, anhydrous or solution",313638493.34,369424.05,Import
+2018,842,USA,804,Ukraine,2814,"Ammonia, anhydrous or solution",327009324.3,1240115.72,Export
+2019,842,USA,0,World,2814,"Ammonia, anhydrous or solution",285984067.54,219702.07,Import
+2019,842,USA,276,Germany,2814,"Ammonia, anhydrous or solution",379430205.78,1589877.71,Export
+2020,842,USA,0,World,2814,"Ammonia, anhydrous or solution",297350709.58,276573.19,Import
+2020,842,USA,643,Russian Federation,2814,"Ammonia, anhydrous or solution",201509481.12,281418.54,Export
+2021,842,USA,0,World,2814,"Ammonia, anhydrous or solution",299448213.7,739890.15,Import
+2021,842,USA,643,Russian Federation,2814,"Ammonia, anhydrous or solution",301610819.18,1359271.65,Export
+2022,842,USA,276,Germany,2814,"Ammonia, anhydrous or solution",144041538.46,466201.89,Import
+2022,842,USA,643,Russian Federation,2814,"Ammonia, anhydrous or solution",393204771.43,459386.74,Export
+2023,842,USA,392,Japan,2814,"Ammonia, anhydrous or solution",268374214.47,139302.12,Import
+2023,842,USA,804,Ukraine,2814,"Ammonia, anhydrous or solution",339537467.8,192450.71,Export
+2024,842,USA,0,World,2814,"Ammonia, anhydrous or solution",458707422.33,671387.42,Import
+2024,842,USA,804,Ukraine,2814,"Ammonia, anhydrous or solution",394717088.58,696880.78,Export
+2018,276,Germany,0,World,2814,"Ammonia, anhydrous or solution",141420001.63,417006.08,Import
+2018,276,Germany,842,USA,2814,"Ammonia, anhydrous or solution",164279814.19,186079.95,Export
+2019,276,Germany,392,Japan,2814,"Ammonia, anhydrous or solution",131706704.11,259985.49,Import
+2019,276,Germany,804,Ukraine,2814,"Ammonia, anhydrous or solution",137713870.96,34321.21,Export
+2020,276,Germany,392,Japan,2814,"Ammonia, anhydrous or solution",152307522.89,566599.34,Import
+2020,276,Germany,0,World,2814,"Ammonia, anhydrous or solution",189048952.51,546906.97,Export
+2021,276,Germany,643,Russian Federation,2814,"Ammonia, anhydrous or solution",240424482.5,965586.65,Import
+2021,276,Germany,804,Ukraine,2814,"Ammonia, anhydrous or solution",183479044.41,63161.63,Export
+2022,276,Germany,842,USA,2814,"Ammonia, anhydrous or solution",156052707.89,773700.77,Import
+2022,276,Germany,156,China,2814,"Ammonia, anhydrous or solution",314290652.96,1291324.76,Export
+2023,276,Germany,276,Germany,2814,"Ammonia, anhydrous or solution",239278392.57,219603.41,Import
+2023,276,Germany,842,USA,2814,"Ammonia, anhydrous or solution",201050685.89,461570.74,Export
+2024,276,Germany,392,Japan,2814,"Ammonia, anhydrous or solution",157933187.82,277825.35,Import
+2024,276,Germany,392,Japan,2814,"Ammonia, anhydrous or solution",193948835.74,515835.89,Export
+2018,392,Japan,0,World,2814,"Ammonia, anhydrous or solution",223077656.83,989435.2,Import
+2018,392,Japan,842,USA,2814,"Ammonia, anhydrous or solution",179603879.89,305186.82,Export
+2019,392,Japan,276,Germany,2814,"Ammonia, anhydrous or solution",237998971.71,256582.55,Import
+2019,392,Japan,804,Ukraine,2814,"Ammonia, anhydrous or solution",227255734.41,757398.94,Export
+2020,392,Japan,156,China,2814,"Ammonia, anhydrous or solution",148437246.18,401132.1,Import
+2020,392,Japan,804,Ukraine,2814,"Ammonia, anhydrous or solution",224028014.33,217891.44,Export
+2021,392,Japan,0,World,2814,"Ammonia, anhydrous or solution",175160005.1,56258.12,Import
+2021,392,Japan,804,Ukraine,2814,"Ammonia, anhydrous or solution",219646883.07,187513.6,Export
+2022,392,Japan,643,Russian Federation,2814,"Ammonia, anhydrous or solution",107704860.33,535273.93,Import
+2022,392,Japan,643,Russian Federation,2814,"Ammonia, anhydrous or solution",232312790.36,876714.66,Export
+2023,392,Japan,842,USA,2814,"Ammonia, anhydrous or solution",203053630.81,194737.06,Import
+2023,392,Japan,842,USA,2814,"Ammonia, anhydrous or solution",288590242.95,364918.58,Export
+2024,392,Japan,392,Japan,2814,"Ammonia, anhydrous or solution",183241579.3,833367.26,Import
+2024,392,Japan,156,China,2814,"Ammonia, anhydrous or solution",264657384.16,204201.3,Export
+2018,156,China,643,Russian Federation,2814,"Ammonia, anhydrous or solution",318237034.33,945579.98,Import
+2018,156,China,156,China,2814,"Ammonia, anhydrous or solution",269099062.74,422986.04,Export
+2019,156,China,842,USA,2814,"Ammonia, anhydrous or solution",358418820.69,794631.49,Import
+2019,156,China,392,Japan,2814,"Ammonia, anhydrous or solution",374824086.81,171419.65,Export
+2020,156,China,392,Japan,2814,"Ammonia, anhydrous or solution",342402798.11,575867.4,Import
+2020,156,China,643,Russian Federation,2814,"Ammonia, anhydrous or solution",346128789.36,87247.03,Export
+2021,156,China,156,China,2814,"Ammonia, anhydrous or solution",442095075.71,477924.3,Import
+2021,156,China,842,USA,2814,"Ammonia, anhydrous or solution",359907458.39,1248406.99,Export
+2022,156,China,156,China,2814,"Ammonia, anhydrous or solution",184316482.08,356360.8,Import
+2022,156,China,392,Japan,2814,"Ammonia, anhydrous or solution",448718533.82,1074549.53,Export
+2023,156,China,392,Japan,2814,"Ammonia, anhydrous or solution",334920988.32,1634831.55,Import
+2023,156,China,392,Japan,2814,"Ammonia, anhydrous or solution",446135096.65,399731.74,Export
+2024,156,China,392,Japan,2814,"Ammonia, anhydrous or solution",444458078.11,849276.58,Import
+2024,156,China,276,Germany,2814,"Ammonia, anhydrous or solution",444728445.82,1929971.6,Export
+2018,699,India,276,Germany,2814,"Ammonia, anhydrous or solution",146787568.9,336169.55,Import
+2018,699,India,156,China,2814,"Ammonia, anhydrous or solution",85414681.46,363496.06,Export
+2019,699,India,392,Japan,2814,"Ammonia, anhydrous or solution",124118418.37,560164.4,Import
+2019,699,India,276,Germany,2814,"Ammonia, anhydrous or solution",159297517.83,646579.77,Export
+2020,699,India,276,Germany,2814,"Ammonia, anhydrous or solution",79015359.84,60118.81,Import
+2020,699,India,842,USA,2814,"Ammonia, anhydrous or solution",90531860.02,349688.16,Export
+2021,699,India,842,USA,2814,"Ammonia, anhydrous or solution",127312999.2,449747.56,Import
+2021,699,India,643,Russian Federation,2814,"Ammonia, anhydrous or solution",147350941.86,185680.98,Export
+2022,699,India,842,USA,2814,"Ammonia, anhydrous or solution",82925178.81,406925.01,Import
+2022,699,India,0,World,2814,"Ammonia, anhydrous or solution",197116753.56,389719.27,Export
+2023,699,India,0,World,2814,"Ammonia, anhydrous or solution",98922704.36,35101.16,Import
+2023,699,India,643,Russian Federation,2814,"Ammonia, anhydrous or solution",136927375.95,466109.82,Export
+2024,699,India,156,China,2814,"Ammonia, anhydrous or solution",122096852.43,544289.66,Import
+2024,699,India,156,China,2814,"Ammonia, anhydrous or solution",174471298.19,747346.26,Export
+2018,410,South Korea,842,USA,2814,"Ammonia, anhydrous or solution",108504951.86,141875.4,Import
+2018,410,South Korea,0,World,2814,"Ammonia, anhydrous or solution",157424118.89,358953.3,Export
+2019,410,South Korea,276,Germany,2814,"Ammonia, anhydrous or solution",164689998.52,145977.67,Import
+2019,410,South Korea,156,China,2814,"Ammonia, anhydrous or solution",179039835.43,746125.7,Export
+2020,410,South Korea,276,Germany,2814,"Ammonia, anhydrous or solution",150796676.29,345259.38,Import
+2020,410,South Korea,0,World,2814,"Ammonia, anhydrous or solution",102212752.15,174944.14,Export
+2021,410,South Korea,156,China,2814,"Ammonia, anhydrous or solution",127720013.66,453758.67,Import
+2021,410,South Korea,0,World,2814,"Ammonia, anhydrous or solution",147686696.78,512744.35,Export
+2022,410,South Korea,643,Russian Federation,2814,"Ammonia, anhydrous or solution",75129785.4,335811.62,Import
+2022,410,South Korea,804,Ukraine,2814,"Ammonia, anhydrous or solution",153308143.81,59423.4,Export
+2023,410,South Korea,842,USA,2814,"Ammonia, anhydrous or solution",126798761.71,467682.19,Import
+2023,410,South Korea,804,Ukraine,2814,"Ammonia, anhydrous or solution",135962205.26,268837.93,Export
+2024,410,South Korea,643,Russian Federation,2814,"Ammonia, anhydrous or solution",211543648.89,710635.01,Import
+2024,410,South Korea,0,World,2814,"Ammonia, anhydrous or solution",135008944.17,384452.1,Export
+2018,842,USA,156,China,2804,"Hydrogen, noble gases, other nonmetals",223483860.51,428447.08,Import
+2018,842,USA,842,USA,2804,"Hydrogen, noble gases, other nonmetals",145975598.0,202343.3,Export
+2019,842,USA,842,USA,2804,"Hydrogen, noble gases, other nonmetals",261743747.56,202131.93,Import
+2019,842,USA,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",185480370.7,639939.83,Export
+2020,842,USA,842,USA,2804,"Hydrogen, noble gases, other nonmetals",213560822.94,874992.46,Import
+2020,842,USA,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",177054099.81,105987.65,Export
+2021,842,USA,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",248329327.9,146703.88,Import
+2021,842,USA,156,China,2804,"Hydrogen, noble gases, other nonmetals",207446325.73,272563.73,Export
+2022,842,USA,0,World,2804,"Hydrogen, noble gases, other nonmetals",156141308.74,330545.47,Import
+2022,842,USA,842,USA,2804,"Hydrogen, noble gases, other nonmetals",192382606.22,752065.97,Export
+2023,842,USA,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",175793838.98,689087.7,Import
+2023,842,USA,0,World,2804,"Hydrogen, noble gases, other nonmetals",253611245.9,1051967.14,Export
+2024,842,USA,156,China,2804,"Hydrogen, noble gases, other nonmetals",236270606.72,215974.21,Import
+2024,842,USA,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",228102925.87,1109093.9,Export
+2018,276,Germany,0,World,2804,"Hydrogen, noble gases, other nonmetals",128795822.62,83171.99,Import
+2018,276,Germany,0,World,2804,"Hydrogen, noble gases, other nonmetals",109465511.18,392913.76,Export
+2019,276,Germany,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",126493566.98,225726.49,Import
+2019,276,Germany,0,World,2804,"Hydrogen, noble gases, other nonmetals",105904093.99,231475.28,Export
+2020,276,Germany,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",72062924.35,239651.86,Import
+2020,276,Germany,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",72804238.08,189010.02,Export
+2021,276,Germany,842,USA,2804,"Hydrogen, noble gases, other nonmetals",153224679.19,26527.3,Import
+2021,276,Germany,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",120321871.26,244248.14,Export
+2022,276,Germany,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",86473751.14,170355.49,Import
+2022,276,Germany,842,USA,2804,"Hydrogen, noble gases, other nonmetals",75334750.69,369273.66,Export
+2023,276,Germany,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",175660187.56,466248.11,Import
+2023,276,Germany,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",106409491.85,365267.06,Export
+2024,276,Germany,842,USA,2804,"Hydrogen, noble gases, other nonmetals",160859581.22,216296.44,Import
+2024,276,Germany,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",162124703.94,780195.39,Export
+2018,392,Japan,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",108795327.52,162067.73,Import
+2018,392,Japan,156,China,2804,"Hydrogen, noble gases, other nonmetals",145916402.37,35118.44,Export
+2019,392,Japan,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",177483338.4,588595.09,Import
+2019,392,Japan,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",139992622.41,258035.92,Export
+2020,392,Japan,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",130312254.35,193481.53,Import
+2020,392,Japan,842,USA,2804,"Hydrogen, noble gases, other nonmetals",144201462.75,113913.79,Export
+2021,392,Japan,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",124915162.22,577552.63,Import
+2021,392,Japan,842,USA,2804,"Hydrogen, noble gases, other nonmetals",132377770.47,70557.96,Export
+2022,392,Japan,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",130592050.43,616011.16,Import
+2022,392,Japan,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",111317646.17,426866.01,Export
+2023,392,Japan,0,World,2804,"Hydrogen, noble gases, other nonmetals",161969295.77,641318.59,Import
+2023,392,Japan,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",155799948.61,392944.7,Export
+2024,392,Japan,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",176274669.96,396728.28,Import
+2024,392,Japan,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",201997303.25,200659.08,Export
+2018,156,China,0,World,2804,"Hydrogen, noble gases, other nonmetals",180712907.21,847410.58,Import
+2018,156,China,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",232356026.25,180263.92,Export
+2019,156,China,0,World,2804,"Hydrogen, noble gases, other nonmetals",235891528.02,41682.08,Import
+2019,156,China,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",193833354.71,582079.33,Export
+2020,156,China,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",188006652.88,738176.24,Import
+2020,156,China,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",143148945.05,422394.43,Export
+2021,156,China,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",244428670.15,994486.09,Import
+2021,156,China,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",299801777.09,1101884.39,Export
+2022,156,China,0,World,2804,"Hydrogen, noble gases, other nonmetals",239804753.88,577204.86,Import
+2022,156,China,156,China,2804,"Hydrogen, noble gases, other nonmetals",208685575.54,475237.81,Export
+2023,156,China,0,World,2804,"Hydrogen, noble gases, other nonmetals",198567894.75,169410.0,Import
+2023,156,China,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",256857573.86,850646.59,Export
+2024,156,China,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",275868024.06,609422.58,Import
+2024,156,China,842,USA,2804,"Hydrogen, noble gases, other nonmetals",333232984.5,1117816.15,Export
+2018,699,India,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",72591131.44,225237.08,Import
+2018,699,India,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",65537563.4,183470.73,Export
+2019,699,India,842,USA,2804,"Hydrogen, noble gases, other nonmetals",86606195.49,367853.29,Import
+2019,699,India,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",89283345.07,403172.13,Export
+2020,699,India,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",47917506.78,123321.55,Import
+2020,699,India,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",85109500.51,157058.0,Export
+2021,699,India,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",97158204.96,338124.86,Import
+2021,699,India,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",62562761.28,59319.01,Export
+2022,699,India,0,World,2804,"Hydrogen, noble gases, other nonmetals",52644621.47,93129.36,Import
+2022,699,India,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",81592760.44,236609.04,Export
+2023,699,India,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",93758385.08,269054.01,Import
+2023,699,India,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",89062077.73,161830.9,Export
+2024,699,India,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",71526194.85,126625.36,Import
+2024,699,India,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",112825043.48,128026.2,Export
+2018,410,South Korea,842,USA,2804,"Hydrogen, noble gases, other nonmetals",75106178.81,247508.85,Import
+2018,410,South Korea,842,USA,2804,"Hydrogen, noble gases, other nonmetals",122565294.05,140720.2,Export
+2019,410,South Korea,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",124008569.46,338406.45,Import
+2019,410,South Korea,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",123071336.7,205637.5,Export
+2020,410,South Korea,842,USA,2804,"Hydrogen, noble gases, other nonmetals",108660834.33,426689.69,Import
+2020,410,South Korea,156,China,2804,"Hydrogen, noble gases, other nonmetals",87404150.54,380072.54,Export
+2021,410,South Korea,842,USA,2804,"Hydrogen, noble gases, other nonmetals",106915780.98,349707.65,Import
+2021,410,South Korea,392,Japan,2804,"Hydrogen, noble gases, other nonmetals",134678502.51,236196.18,Export
+2022,410,South Korea,276,Germany,2804,"Hydrogen, noble gases, other nonmetals",89828806.81,139823.97,Import
+2022,410,South Korea,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",68500574.61,240504.98,Export
+2023,410,South Korea,804,Ukraine,2804,"Hydrogen, noble gases, other nonmetals",118948955.3,360586.92,Import
+2023,410,South Korea,156,China,2804,"Hydrogen, noble gases, other nonmetals",136903665.14,162609.41,Export
+2024,410,South Korea,643,Russian Federation,2804,"Hydrogen, noble gases, other nonmetals",124735638.43,303791.07,Import
+2024,410,South Korea,156,China,2804,"Hydrogen, noble gases, other nonmetals",150212674.6,383995.75,Export
+2018,842,USA,842,USA,8541,Semiconductor devices,6336031922.16,24137944.98,Import
+2018,842,USA,804,Ukraine,8541,Semiconductor devices,5329175325.15,14208870.43,Export
+2019,842,USA,392,Japan,8541,Semiconductor devices,6384843490.03,28098968.42,Import
+2019,842,USA,842,USA,8541,Semiconductor devices,3799428119.87,17935237.68,Export
+2020,842,USA,276,Germany,8541,Semiconductor devices,5393827183.88,17002322.38,Import
+2020,842,USA,643,Russian Federation,8541,Semiconductor devices,5125915759.41,18292416.23,Export
+2021,842,USA,804,Ukraine,8541,Semiconductor devices,5189833758.63,982625.76,Import
+2021,842,USA,842,USA,8541,Semiconductor devices,3898916177.71,4476199.24,Export
+2022,842,USA,156,China,8541,Semiconductor devices,5718462656.22,6709130.68,Import
+2022,842,USA,804,Ukraine,8541,Semiconductor devices,5439974471.98,18963744.46,Export
+2023,842,USA,643,Russian Federation,8541,Semiconductor devices,3920679495.81,16286348.17,Import
+2023,842,USA,643,Russian Federation,8541,Semiconductor devices,4204770354.84,18006094.2,Export
+2024,842,USA,842,USA,8541,Semiconductor devices,5153507502.76,18796719.11,Import
+2024,842,USA,804,Ukraine,8541,Semiconductor devices,6721729533.19,18707386.29,Export
+2018,276,Germany,276,Germany,8541,Semiconductor devices,2660244239.37,9780737.23,Import
+2018,276,Germany,156,China,8541,Semiconductor devices,3419716151.6,1252191.85,Export
+2019,276,Germany,0,World,8541,Semiconductor devices,3508416809.71,13735837.0,Import
+2019,276,Germany,276,Germany,8541,Semiconductor devices,3720893689.21,4802273.89,Export
+2020,276,Germany,276,Germany,8541,Semiconductor devices,3607508455.04,8899515.73,Import
+2020,276,Germany,643,Russian Federation,8541,Semiconductor devices,3257949091.76,4162938.03,Export
+2021,276,Germany,276,Germany,8541,Semiconductor devices,3589120847.68,11469107.06,Import
+2021,276,Germany,643,Russian Federation,8541,Semiconductor devices,3005874226.5,8219306.67,Export
+2022,276,Germany,643,Russian Federation,8541,Semiconductor devices,2993011691.28,9627360.39,Import
+2022,276,Germany,276,Germany,8541,Semiconductor devices,3155967589.14,6917609.41,Export
+2023,276,Germany,156,China,8541,Semiconductor devices,3666051964.5,3001491.68,Import
+2023,276,Germany,842,USA,8541,Semiconductor devices,3032522873.54,9210022.28,Export
+2024,276,Germany,156,China,8541,Semiconductor devices,2678490255.23,1084696.96,Import
+2024,276,Germany,392,Japan,8541,Semiconductor devices,2891954192.6,2567715.28,Export
+2018,392,Japan,804,Ukraine,8541,Semiconductor devices,3227489393.33,8400279.92,Import
+2018,392,Japan,804,Ukraine,8541,Semiconductor devices,3433153590.8,10701388.51,Export
+2019,392,Japan,643,Russian Federation,8541,Semiconductor devices,3115269386.78,1246431.1,Import
+2019,392,Japan,643,Russian Federation,8541,Semiconductor devices,3482179464.22,15355012.96,Export
+2020,392,Japan,156,China,8541,Semiconductor devices,4664524634.79,5746156.45,Import
+2020,392,Japan,842,USA,8541,Semiconductor devices,3664449168.41,11174720.3,Export
+2021,392,Japan,276,Germany,8541,Semiconductor devices,2986714791.44,11947560.88,Import
+2021,392,Japan,643,Russian Federation,8541,Semiconductor devices,4365133370.98,4329401.18,Export
+2022,392,Japan,276,Germany,8541,Semiconductor devices,3147082155.46,12418638.07,Import
+2022,392,Japan,842,USA,8541,Semiconductor devices,4599386630.06,16719516.32,Export
+2023,392,Japan,0,World,8541,Semiconductor devices,3736396843.42,14222335.59,Import
+2023,392,Japan,804,Ukraine,8541,Semiconductor devices,3315483977.39,15410627.11,Export
+2024,392,Japan,0,World,8541,Semiconductor devices,3948735724.63,16687681.74,Import
+2024,392,Japan,392,Japan,8541,Semiconductor devices,2897291144.3,12309974.11,Export
+2018,156,China,392,Japan,8541,Semiconductor devices,5123607939.4,16992196.28,Import
+2018,156,China,392,Japan,8541,Semiconductor devices,5770804920.02,10995286.7,Export
+2019,156,China,643,Russian Federation,8541,Semiconductor devices,4432967019.06,1387193.36,Import
+2019,156,China,804,Ukraine,8541,Semiconductor devices,7782764353.07,18732854.37,Export
+2020,156,China,276,Germany,8541,Semiconductor devices,8338609110.39,11984123.46,Import
+2020,156,China,643,Russian Federation,8541,Semiconductor devices,9353926354.41,32079406.13,Export
+2021,156,China,643,Russian Federation,8541,Semiconductor devices,6099232915.15,13938715.03,Import
+2021,156,China,842,USA,8541,Semiconductor devices,7439709167.11,37139943.63,Export
+2022,156,China,156,China,8541,Semiconductor devices,6875665526.81,20573164.98,Import
+2022,156,China,804,Ukraine,8541,Semiconductor devices,4748666595.03,21519857.76,Export
+2023,156,China,276,Germany,8541,Semiconductor devices,5303882302.3,7874745.3,Import
+2023,156,China,643,Russian Federation,8541,Semiconductor devices,5440299547.69,4807148.28,Export
+2024,156,China,156,China,8541,Semiconductor devices,4940201369.14,24616898.0,Import
+2024,156,China,392,Japan,8541,Semiconductor devices,7104167015.18,16696370.73,Export
+2018,699,India,0,World,8541,Semiconductor devices,1650276361.83,6717803.64,Import
+2018,699,India,156,China,8541,Semiconductor devices,1755297270.23,3945359.66,Export
+2019,699,India,276,Germany,8541,Semiconductor devices,2391104133.63,4991399.52,Import
+2019,699,India,392,Japan,8541,Semiconductor devices,1924477484.46,1428526.14,Export
+2020,699,India,392,Japan,8541,Semiconductor devices,2107777344.16,8198188.68,Import
+2020,699,India,392,Japan,8541,Semiconductor devices,2009747352.38,2269277.72,Export
+2021,699,India,842,USA,8541,Semiconductor devices,2490117888.58,7473004.66,Import
+2021,699,India,276,Germany,8541,Semiconductor devices,2735585504.28,8314647.43,Export
+2022,699,India,842,USA,8541,Semiconductor devices,2558522243.45,1660219.17,Import
+2022,699,India,643,Russian Federation,8541,Semiconductor devices,1897428604.26,1514007.72,Export
+2023,699,India,842,USA,8541,Semiconductor devices,1700768281.52,7089917.69,Import
+2023,699,India,842,USA,8541,Semiconductor devices,2198370725.89,1701978.8,Export
+2024,699,India,804,Ukraine,8541,Semiconductor devices,2730150147.5,3310521.19,Import
+2024,699,India,0,World,8541,Semiconductor devices,2084593557.94,10328931.31,Export
+2018,410,South Korea,842,USA,8541,Semiconductor devices,3085292407.22,7190279.67,Import
+2018,410,South Korea,0,World,8541,Semiconductor devices,1956774101.97,3818301.24,Export
+2019,410,South Korea,842,USA,8541,Semiconductor devices,2664020589.93,3471381.26,Import
+2019,410,South Korea,842,USA,8541,Semiconductor devices,2040202196.89,9291534.22,Export
+2020,410,South Korea,276,Germany,8541,Semiconductor devices,3043095157.4,7805883.4,Import
+2020,410,South Korea,842,USA,8541,Semiconductor devices,3707332424.08,16959911.8,Export
+2021,410,South Korea,392,Japan,8541,Semiconductor devices,3282633572.85,12043119.08,Import
+2021,410,South Korea,156,China,8541,Semiconductor devices,3275867135.11,5701939.49,Export
+2022,410,South Korea,804,Ukraine,8541,Semiconductor devices,3549574623.36,11933609.06,Import
+2022,410,South Korea,0,World,8541,Semiconductor devices,3392159088.18,9443548.58,Export
+2023,410,South Korea,156,China,8541,Semiconductor devices,2629285626.06,11129113.57,Import
+2023,410,South Korea,842,USA,8541,Semiconductor devices,1909603060.68,7550506.45,Export
+2024,410,South Korea,643,Russian Federation,8541,Semiconductor devices,2011392272.36,1221549.3,Import
+2024,410,South Korea,392,Japan,8541,Semiconductor devices,3091395613.41,4837921.0,Export
+2018,842,USA,0,World,7601,Unwrought aluminium,2178903077.06,1107450.05,Import
+2018,842,USA,156,China,7601,Unwrought aluminium,2203441727.0,10892881.48,Export
+2019,842,USA,643,Russian Federation,7601,Unwrought aluminium,1858604830.38,7613030.46,Import
+2019,842,USA,392,Japan,7601,Unwrought aluminium,1524492173.48,2878594.19,Export
+2020,842,USA,156,China,7601,Unwrought aluminium,1747299593.03,3509915.65,Import
+2020,842,USA,842,USA,7601,Unwrought aluminium,1924110540.45,4131327.08,Export
+2021,842,USA,842,USA,7601,Unwrought aluminium,1561702057.94,7101890.93,Import
+2021,842,USA,0,World,7601,Unwrought aluminium,2766594844.29,11820150.43,Export
+2022,842,USA,276,Germany,7601,Unwrought aluminium,1872642497.46,8730205.18,Import
+2022,842,USA,0,World,7601,Unwrought aluminium,2029570754.46,7718065.99,Export
+2023,842,USA,804,Ukraine,7601,Unwrought aluminium,1677167318.44,1721338.25,Import
+2023,842,USA,0,World,7601,Unwrought aluminium,2091561532.73,8732292.0,Export
+2024,842,USA,842,USA,7601,Unwrought aluminium,1945314433.77,8091251.0,Import
+2024,842,USA,804,Ukraine,7601,Unwrought aluminium,1962379035.21,9373753.94,Export
+2018,276,Germany,156,China,7601,Unwrought aluminium,1511318143.22,3157608.17,Import
+2018,276,Germany,0,World,7601,Unwrought aluminium,1516255196.82,4706732.34,Export
+2019,276,Germany,392,Japan,7601,Unwrought aluminium,914606818.19,1381769.56,Import
+2019,276,Germany,804,Ukraine,7601,Unwrought aluminium,932466979.24,4546015.4,Export
+2020,276,Germany,0,World,7601,Unwrought aluminium,775717443.46,2655116.87,Import
+2020,276,Germany,804,Ukraine,7601,Unwrought aluminium,714457806.49,176700.18,Export
+2021,276,Germany,804,Ukraine,7601,Unwrought aluminium,1632940000.24,5769245.24,Import
+2021,276,Germany,804,Ukraine,7601,Unwrought aluminium,1004330261.26,828875.52,Export
+2022,276,Germany,392,Japan,7601,Unwrought aluminium,866193349.03,3852402.27,Import
+2022,276,Germany,643,Russian Federation,7601,Unwrought aluminium,1072859853.17,3095969.12,Export
+2023,276,Germany,643,Russian Federation,7601,Unwrought aluminium,1072720836.92,941740.62,Import
+2023,276,Germany,276,Germany,7601,Unwrought aluminium,1331187996.08,4387698.02,Export
+2024,276,Germany,276,Germany,7601,Unwrought aluminium,1803185882.14,1873546.91,Import
+2024,276,Germany,392,Japan,7601,Unwrought aluminium,1705622361.03,8483325.63,Export
+2018,392,Japan,0,World,7601,Unwrought aluminium,1137995104.34,795811.31,Import
+2018,392,Japan,392,Japan,7601,Unwrought aluminium,1140864442.94,544455.93,Export
+2019,392,Japan,842,USA,7601,Unwrought aluminium,1755808726.74,4432731.54,Import
+2019,392,Japan,392,Japan,7601,Unwrought aluminium,1700634105.84,7050897.66,Export
+2020,392,Japan,392,Japan,7601,Unwrought aluminium,1332878126.55,4550521.72,Import
+2020,392,Japan,392,Japan,7601,Unwrought aluminium,1055940668.29,2603137.16,Export
+2021,392,Japan,643,Russian Federation,7601,Unwrought aluminium,1981694685.42,8652113.76,Import
+2021,392,Japan,842,USA,7601,Unwrought aluminium,1637366653.97,3294380.53,Export
+2022,392,Japan,804,Ukraine,7601,Unwrought aluminium,1226782851.73,5033233.02,Import
+2022,392,Japan,156,China,7601,Unwrought aluminium,1208086103.97,387696.5,Export
+2023,392,Japan,0,World,7601,Unwrought aluminium,1987064443.04,6605853.06,Import
+2023,392,Japan,842,USA,7601,Unwrought aluminium,1338525535.59,2036601.94,Export
+2024,392,Japan,804,Ukraine,7601,Unwrought aluminium,1332166817.65,4210982.18,Import
+2024,392,Japan,643,Russian Federation,7601,Unwrought aluminium,2055809871.19,6888762.28,Export
+2018,156,China,804,Ukraine,7601,Unwrought aluminium,2400277690.34,2041800.13,Import
+2018,156,China,804,Ukraine,7601,Unwrought aluminium,1905021012.14,1480851.98,Export
+2019,156,China,276,Germany,7601,Unwrought aluminium,1997817056.53,9643314.9,Import
+2019,156,China,0,World,7601,Unwrought aluminium,3124516073.21,15600179.69,Export
+2020,156,China,643,Russian Federation,7601,Unwrought aluminium,2197471182.5,4981635.44,Import
+2020,156,China,643,Russian Federation,7601,Unwrought aluminium,1779484103.91,6182407.15,Export
+2021,156,China,842,USA,7601,Unwrought aluminium,2779847600.88,4025338.06,Import
+2021,156,China,0,World,7601,Unwrought aluminium,2375862595.48,6699546.66,Export
+2022,156,China,392,Japan,7601,Unwrought aluminium,2165902770.27,8405584.58,Import
+2022,156,China,804,Ukraine,7601,Unwrought aluminium,1922194024.7,3159140.86,Export
+2023,156,China,0,World,7601,Unwrought aluminium,2603998953.99,8871168.93,Import
+2023,156,China,276,Germany,7601,Unwrought aluminium,2540264791.09,5443689.56,Export
+2024,156,China,643,Russian Federation,7601,Unwrought aluminium,3373534891.41,3513404.51,Import
+2024,156,China,0,World,7601,Unwrought aluminium,2328841052.95,5026508.19,Export
+2018,699,India,842,USA,7601,Unwrought aluminium,790732399.41,112732.99,Import
+2018,699,India,0,World,7601,Unwrought aluminium,947110569.48,4673253.23,Export
+2019,699,India,276,Germany,7601,Unwrought aluminium,749688959.16,81243.4,Import
+2019,699,India,156,China,7601,Unwrought aluminium,999717861.04,1239439.56,Export
+2020,699,India,392,Japan,7601,Unwrought aluminium,687566185.01,3272812.56,Import
+2020,699,India,842,USA,7601,Unwrought aluminium,489433115.72,1094436.91,Export
+2021,699,India,156,China,7601,Unwrought aluminium,721781514.72,2828587.89,Import
+2021,699,India,156,China,7601,Unwrought aluminium,1023193166.23,1526271.78,Export
+2022,699,India,804,Ukraine,7601,Unwrought aluminium,612224323.56,1990188.37,Import
+2022,699,India,156,China,7601,Unwrought aluminium,528494617.79,1197360.08,Export
+2023,699,India,842,USA,7601,Unwrought aluminium,1096602235.13,230497.55,Import
+2023,699,India,392,Japan,7601,Unwrought aluminium,1059279923.53,1726674.93,Export
+2024,699,India,392,Japan,7601,Unwrought aluminium,714572643.69,572811.97,Import
+2024,699,India,643,Russian Federation,7601,Unwrought aluminium,714623576.26,2995225.99,Export
+2018,410,South Korea,0,World,7601,Unwrought aluminium,934542841.9,943147.78,Import
+2018,410,South Korea,0,World,7601,Unwrought aluminium,1273265564.56,5956158.88,Export
+2019,410,South Korea,643,Russian Federation,7601,Unwrought aluminium,1002863326.99,4464006.99,Import
+2019,410,South Korea,276,Germany,7601,Unwrought aluminium,1191662797.28,1124163.47,Export
+2020,410,South Korea,392,Japan,7601,Unwrought aluminium,789885837.96,1944623.09,Import
+2020,410,South Korea,643,Russian Federation,7601,Unwrought aluminium,770116050.48,689648.16,Export
+2021,410,South Korea,392,Japan,7601,Unwrought aluminium,804092434.59,2094603.62,Import
+2021,410,South Korea,643,Russian Federation,7601,Unwrought aluminium,773738373.12,744106.31,Export
+2022,410,South Korea,276,Germany,7601,Unwrought aluminium,945896328.2,3713202.09,Import
+2022,410,South Korea,0,World,7601,Unwrought aluminium,927884058.87,3801665.84,Export
+2023,410,South Korea,643,Russian Federation,7601,Unwrought aluminium,1202083627.6,4796891.35,Import
+2023,410,South Korea,276,Germany,7601,Unwrought aluminium,1162667658.47,4650564.62,Export
+2024,410,South Korea,0,World,7601,Unwrought aluminium,1025241898.79,2862859.79,Import
+2024,410,South Korea,156,China,7601,Unwrought aluminium,1388585811.3,1572063.75,Export
+2018,842,USA,392,Japan,7502,Unwrought nickel,1173839111.2,416017.03,Import
+2018,842,USA,0,World,7502,Unwrought nickel,1275572548.56,1652273.46,Export
+2019,842,USA,842,USA,7502,Unwrought nickel,1224916298.25,3060936.83,Import
+2019,842,USA,156,China,7502,Unwrought nickel,1320359263.43,1679159.61,Export
+2020,842,USA,156,China,7502,Unwrought nickel,1045737477.31,2783696.55,Import
+2020,842,USA,842,USA,7502,Unwrought nickel,1094131024.91,3421559.91,Export
+2021,842,USA,0,World,7502,Unwrought nickel,1269075920.21,4748705.48,Import
+2021,842,USA,842,USA,7502,Unwrought nickel,971685468.48,4625945.28,Export
+2022,842,USA,0,World,7502,Unwrought nickel,840004912.36,970106.4,Import
+2022,842,USA,392,Japan,7502,Unwrought nickel,593803338.56,350461.74,Export
+2023,842,USA,156,China,7502,Unwrought nickel,932027827.08,1696788.14,Import
+2023,842,USA,0,World,7502,Unwrought nickel,1278384163.19,582436.06,Export
+2024,842,USA,804,Ukraine,7502,Unwrought nickel,1435608321.92,3670219.45,Import
+2024,842,USA,156,China,7502,Unwrought nickel,1361838363.27,451610.79,Export
+2018,276,Germany,156,China,7502,Unwrought nickel,669098314.84,302261.66,Import
+2018,276,Germany,643,Russian Federation,7502,Unwrought nickel,737882858.92,2680672.52,Export
+2019,276,Germany,643,Russian Federation,7502,Unwrought nickel,504038058.16,1219587.07,Import
+2019,276,Germany,276,Germany,7502,Unwrought nickel,670436643.96,2220456.74,Export
+2020,276,Germany,804,Ukraine,7502,Unwrought nickel,453094546.78,165048.02,Import
+2020,276,Germany,643,Russian Federation,7502,Unwrought nickel,616562511.31,1993610.48,Export
+2021,276,Germany,643,Russian Federation,7502,Unwrought nickel,714110286.45,1148590.11,Import
+2021,276,Germany,0,World,7502,Unwrought nickel,625758686.84,1869568.7,Export
+2022,276,Germany,0,World,7502,Unwrought nickel,381593321.11,1482536.84,Import
+2022,276,Germany,0,World,7502,Unwrought nickel,646880988.9,1512798.44,Export
+2023,276,Germany,804,Ukraine,7502,Unwrought nickel,504040014.31,1542118.84,Import
+2023,276,Germany,842,USA,7502,Unwrought nickel,784846087.66,2741039.85,Export
+2024,276,Germany,156,China,7502,Unwrought nickel,795303122.55,1912170.41,Import
+2024,276,Germany,392,Japan,7502,Unwrought nickel,517349508.89,1445301.78,Export
+2018,392,Japan,643,Russian Federation,7502,Unwrought nickel,506604032.84,1849259.1,Import
+2018,392,Japan,156,China,7502,Unwrought nickel,791220969.19,442683.74,Export
+2019,392,Japan,804,Ukraine,7502,Unwrought nickel,685218075.66,1825066.76,Import
+2019,392,Japan,156,China,7502,Unwrought nickel,570162223.67,2620905.61,Export
+2020,392,Japan,842,USA,7502,Unwrought nickel,682202029.21,2606632.63,Import
+2020,392,Japan,842,USA,7502,Unwrought nickel,442990005.67,1848704.07,Export
+2021,392,Japan,0,World,7502,Unwrought nickel,798880518.68,1958765.46,Import
+2021,392,Japan,392,Japan,7502,Unwrought nickel,920885833.16,2692452.67,Export
+2022,392,Japan,156,China,7502,Unwrought nickel,466125784.66,466050.9,Import
+2022,392,Japan,804,Ukraine,7502,Unwrought nickel,503951114.8,304808.04,Export
+2023,392,Japan,842,USA,7502,Unwrought nickel,630692035.35,948324.84,Import
+2023,392,Japan,0,World,7502,Unwrought nickel,885541533.0,2513116.29,Export
+2024,392,Japan,0,World,7502,Unwrought nickel,958806388.04,3237545.39,Import
+2024,392,Japan,156,China,7502,Unwrought nickel,965411735.43,1922632.67,Export
+2018,156,China,276,Germany,7502,Unwrought nickel,1152969871.12,5522031.57,Import
+2018,156,China,643,Russian Federation,7502,Unwrought nickel,1228012517.21,2867950.47,Export
+2019,156,China,804,Ukraine,7502,Unwrought nickel,1142140102.86,5697600.15,Import
+2019,156,China,276,Germany,7502,Unwrought nickel,1504477241.17,1168694.29,Export
+2020,156,China,804,Ukraine,7502,Unwrought nickel,941966632.01,3752690.27,Import
+2020,156,China,156,China,7502,Unwrought nickel,881983448.74,1266058.26,Export
+2021,156,China,392,Japan,7502,Unwrought nickel,1201097406.23,765398.62,Import
+2021,156,China,276,Germany,7502,Unwrought nickel,1308912851.69,4083417.19,Export
+2022,156,China,804,Ukraine,7502,Unwrought nickel,1254287987.9,4322055.51,Import
+2022,156,China,804,Ukraine,7502,Unwrought nickel,985221985.61,1702900.15,Export
+2023,156,China,804,Ukraine,7502,Unwrought nickel,1400202958.86,5092482.58,Import
+2023,156,China,392,Japan,7502,Unwrought nickel,1639760674.31,3176009.88,Export
+2024,156,China,392,Japan,7502,Unwrought nickel,1503946211.3,2266335.95,Import
+2024,156,China,0,World,7502,Unwrought nickel,1504825182.6,4937271.87,Export
+2018,699,India,0,World,7502,Unwrought nickel,427023488.14,898356.5,Import
+2018,699,India,276,Germany,7502,Unwrought nickel,435175624.81,90647.07,Export
+2019,699,India,804,Ukraine,7502,Unwrought nickel,347750911.77,433191.23,Import
+2019,699,India,392,Japan,7502,Unwrought nickel,478776946.73,1937101.8,Export
+2020,699,India,276,Germany,7502,Unwrought nickel,327624311.21,96664.11,Import
+2020,699,India,0,World,7502,Unwrought nickel,293504960.07,941792.05,Export
+2021,699,India,392,Japan,7502,Unwrought nickel,322955158.11,684463.75,Import
+2021,699,India,156,China,7502,Unwrought nickel,554895502.36,876160.13,Export
+2022,699,India,156,China,7502,Unwrought nickel,245470027.34,334299.71,Import
+2022,699,India,842,USA,7502,Unwrought nickel,325022973.97,402572.54,Export
+2023,699,India,392,Japan,7502,Unwrought nickel,419807944.16,361588.98,Import
+2023,699,India,392,Japan,7502,Unwrought nickel,442866437.22,699700.24,Export
+2024,699,India,842,USA,7502,Unwrought nickel,526963272.67,799555.61,Import
+2024,699,India,643,Russian Federation,7502,Unwrought nickel,535512361.26,1458067.33,Export
+2018,410,South Korea,156,China,7502,Unwrought nickel,636930929.98,2673234.2,Import
+2018,410,South Korea,643,Russian Federation,7502,Unwrought nickel,419262838.95,1584612.75,Export
+2019,410,South Korea,842,USA,7502,Unwrought nickel,467148425.76,704282.98,Import
+2019,410,South Korea,156,China,7502,Unwrought nickel,654132449.73,1813520.65,Export
+2020,410,South Korea,0,World,7502,Unwrought nickel,325596526.06,163413.4,Import
+2020,410,South Korea,804,Ukraine,7502,Unwrought nickel,385431843.67,976604.12,Export
+2021,410,South Korea,392,Japan,7502,Unwrought nickel,707316753.76,292033.66,Import
+2021,410,South Korea,276,Germany,7502,Unwrought nickel,602690877.27,761005.94,Export
+2022,410,South Korea,156,China,7502,Unwrought nickel,498480772.99,1537253.12,Import
+2022,410,South Korea,156,China,7502,Unwrought nickel,367203641.13,908480.74,Export
+2023,410,South Korea,842,USA,7502,Unwrought nickel,533054197.65,396170.08,Import
+2023,410,South Korea,156,China,7502,Unwrought nickel,593988386.73,1469205.95,Export
+2024,410,South Korea,804,Ukraine,7502,Unwrought nickel,449940414.14,61661.09,Import
+2024,410,South Korea,804,Ukraine,7502,Unwrought nickel,484219381.29,373448.56,Export
+2018,842,USA,842,USA,8703,Motor cars and vehicles,12382521570.89,2466350.26,Import
+2018,842,USA,156,China,8703,Motor cars and vehicles,7706390640.45,17519112.11,Export
+2019,842,USA,276,Germany,8703,Motor cars and vehicles,10397915237.44,11556564.27,Import
+2019,842,USA,842,USA,8703,Motor cars and vehicles,9731019670.72,14748453.69,Export
+2020,842,USA,0,World,8703,Motor cars and vehicles,6205398915.52,27800966.05,Import
+2020,842,USA,842,USA,8703,Motor cars and vehicles,6898900849.39,3185295.2,Export
+2021,842,USA,804,Ukraine,8703,Motor cars and vehicles,8904141431.33,21677793.25,Import
+2021,842,USA,804,Ukraine,8703,Motor cars and vehicles,9735019698.84,18194152.21,Export
+2022,842,USA,392,Japan,8703,Motor cars and vehicles,14402735284.15,12451349.56,Import
+2022,842,USA,156,China,8703,Motor cars and vehicles,9664668943.44,17566209.43,Export
+2023,842,USA,0,World,8703,Motor cars and vehicles,8092135949.82,12043822.53,Import
+2023,842,USA,0,World,8703,Motor cars and vehicles,6933588194.0,6193016.66,Export
+2024,842,USA,392,Japan,8703,Motor cars and vehicles,8026506956.4,16003111.96,Import
+2024,842,USA,392,Japan,8703,Motor cars and vehicles,7680631722.84,6356456.26,Export
+2018,276,Germany,0,World,8703,Motor cars and vehicles,5887426872.97,14462991.57,Import
+2018,276,Germany,0,World,8703,Motor cars and vehicles,4910373998.76,13826570.07,Export
+2019,276,Germany,276,Germany,8703,Motor cars and vehicles,5501410048.98,17946230.17,Import
+2019,276,Germany,276,Germany,8703,Motor cars and vehicles,7879341036.16,21449038.33,Export
+2020,276,Germany,643,Russian Federation,8703,Motor cars and vehicles,3281825280.78,15574801.31,Import
+2020,276,Germany,842,USA,8703,Motor cars and vehicles,3088875381.47,8761744.75,Export
+2021,276,Germany,643,Russian Federation,8703,Motor cars and vehicles,7835738232.07,33410554.51,Import
+2021,276,Germany,276,Germany,8703,Motor cars and vehicles,7987514403.03,16656404.75,Export
+2022,276,Germany,276,Germany,8703,Motor cars and vehicles,8107999166.82,26359985.11,Import
+2022,276,Germany,0,World,8703,Motor cars and vehicles,5378208434.08,7791106.26,Export
+2023,276,Germany,392,Japan,8703,Motor cars and vehicles,5145403013.64,15388388.21,Import
+2023,276,Germany,392,Japan,8703,Motor cars and vehicles,6346584050.99,20608993.76,Export
+2024,276,Germany,842,USA,8703,Motor cars and vehicles,7458802324.8,27000254.08,Import
+2024,276,Germany,804,Ukraine,8703,Motor cars and vehicles,8144906877.75,14381892.08,Export
+2018,392,Japan,0,World,8703,Motor cars and vehicles,7068687608.83,8741742.63,Import
+2018,392,Japan,643,Russian Federation,8703,Motor cars and vehicles,5871443402.58,16769907.26,Export
+2019,392,Japan,0,World,8703,Motor cars and vehicles,7731042930.37,22609253.22,Import
+2019,392,Japan,276,Germany,8703,Motor cars and vehicles,7284452762.05,4778946.11,Export
+2020,392,Japan,643,Russian Federation,8703,Motor cars and vehicles,4147161227.89,8158081.43,Import
+2020,392,Japan,804,Ukraine,8703,Motor cars and vehicles,3705335746.12,1098750.74,Export
+2021,392,Japan,156,China,8703,Motor cars and vehicles,9696653838.86,36111422.04,Import
+2021,392,Japan,643,Russian Federation,8703,Motor cars and vehicles,8756551958.06,1948146.32,Export
+2022,392,Japan,0,World,8703,Motor cars and vehicles,7195753156.71,18576382.05,Import
+2022,392,Japan,804,Ukraine,8703,Motor cars and vehicles,7667020550.94,25524862.84,Export
+2023,392,Japan,276,Germany,8703,Motor cars and vehicles,8751131382.93,23499691.79,Import
+2023,392,Japan,842,USA,8703,Motor cars and vehicles,5578611228.88,3839327.06,Export
+2024,392,Japan,0,World,8703,Motor cars and vehicles,9506293886.96,45944078.35,Import
+2024,392,Japan,643,Russian Federation,8703,Motor cars and vehicles,7762561829.11,7896135.11,Export
+2018,156,China,392,Japan,8703,Motor cars and vehicles,14243522140.73,63823269.89,Import
+2018,156,China,0,World,8703,Motor cars and vehicles,13868320280.06,37572705.93,Export
+2019,156,China,156,China,8703,Motor cars and vehicles,9706182622.85,14606312.8,Import
+2019,156,China,156,China,8703,Motor cars and vehicles,11646608282.26,54900922.5,Export
+2020,156,China,392,Japan,8703,Motor cars and vehicles,7015384858.69,16319528.25,Import
+2020,156,China,842,USA,8703,Motor cars and vehicles,8002626780.81,33900296.4,Export
+2021,156,China,804,Ukraine,8703,Motor cars and vehicles,13394202823.59,7649670.32,Import
+2021,156,China,276,Germany,8703,Motor cars and vehicles,9932062328.58,15607057.6,Export
+2022,156,China,392,Japan,8703,Motor cars and vehicles,16727666113.58,6223950.59,Import
+2022,156,China,804,Ukraine,8703,Motor cars and vehicles,13500555558.74,19744177.24,Export
+2023,156,China,0,World,8703,Motor cars and vehicles,14113934810.48,66738239.13,Import
+2023,156,China,392,Japan,8703,Motor cars and vehicles,10125937323.16,19889530.67,Export
+2024,156,China,156,China,8703,Motor cars and vehicles,15155288157.03,26475688.7,Import
+2024,156,China,842,USA,8703,Motor cars and vehicles,14381182319.4,61739390.75,Export
+2018,699,India,392,Japan,8703,Motor cars and vehicles,4629280797.76,13422395.19,Import
+2018,699,India,842,USA,8703,Motor cars and vehicles,4831494425.47,12317017.54,Export
+2019,699,India,392,Japan,8703,Motor cars and vehicles,3215840298.63,4509229.66,Import
+2019,699,India,276,Germany,8703,Motor cars and vehicles,4928028228.54,18995259.01,Export
+2020,699,India,643,Russian Federation,8703,Motor cars and vehicles,2581348790.78,7001489.97,Import
+2020,699,India,156,China,8703,Motor cars and vehicles,2326195582.05,1105783.09,Export
+2021,699,India,0,World,8703,Motor cars and vehicles,3483842878.56,17355337.67,Import
+2021,699,India,156,China,8703,Motor cars and vehicles,5348449214.16,17511235.44,Export
+2022,699,India,276,Germany,8703,Motor cars and vehicles,3160510363.92,3772975.74,Import
+2022,699,India,643,Russian Federation,8703,Motor cars and vehicles,3535955905.12,2003303.44,Export
+2023,699,India,392,Japan,8703,Motor cars and vehicles,3563925581.8,1569156.16,Import
+2023,699,India,392,Japan,8703,Motor cars and vehicles,4760337600.01,9429661.31,Export
+2024,699,India,276,Germany,8703,Motor cars and vehicles,4611715682.53,8278155.6,Import
+2024,699,India,0,World,8703,Motor cars and vehicles,4178064932.64,2455229.4,Export
+2018,410,South Korea,842,USA,8703,Motor cars and vehicles,6363547541.69,14052847.78,Import
+2018,410,South Korea,0,World,8703,Motor cars and vehicles,6247641824.56,7808457.95,Export
+2019,410,South Korea,804,Ukraine,8703,Motor cars and vehicles,6613786830.1,5044801.74,Import
+2019,410,South Korea,156,China,8703,Motor cars and vehicles,5663765232.57,12527755.65,Export
+2020,410,South Korea,392,Japan,8703,Motor cars and vehicles,3184842101.4,13282152.41,Import
+2020,410,South Korea,276,Germany,8703,Motor cars and vehicles,2815350443.46,4086208.55,Export
+2021,410,South Korea,156,China,8703,Motor cars and vehicles,5521470329.11,3506963.76,Import
+2021,410,South Korea,842,USA,8703,Motor cars and vehicles,6232891867.0,1824444.77,Export
+2022,410,South Korea,804,Ukraine,8703,Motor cars and vehicles,4698079535.48,5456994.29,Import
+2022,410,South Korea,276,Germany,8703,Motor cars and vehicles,6386142986.8,23403568.5,Export
+2023,410,South Korea,156,China,8703,Motor cars and vehicles,6045146515.06,2884709.07,Import
+2023,410,South Korea,643,Russian Federation,8703,Motor cars and vehicles,5811508771.65,9311556.04,Export
+2024,410,South Korea,643,Russian Federation,8703,Motor cars and vehicles,5809205206.18,14415051.27,Import
+2024,410,South Korea,643,Russian Federation,8703,Motor cars and vehicles,4874785825.36,713722.06,Export
+2018,842,USA,0,World,8708,Parts for motor vehicles,6861604522.11,27828415.1,Import
+2018,842,USA,804,Ukraine,8708,Parts for motor vehicles,9376772452.49,45477062.53,Export
+2019,842,USA,156,China,8708,Parts for motor vehicles,9540810439.28,18242735.88,Import
+2019,842,USA,0,World,8708,Parts for motor vehicles,10321615399.19,2737187.0,Export
+2020,842,USA,276,Germany,8708,Parts for motor vehicles,4600073295.08,19457340.67,Import
+2020,842,USA,643,Russian Federation,8708,Parts for motor vehicles,5025883238.86,10416758.52,Export
+2021,842,USA,392,Japan,8708,Parts for motor vehicles,10939350729.01,50132020.68,Import
+2021,842,USA,276,Germany,8708,Parts for motor vehicles,8990062956.32,13242598.68,Export
+2022,842,USA,392,Japan,8708,Parts for motor vehicles,11382142279.85,12999628.44,Import
+2022,842,USA,276,Germany,8708,Parts for motor vehicles,6606263735.23,24778256.98,Export
+2023,842,USA,276,Germany,8708,Parts for motor vehicles,9427998829.71,8979846.09,Import
+2023,842,USA,643,Russian Federation,8708,Parts for motor vehicles,9753747647.98,31049247.38,Export
+2024,842,USA,643,Russian Federation,8708,Parts for motor vehicles,8921491522.78,12302703.43,Import
+2024,842,USA,156,China,8708,Parts for motor vehicles,8435597145.08,35588801.01,Export
+2018,276,Germany,392,Japan,8708,Parts for motor vehicles,3603769469.73,12024790.08,Import
+2018,276,Germany,842,USA,8708,Parts for motor vehicles,5651241390.79,9146758.63,Export
+2019,276,Germany,842,USA,8708,Parts for motor vehicles,4670823006.36,10200775.53,Import
+2019,276,Germany,0,World,8708,Parts for motor vehicles,5647992142.37,24664797.3,Export
+2020,276,Germany,643,Russian Federation,8708,Parts for motor vehicles,3871097372.63,2161379.57,Import
+2020,276,Germany,643,Russian Federation,8708,Parts for motor vehicles,2438887850.18,4144435.82,Export
+2021,276,Germany,276,Germany,8708,Parts for motor vehicles,5331239789.73,23421813.88,Import
+2021,276,Germany,392,Japan,8708,Parts for motor vehicles,6525547843.21,19802912.37,Export
+2022,276,Germany,804,Ukraine,8708,Parts for motor vehicles,3959183660.01,2331320.48,Import
+2022,276,Germany,842,USA,8708,Parts for motor vehicles,4161763624.35,7390535.06,Export
+2023,276,Germany,276,Germany,8708,Parts for motor vehicles,6036689273.8,2343268.93,Import
+2023,276,Germany,804,Ukraine,8708,Parts for motor vehicles,5190866365.24,16140514.88,Export
+2024,276,Germany,156,China,8708,Parts for motor vehicles,4967956421.06,4070973.2,Import
+2024,276,Germany,643,Russian Federation,8708,Parts for motor vehicles,5093084759.75,20244490.13,Export
+2018,392,Japan,643,Russian Federation,8708,Parts for motor vehicles,4759025653.5,12318388.37,Import
+2018,392,Japan,276,Germany,8708,Parts for motor vehicles,6773510170.87,8135766.71,Export
+2019,392,Japan,643,Russian Federation,8708,Parts for motor vehicles,5900475560.99,28527925.26,Import
+2019,392,Japan,156,China,8708,Parts for motor vehicles,6159770404.52,23578941.78,Export
+2020,392,Japan,276,Germany,8708,Parts for motor vehicles,3850197348.06,18525118.5,Import
+2020,392,Japan,276,Germany,8708,Parts for motor vehicles,4322736597.55,10444915.86,Export
+2021,392,Japan,804,Ukraine,8708,Parts for motor vehicles,6026199652.87,3168758.4,Import
+2021,392,Japan,392,Japan,8708,Parts for motor vehicles,6151389898.58,18409811.94,Export
+2022,392,Japan,842,USA,8708,Parts for motor vehicles,6691623229.48,10902400.12,Import
+2022,392,Japan,643,Russian Federation,8708,Parts for motor vehicles,5527482661.76,10952523.11,Export
+2023,392,Japan,0,World,8708,Parts for motor vehicles,5424897417.68,17824965.96,Import
+2023,392,Japan,643,Russian Federation,8708,Parts for motor vehicles,6572597584.54,19685461.17,Export
+2024,392,Japan,804,Ukraine,8708,Parts for motor vehicles,4175565160.43,8597275.17,Import
+2024,392,Japan,392,Japan,8708,Parts for motor vehicles,5211739772.51,9632765.47,Export
+2018,156,China,643,Russian Federation,8708,Parts for motor vehicles,10673387146.69,38317372.91,Import
+2018,156,China,276,Germany,8708,Parts for motor vehicles,7921477058.84,20487489.26,Export
+2019,156,China,804,Ukraine,8708,Parts for motor vehicles,11105981359.92,6224565.09,Import
+2019,156,China,276,Germany,8708,Parts for motor vehicles,11973636650.36,35733715.46,Export
+2020,156,China,156,China,8708,Parts for motor vehicles,6445964098.43,4006384.06,Import
+2020,156,China,643,Russian Federation,8708,Parts for motor vehicles,4317027807.88,18146607.18,Export
+2021,156,China,804,Ukraine,8708,Parts for motor vehicles,8483906269.21,28941875.25,Import
+2021,156,China,276,Germany,8708,Parts for motor vehicles,9353020960.22,24976486.08,Export
+2022,156,China,0,World,8708,Parts for motor vehicles,8842592339.14,8833021.64,Import
+2022,156,China,643,Russian Federation,8708,Parts for motor vehicles,11546473876.85,55622746.62,Export
+2023,156,China,156,China,8708,Parts for motor vehicles,9685589517.81,47237798.54,Import
+2023,156,China,804,Ukraine,8708,Parts for motor vehicles,8523843237.08,21178825.49,Export
+2024,156,China,392,Japan,8708,Parts for motor vehicles,11385819349.71,13661767.85,Import
+2024,156,China,156,China,8708,Parts for motor vehicles,9761405680.38,45357801.49,Export
+2018,699,India,392,Japan,8708,Parts for motor vehicles,3742536387.27,12346277.4,Import
+2018,699,India,392,Japan,8708,Parts for motor vehicles,3679624894.86,15072003.93,Export
+2019,699,India,804,Ukraine,8708,Parts for motor vehicles,2686356808.68,5202896.99,Import
+2019,699,India,804,Ukraine,8708,Parts for motor vehicles,3584974476.88,9217083.1,Export
+2020,699,India,0,World,8708,Parts for motor vehicles,1981081387.12,2702662.74,Import
+2020,699,India,804,Ukraine,8708,Parts for motor vehicles,2326307067.93,6113596.9,Export
+2021,699,India,392,Japan,8708,Parts for motor vehicles,3266504377.92,15960799.3,Import
+2021,699,India,804,Ukraine,8708,Parts for motor vehicles,3495636835.68,3890395.48,Export
+2022,699,India,156,China,8708,Parts for motor vehicles,2588689087.73,9864891.07,Import
+2022,699,India,392,Japan,8708,Parts for motor vehicles,4044243177.06,11976353.53,Export
+2023,699,India,804,Ukraine,8708,Parts for motor vehicles,2871866577.01,7218173.46,Import
+2023,699,India,156,China,8708,Parts for motor vehicles,4007244301.2,15521289.35,Export
+2024,699,India,392,Japan,8708,Parts for motor vehicles,2521471538.01,5214100.12,Import
+2024,699,India,643,Russian Federation,8708,Parts for motor vehicles,4320787686.55,13197058.67,Export
+2018,410,South Korea,276,Germany,8708,Parts for motor vehicles,3545506198.14,8139071.02,Import
+2018,410,South Korea,0,World,8708,Parts for motor vehicles,3525833584.01,5903084.79,Export
+2019,410,South Korea,643,Russian Federation,8708,Parts for motor vehicles,3383278023.21,13102708.16,Import
+2019,410,South Korea,842,USA,8708,Parts for motor vehicles,3548233911.05,10592009.76,Export
+2020,410,South Korea,156,China,8708,Parts for motor vehicles,2565975153.7,10100436.64,Import
+2020,410,South Korea,804,Ukraine,8708,Parts for motor vehicles,2150318396.67,6965224.29,Export
+2021,410,South Korea,392,Japan,8708,Parts for motor vehicles,3938499485.84,3174210.6,Import
+2021,410,South Korea,804,Ukraine,8708,Parts for motor vehicles,4097687706.67,821926.05,Export
+2022,410,South Korea,0,World,8708,Parts for motor vehicles,5221135554.69,15245336.71,Import
+2022,410,South Korea,842,USA,8708,Parts for motor vehicles,3617332892.87,16635402.88,Export
+2023,410,South Korea,392,Japan,8708,Parts for motor vehicles,4276426187.87,1228892.85,Import
+2023,410,South Korea,392,Japan,8708,Parts for motor vehicles,2909505081.34,10530284.35,Export
+2024,410,South Korea,0,World,8708,Parts for motor vehicles,3567803607.34,15719031.91,Import
+2024,410,South Korea,0,World,8708,Parts for motor vehicles,4647179200.87,6819155.59,Export
+2018,842,USA,0,World,2709,"Petroleum oils, crude",23645571861.68,7349527.0,Import
+2018,842,USA,392,Japan,2709,"Petroleum oils, crude",21044065639.68,97918490.86,Export
+2019,842,USA,156,China,2709,"Petroleum oils, crude",17133440529.79,68747763.85,Import
+2019,842,USA,276,Germany,2709,"Petroleum oils, crude",22858887378.1,103667894.61,Export
+2020,842,USA,643,Russian Federation,2709,"Petroleum oils, crude",15209535866.81,39524614.2,Import
+2020,842,USA,276,Germany,2709,"Petroleum oils, crude",9681950317.8,42537015.3,Export
+2021,842,USA,643,Russian Federation,2709,"Petroleum oils, crude",21766762680.61,98303720.94,Import
+2021,842,USA,804,Ukraine,2709,"Petroleum oils, crude",27010898177.04,99245210.48,Export
+2022,842,USA,0,World,2709,"Petroleum oils, crude",16665164270.66,80255137.61,Import
+2022,842,USA,842,USA,2709,"Petroleum oils, crude",22297075617.17,5920769.47,Export
+2023,842,USA,842,USA,2709,"Petroleum oils, crude",27569168902.53,121404075.5,Import
+2023,842,USA,842,USA,2709,"Petroleum oils, crude",20294014787.31,35932735.71,Export
+2024,842,USA,0,World,2709,"Petroleum oils, crude",16105836906.78,38485718.14,Import
+2024,842,USA,842,USA,2709,"Petroleum oils, crude",25922144390.81,104188340.11,Export
+2018,276,Germany,804,Ukraine,2709,"Petroleum oils, crude",14048162283.31,5581760.64,Import
+2018,276,Germany,392,Japan,2709,"Petroleum oils, crude",12446960827.46,28121800.83,Export
+2019,276,Germany,156,China,2709,"Petroleum oils, crude",11883652846.37,45667524.49,Import
+2019,276,Germany,804,Ukraine,2709,"Petroleum oils, crude",10402750969.51,18338398.87,Export
+2020,276,Germany,0,World,2709,"Petroleum oils, crude",7995753790.14,9678004.35,Import
+2020,276,Germany,842,USA,2709,"Petroleum oils, crude",5458092710.61,19568202.89,Export
+2021,276,Germany,0,World,2709,"Petroleum oils, crude",10996142928.89,22644863.96,Import
+2021,276,Germany,156,China,2709,"Petroleum oils, crude",11182829446.32,6305361.07,Export
+2022,276,Germany,392,Japan,2709,"Petroleum oils, crude",16512111793.09,54309211.3,Import
+2022,276,Germany,842,USA,2709,"Petroleum oils, crude",17427130875.07,78038083.82,Export
+2023,276,Germany,643,Russian Federation,2709,"Petroleum oils, crude",11526655755.0,26049190.72,Import
+2023,276,Germany,276,Germany,2709,"Petroleum oils, crude",14430102660.63,25141763.74,Export
+2024,276,Germany,276,Germany,2709,"Petroleum oils, crude",15373298073.65,42165983.3,Import
+2024,276,Germany,392,Japan,2709,"Petroleum oils, crude",11047170691.44,31302743.65,Export
+2018,392,Japan,0,World,2709,"Petroleum oils, crude",9896249308.06,10173109.83,Import
+2018,392,Japan,156,China,2709,"Petroleum oils, crude",13328156049.21,4567849.24,Export
+2019,392,Japan,156,China,2709,"Petroleum oils, crude",18534896999.66,43255420.81,Import
+2019,392,Japan,392,Japan,2709,"Petroleum oils, crude",10538987645.7,35763742.62,Export
+2020,392,Japan,156,China,2709,"Petroleum oils, crude",6320689776.83,30899896.74,Import
+2020,392,Japan,276,Germany,2709,"Petroleum oils, crude",9934138594.17,23814249.36,Export
+2021,392,Japan,276,Germany,2709,"Petroleum oils, crude",12390280653.09,38725411.43,Import
+2021,392,Japan,392,Japan,2709,"Petroleum oils, crude",12458947035.42,41671223.07,Export
+2022,392,Japan,276,Germany,2709,"Petroleum oils, crude",15194533661.63,66164319.76,Import
+2022,392,Japan,276,Germany,2709,"Petroleum oils, crude",14384891407.21,60268921.79,Export
+2023,392,Japan,643,Russian Federation,2709,"Petroleum oils, crude",20715491729.89,26516785.63,Import
+2023,392,Japan,392,Japan,2709,"Petroleum oils, crude",14396844513.78,46694097.47,Export
+2024,392,Japan,276,Germany,2709,"Petroleum oils, crude",18269951072.96,71595043.29,Import
+2024,392,Japan,643,Russian Federation,2709,"Petroleum oils, crude",16087283468.94,36302391.34,Export
+2018,156,China,842,USA,2709,"Petroleum oils, crude",19811714125.63,39657420.49,Import
+2018,156,China,804,Ukraine,2709,"Petroleum oils, crude",25485128570.53,96369721.49,Export
+2019,156,China,842,USA,2709,"Petroleum oils, crude",20513589674.87,43756894.99,Import
+2019,156,China,842,USA,2709,"Petroleum oils, crude",19139742816.24,63954222.27,Export
+2020,156,China,156,China,2709,"Petroleum oils, crude",13272931243.16,64313768.93,Import
+2020,156,China,804,Ukraine,2709,"Petroleum oils, crude",16432268513.79,67013174.13,Export
+2021,156,China,156,China,2709,"Petroleum oils, crude",19240935013.21,69609874.23,Import
+2021,156,China,804,Ukraine,2709,"Petroleum oils, crude",32635539326.0,139032689.16,Export
+2022,156,China,842,USA,2709,"Petroleum oils, crude",30325082633.75,41554262.77,Import
+2022,156,China,392,Japan,2709,"Petroleum oils, crude",20619040723.35,39545674.04,Export
+2023,156,China,0,World,2709,"Petroleum oils, crude",32564873659.99,12317748.04,Import
+2023,156,China,0,World,2709,"Petroleum oils, crude",20168037220.06,43842461.23,Export
+2024,156,China,0,World,2709,"Petroleum oils, crude",18855796604.32,48931418.51,Import
+2024,156,China,276,Germany,2709,"Petroleum oils, crude",19528656633.53,76106251.68,Export
+2018,699,India,276,Germany,2709,"Petroleum oils, crude",9960614808.01,29326640.43,Import
+2018,699,India,842,USA,2709,"Petroleum oils, crude",9740357595.52,41647555.56,Export
+2019,699,India,156,China,2709,"Petroleum oils, crude",7202756095.2,25827166.33,Import
+2019,699,India,804,Ukraine,2709,"Petroleum oils, crude",6382116898.33,15430362.32,Export
+2020,699,India,156,China,2709,"Petroleum oils, crude",3850336897.98,11350450.68,Import
+2020,699,India,804,Ukraine,2709,"Petroleum oils, crude",4102433219.67,1576760.69,Export
+2021,699,India,842,USA,2709,"Petroleum oils, crude",7816417212.21,23492103.96,Import
+2021,699,India,643,Russian Federation,2709,"Petroleum oils, crude",10136787997.28,36113475.83,Export
+2022,699,India,643,Russian Federation,2709,"Petroleum oils, crude",7866941257.66,28844175.54,Import
+2022,699,India,276,Germany,2709,"Petroleum oils, crude",10336209245.33,8587435.13,Export
+2023,699,India,842,USA,2709,"Petroleum oils, crude",7486561877.92,24882966.89,Import
+2023,699,India,842,USA,2709,"Petroleum oils, crude",10678590224.16,45849422.28,Export
+2024,699,India,0,World,2709,"Petroleum oils, crude",9709971426.41,1709326.18,Import
+2024,699,India,0,World,2709,"Petroleum oils, crude",8945089006.34,42251375.86,Export
+2018,410,South Korea,0,World,2709,"Petroleum oils, crude",9551034022.3,30575655.11,Import
+2018,410,South Korea,392,Japan,2709,"Petroleum oils, crude",12239826208.15,58250363.59,Export
+2019,410,South Korea,0,World,2709,"Petroleum oils, crude",11752854513.87,11362148.52,Import
+2019,410,South Korea,276,Germany,2709,"Petroleum oils, crude",13042141675.7,7094824.67,Export
+2020,410,South Korea,643,Russian Federation,2709,"Petroleum oils, crude",5323080561.55,15280495.17,Import
+2020,410,South Korea,392,Japan,2709,"Petroleum oils, crude",6966399403.85,29429809.09,Export
+2021,410,South Korea,842,USA,2709,"Petroleum oils, crude",9450561004.11,42488920.84,Import
+2021,410,South Korea,804,Ukraine,2709,"Petroleum oils, crude",12294132767.59,2601661.1,Export
+2022,410,South Korea,842,USA,2709,"Petroleum oils, crude",12808458943.11,12984314.03,Import
+2022,410,South Korea,0,World,2709,"Petroleum oils, crude",12436595777.32,6740301.94,Export
+2023,410,South Korea,156,China,2709,"Petroleum oils, crude",10926482988.38,12785297.73,Import
+2023,410,South Korea,276,Germany,2709,"Petroleum oils, crude",8626094962.02,13544432.71,Export
+2024,410,South Korea,804,Ukraine,2709,"Petroleum oils, crude",12585266123.13,48158416.85,Import
+2024,410,South Korea,392,Japan,2709,"Petroleum oils, crude",11302073024.85,34599628.25,Export

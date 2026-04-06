@@ -145,11 +145,7 @@ def build_feature_matrix(graph_centrality: pd.DataFrame = None,
             demand_df.loc[mask, 'cusum_flag_rolling_4w'] = np.random.uniform(0.3, 0.8, mask.sum())
             demand_df.loc[mask, 'mahalanobis_distance_current'] = np.random.uniform(0.5, 1.0, mask.sum())
 
-    # Weeks since last disruption flag
-    demand_df['is_disrupted'] = (demand_df['disruption_event_id'].notna()).astype(int)
-    demand_df['weeks_since_last_disruption'] = demand_df.groupby('sku_id')['is_disrupted'].transform(
-        lambda x: x.cumsum().diff().fillna(0).abs()
-    ).clip(0, 52)
+
 
     # ── Feature Group 3: Forecasting Features ──
     print("    Adding forecasting features...")
@@ -184,10 +180,7 @@ def build_feature_matrix(graph_centrality: pd.DataFrame = None,
         lambda x: x.rolling(window=8, min_periods=3).apply(compute_slope, raw=True)
     ).fillna(0)
 
-    # Disruption-adjusted forecast flag
-    demand_df['disruption_adjusted_forecast_flag'] = (
-        demand_df['disruption_score_current'] > 0.3
-    ).astype(int)
+
 
     # ── Feature Group 4: Inventory Features ──
     print("    Adding inventory features...")
@@ -219,8 +212,7 @@ def build_feature_matrix(graph_centrality: pd.DataFrame = None,
     demand_df['sku_category_encoded'] = demand_df['category'].map(category_map)
     demand_df['supplier_country_encoded'] = demand_df['supplier_country'].map(country_map)
 
-    # In disruption window flag
-    demand_df['in_disruption_window'] = demand_df['disruption_event_id'].notna().astype(int)
+
 
     # ── Select Final Features ──
     feature_columns = [
@@ -229,17 +221,16 @@ def build_feature_matrix(graph_centrality: pd.DataFrame = None,
         'clustering_coefficient', 'supplier_country_risk_tier',
         # Disruption detection features
         'cusum_flag_rolling_4w', 'mahalanobis_distance_current',
-        'disruption_score_current', 'weeks_since_last_disruption',
+        'disruption_score_current',
         # Forecasting features
         'demand_rolling_4w', 'demand_rolling_8w', 'demand_std_4w',
         'forecast_uncertainty_width', 'demand_trend_slope',
-        'disruption_adjusted_forecast_flag',
         # Inventory features
         'current_inventory_weeks_of_cover', 'days_to_reorder_point',
         'safety_stock_adequacy_ratio', 'lead_time_deviation_from_normal',
         # Raw features
         'sku_category_encoded', 'supplier_country_encoded',
-        'unit_cost_usd', 'in_disruption_window',
+        'unit_cost_usd',
     ]
 
     # Metadata columns to keep
@@ -266,35 +257,36 @@ def build_feature_matrix(graph_centrality: pd.DataFrame = None,
     return feature_matrix
 
 
-def split_chronological(feature_matrix: pd.DataFrame,
-                         train_end_week: int = 104,
-                         val_end_week: int = 130) -> tuple:
+def split_chronological(feature_matrix: pd.DataFrame) -> tuple:
     """
     Chronological train/validation/test split.
-    Train: weeks 1-104 (2022-2023)
-    Validate: weeks 105-130 (first half 2024)
-    Test: weeks 131-156 (second half 2024)
+    Train: 2022-01-01 to 2023-06-30
+    Validate: 2023-07-01 to 2023-09-30
+    Test: 2023-10-01 to 2024-12-31
     """
     feature_columns = [
         'betweenness_centrality', 'pagerank', 'degree_centrality',
         'clustering_coefficient', 'supplier_country_risk_tier',
         'cusum_flag_rolling_4w', 'mahalanobis_distance_current',
-        'disruption_score_current', 'weeks_since_last_disruption',
+        'disruption_score_current',
         'demand_rolling_4w', 'demand_rolling_8w', 'demand_std_4w',
         'forecast_uncertainty_width', 'demand_trend_slope',
-        'disruption_adjusted_forecast_flag',
         'current_inventory_weeks_of_cover', 'days_to_reorder_point',
         'safety_stock_adequacy_ratio', 'lead_time_deviation_from_normal',
         'sku_category_encoded', 'supplier_country_encoded',
-        'unit_cost_usd', 'in_disruption_window',
+        'unit_cost_usd',
     ]
 
     target = 'stockout_next_4w'
 
-    train = feature_matrix[feature_matrix['week_num'] <= train_end_week]
-    val = feature_matrix[(feature_matrix['week_num'] > train_end_week) &
-                          (feature_matrix['week_num'] <= val_end_week)]
-    test = feature_matrix[feature_matrix['week_num'] > val_end_week]
+    dates = feature_matrix['week_start_date']
+    train_mask = (dates >= '2022-01-01') & (dates <= '2023-06-30')
+    val_mask = (dates >= '2023-07-01') & (dates <= '2023-09-30')
+    test_mask = dates >= '2023-10-01'
+
+    train = feature_matrix[train_mask]
+    val = feature_matrix[val_mask]
+    test = feature_matrix[test_mask]
 
     X_train = train[feature_columns]
     y_train = train[target]

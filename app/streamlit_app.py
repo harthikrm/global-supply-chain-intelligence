@@ -37,6 +37,7 @@ SURFACE_2 = '#F5F5F0'          # Light warm gray (hover, nested)
 SURFACE_3 = '#EEEDE8'          # Slightly deeper (inputs, dropdowns)
 
 ACCENT_PRIMARY = '#6B8E23'     # Olive drab — THE accent
+ACCENT_SECONDARY = '#8DB060'   # Secondary olive for chart lines
 ACCENT_LIGHT = '#8DB060'       # Lighter olive for secondary elements
 ACCENT_MUTED = '#B5CC84'       # Muted olive for fills/backgrounds
 ACCENT_DEEP = '#4A6741'        # Deep olive for emphasis
@@ -293,31 +294,44 @@ st.markdown("""
 
     /* ─── Tables ─── */
     .stDataFrame {
-        background: #FFFFFF;
+        background: #FFFFFF !important;
         border-radius: 12px;
         overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(107, 142, 35, 0.15);
+    }
+    .stDataFrame > div,
+    .stDataFrame [data-testid="stDataFrameResizable"],
+    .stDataFrame iframe {
+        background: #FFFFFF !important;
     }
     .stDataFrame thead tr th {
-        background: #F8F8F5 !important;
-        color: #64748B !important;
+        background: #F4F7EE !important;
+        color: #4A6741 !important;
         font-family: 'Inter', sans-serif !important;
         font-size: 10px !important;
         letter-spacing: 1.5px !important;
         text-transform: uppercase !important;
-        border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+        border-bottom: 2px solid rgba(107, 142, 35, 0.2) !important;
         padding: 10px 12px !important;
     }
     .stDataFrame tbody tr td {
         color: #1A1A2E !important;
         font-family: 'Inter', sans-serif !important;
         font-size: 12px !important;
-        border-bottom: 1px solid rgba(0,0,0,0.04) !important;
+        border-bottom: 1px solid rgba(107, 142, 35, 0.08) !important;
         padding: 8px 12px !important;
-        background: transparent !important;
+        background: #FFFFFF !important;
     }
     .stDataFrame tbody tr:hover td {
-        background: rgba(107, 142, 35, 0.03) !important;
+        background: rgba(107, 142, 35, 0.05) !important;
+    }
+    /* Force Glide DataEditor / arrow table white background */
+    [data-testid="stDataFrame"] > div > div,
+    [data-testid="stDataFrame"] canvas,
+    .glideDataEditor,
+    [data-testid="data-grid-canvas"] {
+        background: #FFFFFF !important;
+        background-color: #FFFFFF !important;
     }
 
     /* ─── Selectbox / Inputs ─── */
@@ -614,7 +628,11 @@ with tab1:
 with tab2:
     st.markdown('<p class="section-header">Supply Chain Network Graph</p>', unsafe_allow_html=True)
 
-    try:
+    if not Path(DB_PATH).exists():
+        st.error("Database not found. Run the ingestion pipeline first to build it.")
+        st.code("python -m src.ingest", language="bash")
+    else:
+      try:
         from src.graph import build_supply_chain_graph, compute_centrality_metrics, simulate_disruption
         import networkx as nx
 
@@ -717,8 +735,9 @@ with tab2:
         display_centrality = centrality_df.sort_values('betweenness_centrality', ascending=False).head(20)
         st.dataframe(display_centrality, use_container_width=True, height=350)
 
-    except Exception as e:
-        st.info(f"Network module not available. Run the full pipeline first. ({e})")
+      except Exception as e:
+        st.error(f"Graph error: {type(e).__name__}: {e}")
+        st.info("Run the full pipeline first: `python -m src.ingest`")
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -800,7 +819,7 @@ with tab3:
                     for gs, ge in flag_groups[:5]:
                         fig_cusum.add_vrect(
                             x0=gs, x1=ge,
-                            fillcolor='rgba(107,142,35,0.06)',
+                            fillcolor='rgba(239,68,68,0.05)',
                             line_width=0,
                             row=1, col=1,
                         )
@@ -900,11 +919,41 @@ with tab4:
             train = sku_demand.iloc[:train_end]
             test = sku_demand.iloc[train_end:]
 
-            forecast_values = test['demand_units'].rolling(4, min_periods=1).mean().values
-            upper_80 = forecast_values * 1.2
-            lower_80 = forecast_values * 0.8
-            upper_95 = forecast_values * 1.4
-            lower_95 = forecast_values * 0.6
+            @st.cache_data
+            def run_ets_forecast(_train_series, horizon):
+                """Fit ETS model on training data and forecast forward."""
+                from statsmodels.tsa.exponential_smoothing.ets import ETSModel
+                try:
+                    model = ETSModel(
+                        _train_series, error='add', trend='add',
+                        seasonal='add', seasonal_periods=52,
+                    )
+                    fit = model.fit(disp=False)
+                    fcast = fit.forecast(horizon)
+                    # Bootstrap prediction intervals from residuals
+                    resid_std = fit.resid.std()
+                    upper_80 = fcast + 1.28 * resid_std
+                    lower_80 = fcast - 1.28 * resid_std
+                    upper_95 = fcast + 1.96 * resid_std
+                    lower_95 = fcast - 1.96 * resid_std
+                    return fcast.values, upper_80.values, lower_80.values, upper_95.values, lower_95.values
+                except Exception:
+                    # Fallback to simple exponential smoothing if seasonal ETS fails
+                    from statsmodels.tsa.holtwinters import SimpleExpSmoothing
+                    model = SimpleExpSmoothing(_train_series).fit()
+                    fcast = model.forecast(horizon)
+                    resid_std = (_train_series - model.fittedvalues).std()
+                    upper_80 = fcast + 1.28 * resid_std
+                    lower_80 = fcast - 1.28 * resid_std
+                    upper_95 = fcast + 1.96 * resid_std
+                    lower_95 = fcast - 1.96 * resid_std
+                    return fcast.values, upper_80.values, lower_80.values, upper_95.values, lower_95.values
+
+            train_series = train['demand_units'].reset_index(drop=True)
+            horizon = len(test)
+            forecast_values, upper_80, lower_80, upper_95, lower_95 = run_ets_forecast(
+                train_series, horizon
+            )
 
             fig_forecast = go.Figure()
 
@@ -978,27 +1027,40 @@ with tab4:
 with tab5:
     st.markdown('<p class="section-header">Monte Carlo Inventory Optimization</p>', unsafe_allow_html=True)
 
+    OPTIMIZATION_RESULTS_PATH = PROJECT_ROOT / 'data' / 'processed' / 'optimization_results.pkl'
     demand = data.get('demand', pd.DataFrame())
     skus = data.get('skus', pd.DataFrame())
 
-    if len(skus) > 0 and len(demand) > 0:
-        sku_list = sorted(skus['sku_id'].unique())[:100]
-        selected_sku_inv = st.selectbox("Select SKU", sku_list, key="inv_sku")
+    if OPTIMIZATION_RESULTS_PATH.exists() and len(skus) > 0 and len(demand) > 0:
+        import pickle
+        with open(OPTIMIZATION_RESULTS_PATH, 'rb') as f:
+            opt_results = pickle.load(f)
+
+        opt_df = opt_results['results']
+        cost_comparison = opt_results['cost_comparison']
+
+        # SKU selector — only show SKUs that were optimized
+        optimized_skus = sorted(opt_df['sku_id'].unique())
+        selected_sku_inv = st.selectbox("Select SKU", optimized_skus, key="inv_sku")
 
         sku_info = skus[skus['sku_id'] == selected_sku_inv].iloc[0]
-        sku_demand = demand[demand['sku_id'] == selected_sku_inv]
+        sku_opt = opt_df[opt_df['sku_id'] == selected_sku_inv]
 
-        if len(sku_demand) > 0:
-            mean_demand = sku_demand['demand_units'].mean()
-            std_demand = sku_demand['demand_units'].std()
+        if len(sku_opt) > 0:
+            # Run matched Monte Carlo simulation using the same cost formulas as src/optimize.py
+            from src.optimize import simulate_inventory, ORDERING_COST
+            sku_demand_data = demand[demand['sku_id'] == selected_sku_inv]
+            mean_demand = sku_demand_data['demand_units'].mean()
+            std_demand = sku_demand_data['demand_units'].std()
 
-            rng = np.random.RandomState(42)
-            n_sim = 5000
+            baseline_row = sku_opt[sku_opt['scenario'] == 'baseline'].iloc[0] if len(sku_opt[sku_opt['scenario'] == 'baseline']) > 0 else sku_opt.iloc[0]
+            R = int(baseline_row['optimal_reorder_point'])
+            Q = int(baseline_row['optimal_order_quantity'])
 
-            scenarios = {
-                'Baseline': 1.0,
-                'Moderate Disruption': 1.4,
-                'Severe Disruption': 1.8,
+            scenarios_cfg = {
+                'Baseline': {'lt_mult': 1.0, 'demand_mult': 1.0, 'outage': 0.0},
+                'Moderate Disruption': {'lt_mult': 1.4, 'demand_mult': 1.2, 'outage': 0.0},
+                'Severe Disruption': {'lt_mult': 1.8, 'demand_mult': 1.35, 'outage': 0.10},
             }
 
             fig_mc = go.Figure()
@@ -1008,18 +1070,26 @@ with tab5:
                 'Severe Disruption': '#4A6741',
             }
 
-            for scenario, lt_mult in scenarios.items():
-                costs = []
-                for _ in range(n_sim):
-                    weekly_demands = rng.poisson(mean_demand, 52)
-                    holding = np.sum(weekly_demands * sku_info['unit_cost_usd'] * sku_info['holding_cost_pct'] / 4.33 * 0.3)
-                    stockout_weeks = rng.binomial(52, 0.05 * lt_mult)
-                    stockout = stockout_weeks * mean_demand * sku_info['stockout_cost_usd'] * 0.3
-                    ordering = (52 / max(1, sku_info['reorder_quantity'] / mean_demand)) * 50
-                    costs.append(holding + stockout + ordering)
-
+            for scenario, params in scenarios_cfg.items():
+                rng = np.random.RandomState(42)
+                result = simulate_inventory(
+                    weekly_demand_mean=mean_demand,
+                    weekly_demand_std=std_demand if not np.isnan(std_demand) else mean_demand * 0.3,
+                    lead_time_mean=sku_info['lead_time_days'],
+                    lead_time_std=sku_info['lead_time_days'] * 0.15,
+                    reorder_point=R,
+                    order_quantity=Q,
+                    unit_cost=sku_info['unit_cost_usd'],
+                    holding_cost_pct=sku_info['holding_cost_pct'],
+                    stockout_cost_per_unit=sku_info['stockout_cost_usd'],
+                    disruption_lt_multiplier=params['lt_mult'],
+                    disruption_demand_multiplier=params['demand_mult'],
+                    supply_outage_prob=params['outage'],
+                    n_simulations=5000,
+                    rng=rng,
+                )
                 fig_mc.add_trace(go.Histogram(
-                    x=costs, name=scenario, opacity=0.7,
+                    x=result['total_cost_distribution'], name=scenario, opacity=0.7,
                     marker_color=scenario_colors[scenario],
                     nbinsx=40,
                     marker_line_width=0,
@@ -1034,21 +1104,27 @@ with tab5:
             )
             st.plotly_chart(apply_theme(fig_mc), use_container_width=True)
 
-            # SKU details
+            # SKU details from actual optimization output
             col1, col2, col3 = st.columns(3)
             with col1:
-                st.metric("EOQ", f"{int(np.sqrt(2 * mean_demand * 52 * 50 / max(0.01, sku_info['unit_cost_usd'] * sku_info['holding_cost_pct'] * 12)))} units")
+                st.metric("EOQ", f"{baseline_row['eoq']} units")
             with col2:
-                st.metric("Avg Weekly Demand", f"{mean_demand:.0f} units")
+                st.metric("Optimal Reorder Point", f"{R} units")
             with col3:
-                st.metric("Stockout Cost/Unit", f"${sku_info['stockout_cost_usd']:.2f}")
+                st.metric("Safety Stock", f"{baseline_row['safety_stock_weeks']:.1f} weeks")
 
-        # Risk ranking table
+        # Risk ranking table — from actual optimization results
         st.markdown('<p class="section-header">Highest Disruption Exposure SKUs</p>', unsafe_allow_html=True)
-        sku_risk = skus.sort_values('stockout_cost_usd', ascending=False).head(20)
-        st.dataframe(sku_risk[['sku_id', 'category', 'supplier_country', 'unit_cost_usd',
-                               'stockout_cost_usd', 'disruption_sensitivity']],
+        risk_ranking = cost_comparison.sort_values('cost_increase_pct', ascending=False).head(20)
+        st.dataframe(risk_ranking[['sku_id', 'cost_increase_pct', 'disruption_risk_tier',
+                                    'baseline_cost', 'severe_cost']],
                      use_container_width=True, height=350)
+
+    elif len(skus) > 0 and len(demand) > 0:
+        st.warning("Optimization not run yet. Run the optimization pipeline to generate results.")
+        st.code("python -m src.optimize", language="bash")
+    else:
+        st.info("No SKU/demand data available.")
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1057,113 +1133,98 @@ with tab5:
 with tab6:
     st.markdown('<p class="section-header">30-Day Stockout Risk Prediction</p>', unsafe_allow_html=True)
 
-    skus = data.get('skus', pd.DataFrame())
-    demand = data.get('demand', pd.DataFrame())
+    MODEL_RESULTS_PATH = PROJECT_ROOT / 'data' / 'processed' / 'model_results.pkl'
 
-    if len(skus) > 0 and len(demand) > 0:
-        rng = np.random.RandomState(42)
-        pred_df = skus.copy()
-        pred_df['stockout_probability'] = rng.beta(2, 8, len(pred_df))
+    if MODEL_RESULTS_PATH.exists():
+        import pickle
+        with open(MODEL_RESULTS_PATH, 'rb') as f:
+            model_results = pickle.load(f)
 
-        high_risk_mask = pred_df['disruption_sensitivity'] == 'High'
-        pred_df.loc[high_risk_mask, 'stockout_probability'] *= 2.5
-        pred_df['stockout_probability'] = pred_df['stockout_probability'].clip(0, 1)
+        metrics = model_results['metrics']
+        predictions = model_results['predictions']
+        shap_features = model_results.get('shap_importance', {})
+        shap_groups = model_results.get('shap_group_importance', {})
 
-        pred_df['risk_level'] = pd.cut(
-            pred_df['stockout_probability'],
-            bins=[0, 0.3, 0.6, 1.0],
-            labels=['Low', 'Medium', 'High']
-        )
-
-        pred_df = pred_df.sort_values('stockout_probability', ascending=False)
-
-        # Model performance metrics
+        # Model performance metrics — from actual computed values
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.markdown(f"""<div class="kpi-card">
-                <p class="kpi-value">0.74</p>
+                <p class="kpi-value">{metrics['test_prauc']:.2f}</p>
                 <p class="kpi-label">PR-AUC</p>
             </div>""", unsafe_allow_html=True)
         with col2:
             st.markdown(f"""<div class="kpi-card">
-                <p class="kpi-value">0.68</p>
+                <p class="kpi-value">{metrics['precision_at_k']:.2f}</p>
                 <p class="kpi-label">Precision@10%</p>
             </div>""", unsafe_allow_html=True)
         with col3:
             st.markdown(f"""<div class="kpi-card">
-                <p class="kpi-value">3.2</p>
+                <p class="kpi-value">{metrics['prediction_lead_time']:.1f}</p>
                 <p class="kpi-label">Avg Lead Time (weeks)</p>
             </div>""", unsafe_allow_html=True)
         with col4:
             st.markdown(f"""<div class="kpi-card">
-                <p class="kpi-value">87%</p>
+                <p class="kpi-value">{metrics['test_recall']:.0%}</p>
                 <p class="kpi-label">Recall</p>
             </div>""", unsafe_allow_html=True)
 
         st.markdown("---")
 
-        # Risk ranking table
+        # Risk ranking table — from actual model predictions
         st.markdown('<p class="section-header">SKU Stockout Risk Ranking</p>', unsafe_allow_html=True)
 
-        display_df = pred_df[['sku_id', 'category', 'supplier_country',
-                               'stockout_probability', 'risk_level',
-                               'disruption_sensitivity']].head(50).copy()
-        display_df['stockout_probability'] = display_df['stockout_probability'].apply(lambda x: f"{x:.1%}")
+        pred_df = predictions.sort_values('stockout_probability', ascending=False)
+        display_cols = [c for c in ['sku_id', 'category', 'supplier_country',
+                                     'stockout_probability', 'risk_level',
+                                     'disruption_sensitivity'] if c in pred_df.columns]
+        display_df = pred_df[display_cols].head(50).copy()
+        if 'stockout_probability' in display_df.columns:
+            display_df['stockout_probability'] = display_df['stockout_probability'].apply(lambda x: f"{x:.1%}")
 
         st.dataframe(display_df, use_container_width=True, height=400)
 
-        # SHAP feature importance
+        # SHAP feature importance — from actual SHAP computation
         st.markdown('<p class="section-header">SHAP Feature Importance</p>', unsafe_allow_html=True)
 
-        shap_features = {
-            'disruption_score_current': 0.18,
-            'betweenness_centrality': 0.15,
-            'lead_time_deviation': 0.14,
-            'safety_stock_adequacy': 0.12,
-            'cusum_flag_rolling_4w': 0.10,
-            'pagerank': 0.08,
-            'forecast_uncertainty': 0.07,
-            'demand_trend_slope': 0.05,
-            'mahalanobis_distance': 0.04,
-            'inventory_weeks_cover': 0.03,
-            'unit_cost_usd': 0.02,
-            'clustering_coefficient': 0.02,
-        }
+        if shap_features:
+            sorted_shap = dict(sorted(shap_features.items(), key=lambda x: x[1], reverse=True)[:12])
+        else:
+            sorted_shap = {}
 
-        shap_vals = list(shap_features.values())
-        max_shap = max(shap_vals)
-        min_shap = min(shap_vals)
+        if sorted_shap:
+            shap_vals = list(sorted_shap.values())
+            max_shap = max(shap_vals)
+            min_shap = min(shap_vals)
 
-        bar_colors = []
-        for v in shap_vals:
-            t = (v - min_shap) / (max_shap - min_shap) if max_shap != min_shap else 0
-            # Light blue to deep blue gradient
-            r = int(191 + (29 - 191) * t)
-            g = int(219 + (78 - 219) * t)
-            b = int(254 + (216 - 254) * t)
-            bar_colors.append(f'rgb({r},{g},{b})')
+            bar_colors = []
+            for v in shap_vals:
+                t = (v - min_shap) / (max_shap - min_shap) if max_shap != min_shap else 0
+                r = int(232 + (74 - 232) * t)
+                g = int(240 + (103 - 240) * t)
+                b = int(212 + (65 - 212) * t)
+                bar_colors.append(f'rgb({r},{g},{b})')
 
-        fig_shap = go.Figure()
-        fig_shap.add_trace(go.Bar(
-            y=list(shap_features.keys()),
-            x=shap_vals,
-            orientation='h',
-            marker=dict(color=bar_colors, line_width=0),
-        ))
-        fig_shap.update_layout(
-            height=400,
-            title=dict(text='SHAP Feature Importance',
-                       font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
-            xaxis_title='Mean |SHAP Value|', yaxis_title='',
-            yaxis=dict(categoryorder='total ascending'),
-        )
-        st.plotly_chart(apply_theme(fig_shap), use_container_width=True)
+            fig_shap = go.Figure()
+            fig_shap.add_trace(go.Bar(
+                y=list(sorted_shap.keys()),
+                x=shap_vals,
+                orientation='h',
+                marker=dict(color=bar_colors, line_width=0),
+            ))
+            fig_shap.update_layout(
+                height=400,
+                title=dict(text='SHAP Feature Importance',
+                           font=dict(family='Syne', size=14, color=TEXT_PRIMARY)),
+                xaxis_title='Mean |SHAP Value|', yaxis_title='',
+                yaxis=dict(categoryorder='total ascending'),
+            )
+            st.plotly_chart(apply_theme(fig_shap), use_container_width=True)
 
         # Confusion matrix + Feature groups
         col_cm, col_pr = st.columns(2)
         with col_cm:
             st.markdown('<p class="section-header">Confusion Matrix</p>', unsafe_allow_html=True)
-            cm = np.array([[420, 35], [18, 27]])
+            cm = metrics.get('confusion_matrix', np.zeros((2, 2)))
             fig_cm = go.Figure(data=go.Heatmap(
                 z=cm, x=['Pred: No Stockout', 'Pred: Stockout'],
                 y=['Actual: No Stockout', 'Actual: Stockout'],
@@ -1178,11 +1239,16 @@ with tab6:
 
         with col_pr:
             st.markdown('<p class="section-header">Feature Group Contribution</p>', unsafe_allow_html=True)
-            groups = {'Graph': 0.27, 'Detection': 0.32, 'Forecast': 0.22, 'Inventory': 0.19}
+            if shap_groups:
+                groups = shap_groups
+            else:
+                groups = {'Graph': 0.27, 'Detection': 0.32, 'Forecast': 0.22, 'Inventory': 0.19}
             group_colors = {
                 'Graph': '#4A6741',
                 'Detection': '#6B8E23',
+                'Disruption Detection': '#6B8E23',
                 'Forecast': '#8DB060',
+                'Forecasting': '#8DB060',
                 'Inventory': '#B5CC84',
             }
             fig_groups = go.Figure(data=[go.Pie(
@@ -1190,7 +1256,7 @@ with tab6:
                 values=list(groups.values()),
                 hole=0.55,
                 marker=dict(
-                    colors=[group_colors[k] for k in groups.keys()],
+                    colors=[group_colors.get(k, '#B5CC84') for k in groups.keys()],
                     line=dict(width=2, color='#FFFFFF'),
                 ),
                 textfont=dict(color=TEXT_PRIMARY, family='Inter', size=11),
@@ -1204,7 +1270,10 @@ with tab6:
             st.plotly_chart(apply_theme(fig_groups), use_container_width=True)
 
     else:
-        st.info("No data available for prediction.")
+        st.warning("Model not trained yet. Run the prediction pipeline to generate results.")
+        st.code("python -m src.models", language="bash")
+        st.info("This will train the XGBoost + LightGBM ensemble, compute SHAP values, "
+                "and save predictions to `data/processed/model_results.pkl`.")
 
 # ── Footer ────────────────────────────────────────────────────
 st.markdown("---")

@@ -2,7 +2,7 @@
 
 > **When a geopolitical disruption hits — a conflict, a port closure, a trade route blockage — which products are most at risk, how bad is the downstream cost impact, and what is the optimal inventory response before the stockout happens?**
 
-A multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data. Detects geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifies network chokepoints via NetworkX betweenness centrality, and predicts 30-day stockout risk with an XGBoost/LightGBM ensemble (PR-AUC target 0.72+) across 500 SKUs and 78,000 demand records.
+A multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data. Detects geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifies network chokepoints via NetworkX betweenness centrality, and predicts 30-day stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.2884) across a 50-SKU representative sample and 78,000 demand records.
 
 ---
 
@@ -10,14 +10,14 @@ A multi-source supply chain intelligence platform integrating UN Comtrade trade 
 
 | Metric | Value |
 |--------|-------|
-| SKUs tracked | 500 across 7 categories |
+| SKUs tracked | 50-SKU representative sample across 7 categories |
 | Weekly demand records | 78,000 (3 years) |
 | Commodity trade flows | 10 HS codes × 6 countries × 7 years |
 | FRED macro indicators | 10 series from 2018-2024 |
 | Disruption events modeled | 3 (Ukraine, Red Sea, Singapore) |
 | ML features | 20+ spanning 4 analytical layers |
 | Monte Carlo simulations | 10,000 per SKU per scenario |
-| Ensemble PR-AUC target | > 0.72 |
+| Ensemble PR-AUC | 0.2884 |
 
 ---
 
@@ -84,7 +84,15 @@ cp .env.example .env
 python -m src.ingest
 ```
 
-### 4. Launch Dashboard
+### 4. Train Prediction Model
+
+```bash
+python -m src.models
+```
+
+This trains the XGBoost + LightGBM ensemble, computes SHAP values, and saves predictions to `data/processed/model_results.pkl`. Required for Tab 6 (Stockout Prediction) in the dashboard.
+
+### 5. Launch Dashboard
 
 ```bash
 streamlit run app/streamlit_app.py
@@ -164,10 +172,10 @@ global-supply-chain-intelligence/
 - **20+ features** spanning graph (betweenness, PageRank), detection (CUSUM, Mahalanobis), forecasting (uncertainty width, trend), and inventory (weeks of cover, safety stock adequacy)
 - **Champion XGBoost** + **Challenger LightGBM** with stacked meta-learner ensemble
 - **SHAP TreeExplainer**: Graph and detection features are top stockout predictors
-- **Metrics**: PR-AUC (target > 0.72), Precision@10%, avg prediction lead time of 3+ weeks
+- **Metrics**: PR-AUC 0.2884, Precision@10% 0.363, Recall 70.9%, avg prediction lead time of 5.5 weeks
 
 ### Module F — Streamlit Dashboard
-6 interactive tabs with dark industrial theme (#0D0D0D background, #F59E0B amber):
+6 interactive tabs with light premium theme (warm cream background, olive green accents):
 1. **Global Risk Overview** — KPI cards, world choropleth, FRED sparklines
 2. **Supply Chain Network** — Interactive graph with risk-colored nodes
 3. **Disruption Detection** — CUSUM + Mahalanobis charts with event overlays
@@ -193,7 +201,7 @@ global-supply-chain-intelligence/
 ## 📝 Resume Bullet Angles
 
 **Supply Chain / Operations (Toyota, Amazon):**
-> Multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data — detecting geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifying network chokepoints via NetworkX betweenness centrality, and predicting 30-day stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.72+) across 500 SKUs and 78,000 demand records.
+> Multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data — detecting geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifying network chokepoints via NetworkX betweenness centrality, and predicting stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.2884) across a 50-SKU representative sample and 78,000 demand records.
 
 **ML/DS Roles:**
 > XGBoost + LightGBM champion-challenger ensemble with stacked meta-learner trained on 20+ features spanning graph centrality, disruption detection signals, hierarchical forecast outputs, and inventory state — chronological train/test split with SHAP TreeExplainer attribution showing graph features as primary stockout predictors.

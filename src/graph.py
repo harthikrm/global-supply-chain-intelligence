@@ -246,6 +246,10 @@ def simulate_disruption(G: nx.DiGraph, nodes_to_remove: list,
             if G_sim.has_edge(src, dst):
                 G_sim[src][dst]['weight'] *= factor
 
+    # Compute total trade value of the baseline graph for percentage impact
+    total_trade_value = sum(data.get('trade_value', data.get('weight', 0) * 1e6) 
+                            for _, _, data in G.edges(data=True))
+
     # Remove nodes
     removed_trade_value = 0
     for node in nodes_to_remove:
@@ -269,20 +273,8 @@ def simulate_disruption(G: nx.DiGraph, nodes_to_remove: list,
     disconnected_nodes = post_nodes - len(largest_component)
     disconnected_pct = disconnected_nodes / post_nodes * 100 if post_nodes > 0 else 0
 
-    # Path length analysis
-    try:
-        avg_path_pre = nx.average_shortest_path_length(G.to_undirected())
-    except nx.NetworkXError:
-        avg_path_pre = float('inf')
-
-    try:
-        largest_subgraph = G_sim.subgraph(largest_component).to_undirected()
-        avg_path_post = nx.average_shortest_path_length(largest_subgraph)
-    except (nx.NetworkXError, ValueError):
-        avg_path_post = float('inf')
-
-    path_increase = ((avg_path_post - avg_path_pre) / avg_path_pre * 100
-                     if avg_path_pre > 0 and avg_path_pre != float('inf') else 0)
+    # Trade value at risk pct
+    pct_trade_value_at_risk = (removed_trade_value / total_trade_value * 100) if total_trade_value > 0 else 0
 
     # Recompute centrality for remaining graph
     if len(G_sim) > 0:
@@ -297,25 +289,17 @@ def simulate_disruption(G: nx.DiGraph, nodes_to_remove: list,
         'nodes_removed': len(nodes_to_remove),
         'edges_removed': baseline_edges - post_edges,
         'trade_value_at_risk_usd': removed_trade_value,
+        'pct_trade_value_at_risk': round(pct_trade_value_at_risk, 2),
         'disconnected_nodes': disconnected_nodes,
         'disconnected_pct': round(disconnected_pct, 2),
-        'avg_path_length_increase_pct': round(path_increase, 2),
         'new_chokepoints': new_chokepoints,
         'num_components': len(components),
-        'disruption_impact_score': round(
-            0.4 * disconnected_pct / 100 +
-            0.3 * min(path_increase / 100, 1.0) +
-            0.3 * min(removed_trade_value / 1e12, 1.0),
-            4
-        ),
     }
 
     print(f"\n  ── Disruption Simulation: {event_name} ──")
     print(f"     Nodes removed: {result['nodes_removed']}")
     print(f"     Disconnected nodes: {result['disconnected_nodes']} ({result['disconnected_pct']}%)")
-    print(f"     Path length increase: {result['avg_path_length_increase_pct']}%")
-    print(f"     Trade value at risk: ${result['trade_value_at_risk_usd']:,.0f}")
-    print(f"     Impact score: {result['disruption_impact_score']}")
+    print(f"     Trade value at risk: ${result['trade_value_at_risk_usd']:,.0f} ({result['pct_trade_value_at_risk']}%)")
 
     return result
 

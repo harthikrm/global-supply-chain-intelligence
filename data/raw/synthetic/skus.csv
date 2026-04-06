@@ -1,0 +1,501 @@
+sku_id,category,supplier_country,lead_time_days,unit_cost_usd,holding_cost_pct,stockout_cost_usd,reorder_quantity,disruption_sensitivity
+SKU-0001,Electronics,Germany,15,120.2,0.0217,552.74,320,Medium
+SKU-0002,Electronics,South Korea,32,59.26,0.0491,266.51,145,Medium
+SKU-0003,Electronics,China,39,286.14,0.033,822.28,325,High
+SKU-0004,Electronics,China,35,181.47,0.031,611.23,403,High
+SKU-0005,Electronics,China,70,70.9,0.0382,178.07,79,High
+SKU-0006,Electronics,Thailand,41,484.53,0.0443,1411.84,93,High
+SKU-0007,Electronics,South Korea,22,272.83,0.021,1289.93,166,Medium
+SKU-0008,Electronics,South Korea,28,190.27,0.0356,692.61,133,Medium
+SKU-0009,Electronics,Brazil,37,464.84,0.0227,1202.98,70,Medium
+SKU-0010,Electronics,China,53,224.9,0.0281,1008.95,210,High
+SKU-0011,Electronics,China,33,410.99,0.0222,2038.78,397,High
+SKU-0012,Electronics,China,46,52.48,0.0445,216.25,378,High
+SKU-0013,Electronics,India,37,102.14,0.0459,395.27,198,High
+SKU-0014,Electronics,China,38,189.94,0.0298,795.62,336,High
+SKU-0015,Electronics,Vietnam,31,370.96,0.0428,1366.55,396,High
+SKU-0016,Electronics,Germany,20,285.23,0.0328,592.21,98,Medium
+SKU-0017,Electronics,China,30,278.86,0.0472,766.27,234,High
+SKU-0018,Electronics,India,52,152.96,0.0223,438.88,122,High
+SKU-0019,Electronics,Thailand,42,442.16,0.0441,1131.8,451,High
+SKU-0020,Electronics,Japan,36,413.35,0.0469,1221.04,99,Medium
+SKU-0021,Electronics,China,57,437.33,0.0202,1544.76,237,High
+SKU-0022,Electronics,China,42,103.94,0.0301,501.9,195,High
+SKU-0023,Electronics,Japan,21,487.3,0.0489,1342.68,273,Medium
+SKU-0024,Electronics,China,59,178.18,0.0211,682.2,276,High
+SKU-0025,Electronics,China,49,157.8,0.0243,547.31,493,High
+SKU-0026,Electronics,China,42,352.46,0.0428,956.19,377,High
+SKU-0027,Electronics,Germany,28,291.1,0.0227,1311.67,194,Medium
+SKU-0028,Electronics,China,58,68.35,0.0377,275.63,57,High
+SKU-0029,Electronics,Japan,32,128.46,0.0407,405.96,471,Medium
+SKU-0030,Electronics,China,32,203.48,0.0234,971.43,444,High
+SKU-0031,Electronics,China,55,299.84,0.0359,817.23,91,High
+SKU-0032,Electronics,Mexico,16,455.19,0.039,1373.35,207,Medium
+SKU-0033,Electronics,India,47,87.86,0.0248,412.56,322,High
+SKU-0034,Electronics,China,57,95.66,0.0399,192.77,122,High
+SKU-0035,Electronics,Japan,35,150.92,0.0414,409.26,196,Medium
+SKU-0036,Electronics,India,55,342.33,0.0455,1360.02,305,High
+SKU-0037,Electronics,China,31,159.8,0.0492,508.05,451,High
+SKU-0038,Electronics,South Korea,24,407.67,0.0351,1520.9,271,Medium
+SKU-0039,Electronics,China,35,60.94,0.0394,154.26,473,High
+SKU-0040,Electronics,Brazil,44,461.69,0.0311,944.79,467,Medium
+SKU-0041,Electronics,Germany,18,223.29,0.0455,658.88,126,Medium
+SKU-0042,Electronics,Japan,33,471.27,0.0409,1748.5,93,Medium
+SKU-0043,Electronics,Japan,35,383.35,0.0409,1574.59,211,Medium
+SKU-0044,Electronics,China,45,414.21,0.0443,1905.87,460,High
+SKU-0045,Electronics,Japan,38,342.48,0.0411,1502.59,450,Medium
+SKU-0046,Electronics,China,45,219.01,0.0228,817.97,66,High
+SKU-0047,Electronics,Germany,12,315.87,0.0209,667.13,420,Medium
+SKU-0048,Electronics,Germany,22,107.18,0.0357,461.94,147,Medium
+SKU-0049,Electronics,South Korea,46,336.84,0.0418,1659.8,282,Medium
+SKU-0050,Electronics,China,63,407.83,0.0281,1352.74,85,High
+SKU-0051,Electronics,China,37,127.98,0.0247,352.04,297,High
+SKU-0052,Electronics,South Korea,41,347.09,0.0284,1688.45,382,Medium
+SKU-0053,Electronics,Japan,18,161.48,0.0307,690.09,56,Medium
+SKU-0054,Electronics,China,63,70.7,0.0212,322.84,366,High
+SKU-0055,Electronics,Germany,20,263.06,0.0252,868.51,229,Medium
+SKU-0056,Electronics,Japan,21,335.79,0.0214,1048.95,331,Medium
+SKU-0057,Electronics,Japan,30,123.32,0.0221,484.31,61,Medium
+SKU-0058,Electronics,Japan,34,473.1,0.0373,1497.13,339,Medium
+SKU-0059,Electronics,Germany,24,223.75,0.0488,1055.22,138,Medium
+SKU-0060,Electronics,China,45,95.35,0.0205,217.72,357,High
+SKU-0061,Electronics,China,53,60.47,0.0444,172.07,103,High
+SKU-0062,Electronics,South Korea,26,333.02,0.0463,1400.42,411,Medium
+SKU-0063,Electronics,China,50,413.08,0.0497,1337.49,217,High
+SKU-0064,Electronics,India,31,203.36,0.0479,930.42,243,High
+SKU-0065,Electronics,India,35,456.15,0.0352,2043.27,194,High
+SKU-0066,Electronics,Mexico,15,225.14,0.0203,1061.79,91,Medium
+SKU-0067,Electronics,China,64,251.8,0.0288,751.87,352,High
+SKU-0068,Electronics,India,52,406.21,0.0437,923.57,272,High
+SKU-0069,Electronics,China,24,449.47,0.0305,1056.79,114,High
+SKU-0070,Electronics,India,61,328.2,0.023,739.21,365,High
+SKU-0071,Electronics,China,50,86.61,0.0225,429.58,218,High
+SKU-0072,Electronics,Germany,25,415.76,0.0484,2061.34,389,Medium
+SKU-0073,Electronics,Germany,10,457.86,0.0233,1592.38,55,Medium
+SKU-0074,Electronics,Germany,28,75.34,0.0236,177.24,342,Medium
+SKU-0075,Electronics,India,45,218.69,0.0286,1007.24,150,High
+SKU-0076,Electronics,Brazil,35,55.47,0.0491,118.12,451,Medium
+SKU-0077,Electronics,Japan,31,285.39,0.0389,1166.46,254,Medium
+SKU-0078,Electronics,South Korea,30,312.94,0.047,668.55,176,Medium
+SKU-0079,Electronics,Brazil,33,329.06,0.0283,843.83,258,Medium
+SKU-0080,Electronics,Germany,25,312.65,0.0223,1539.23,493,Medium
+SKU-0081,Auto Parts,South Korea,16,247.86,0.0405,616.64,459,Medium
+SKU-0082,Auto Parts,Taiwan,34,285.94,0.0418,1098.08,238,High
+SKU-0083,Auto Parts,Thailand,37,246.95,0.0496,605.34,317,High
+SKU-0084,Auto Parts,Germany,19,291.58,0.0453,1316.48,260,Medium
+SKU-0085,Auto Parts,Germany,20,262.12,0.0444,1310.38,498,Medium
+SKU-0086,Auto Parts,Japan,27,235.32,0.0483,1070.46,161,Medium
+SKU-0087,Auto Parts,Germany,14,208.08,0.0385,639.74,101,Medium
+SKU-0088,Auto Parts,South Korea,33,165.69,0.0432,589.94,433,Medium
+SKU-0089,Auto Parts,Japan,35,132.98,0.024,277.44,389,Medium
+SKU-0090,Auto Parts,South Korea,31,217.14,0.0264,523.12,56,Medium
+SKU-0091,Auto Parts,Germany,12,142.49,0.0471,433.85,281,Medium
+SKU-0092,Auto Parts,India,57,131.03,0.0387,601.05,477,High
+SKU-0093,Auto Parts,China,44,92.31,0.0338,456.02,271,High
+SKU-0094,Auto Parts,China,52,197.35,0.0272,439.61,107,High
+SKU-0095,Auto Parts,China,33,116.79,0.0469,399.64,350,High
+SKU-0096,Auto Parts,China,49,73.84,0.0212,185.1,175,High
+SKU-0097,Auto Parts,China,30,122.0,0.0351,496.68,67,High
+SKU-0098,Auto Parts,India,37,195.81,0.0225,904.79,464,High
+SKU-0099,Auto Parts,China,53,229.51,0.0255,603.16,216,High
+SKU-0100,Auto Parts,Germany,17,193.11,0.0311,654.18,386,Medium
+SKU-0101,Auto Parts,China,53,270.66,0.0354,973.39,98,High
+SKU-0102,Auto Parts,Germany,16,169.13,0.0273,474.87,219,Medium
+SKU-0103,Auto Parts,China,34,111.7,0.0236,521.82,317,High
+SKU-0104,Auto Parts,South Korea,25,240.97,0.035,544.78,291,Medium
+SKU-0105,Auto Parts,Japan,24,55.72,0.0285,172.13,340,Medium
+SKU-0106,Auto Parts,Japan,39,119.71,0.0496,456.97,156,Medium
+SKU-0107,Auto Parts,China,40,64.99,0.0256,185.57,128,High
+SKU-0108,Auto Parts,Mexico,11,42.47,0.0357,137.23,492,Medium
+SKU-0109,Auto Parts,China,48,262.34,0.0445,727.65,126,High
+SKU-0110,Auto Parts,South Korea,29,280.23,0.0367,1041.01,175,Medium
+SKU-0111,Auto Parts,India,33,139.12,0.0352,379.41,101,High
+SKU-0112,Auto Parts,Japan,20,100.82,0.0374,248.33,266,Medium
+SKU-0113,Auto Parts,Japan,26,57.64,0.0219,286.46,195,Medium
+SKU-0114,Auto Parts,Taiwan,28,91.3,0.0404,390.83,318,High
+SKU-0115,Auto Parts,Germany,12,280.27,0.0449,1371.94,105,Medium
+SKU-0116,Auto Parts,India,27,282.74,0.0254,621.88,383,High
+SKU-0117,Auto Parts,Japan,27,242.67,0.026,604.48,123,Medium
+SKU-0118,Auto Parts,Taiwan,32,206.26,0.0357,634.56,444,High
+SKU-0119,Auto Parts,Germany,19,125.54,0.0339,364.58,386,Medium
+SKU-0120,Auto Parts,Japan,37,85.02,0.047,267.96,294,Medium
+SKU-0121,Auto Parts,Mexico,10,283.15,0.0388,850.79,112,Medium
+SKU-0122,Auto Parts,India,43,193.62,0.036,906.47,404,High
+SKU-0123,Auto Parts,China,34,228.3,0.021,846.92,393,High
+SKU-0124,Auto Parts,Vietnam,33,115.78,0.0446,269.99,430,High
+SKU-0125,Auto Parts,China,57,61.98,0.0269,258.26,374,High
+SKU-0126,Auto Parts,South Korea,26,214.31,0.0363,590.51,205,Medium
+SKU-0127,Auto Parts,China,46,132.24,0.0339,640.29,119,High
+SKU-0128,Auto Parts,Japan,33,161.65,0.0383,332.08,442,Medium
+SKU-0129,Auto Parts,Thailand,54,278.3,0.0412,683.95,309,High
+SKU-0130,Auto Parts,Japan,32,138.76,0.0421,666.48,466,Medium
+SKU-0131,Auto Parts,Germany,33,131.72,0.0216,395.9,411,Medium
+SKU-0132,Auto Parts,China,50,113.38,0.0319,409.55,463,High
+SKU-0133,Auto Parts,China,57,146.62,0.0267,492.25,113,High
+SKU-0134,Auto Parts,China,36,159.54,0.0326,756.94,213,High
+SKU-0135,Auto Parts,Japan,20,289.1,0.0245,937.8,88,Medium
+SKU-0136,Auto Parts,Turkey,28,160.61,0.0379,353.54,387,Medium
+SKU-0137,Auto Parts,China,43,73.39,0.0211,250.71,304,High
+SKU-0138,Auto Parts,China,46,237.15,0.0336,847.38,248,High
+SKU-0139,Auto Parts,Germany,15,70.94,0.0459,343.23,217,Medium
+SKU-0140,Auto Parts,China,47,200.32,0.0323,415.9,120,High
+SKU-0141,Auto Parts,South Korea,29,82.15,0.0269,329.89,58,Medium
+SKU-0142,Auto Parts,China,45,243.98,0.0254,965.73,157,High
+SKU-0143,Auto Parts,China,53,259.6,0.0449,828.53,350,High
+SKU-0144,Auto Parts,China,35,102.08,0.0469,208.14,88,High
+SKU-0145,Auto Parts,China,28,269.95,0.0445,816.72,166,High
+SKU-0146,Auto Parts,Germany,29,185.28,0.028,717.49,234,Medium
+SKU-0147,Auto Parts,Japan,15,285.57,0.0429,691.18,440,Medium
+SKU-0148,Auto Parts,Germany,18,270.47,0.044,885.96,60,Medium
+SKU-0149,Auto Parts,China,66,92.21,0.0242,415.39,492,High
+SKU-0150,Auto Parts,Japan,32,68.07,0.0282,139.9,461,Medium
+SKU-0151,Auto Parts,China,28,175.17,0.0395,786.38,142,High
+SKU-0152,Auto Parts,China,50,58.33,0.047,269.58,318,High
+SKU-0153,Auto Parts,Japan,20,276.04,0.0326,869.36,283,Medium
+SKU-0154,Auto Parts,China,50,66.56,0.0421,149.65,321,High
+SKU-0155,Auto Parts,China,29,119.59,0.0416,345.78,304,High
+SKU-0156,Auto Parts,Germany,17,205.83,0.0481,864.02,146,Medium
+SKU-0157,Auto Parts,China,51,34.4,0.0349,130.39,200,High
+SKU-0158,Auto Parts,India,21,49.85,0.0223,208.6,272,High
+SKU-0159,Auto Parts,South Korea,19,249.35,0.044,1018.37,172,Medium
+SKU-0160,Auto Parts,Japan,25,121.07,0.0227,575.32,111,Medium
+SKU-0161,Auto Parts,Brazil,21,171.73,0.0462,720.69,412,Medium
+SKU-0162,Auto Parts,South Korea,28,213.84,0.0455,587.85,270,Medium
+SKU-0163,Auto Parts,China,53,29.5,0.0409,85.32,465,High
+SKU-0164,Auto Parts,Brazil,36,284.39,0.0342,1304.25,430,Medium
+SKU-0165,Auto Parts,China,30,53.76,0.0223,219.82,202,High
+SKU-0166,Auto Parts,India,46,38.3,0.0295,138.59,405,High
+SKU-0167,Auto Parts,China,53,192.44,0.027,398.97,441,High
+SKU-0168,Auto Parts,China,47,264.92,0.0359,1276.17,409,High
+SKU-0169,Auto Parts,Turkey,32,132.54,0.0344,514.59,443,Medium
+SKU-0170,Auto Parts,Turkey,20,235.12,0.0325,767.45,381,Medium
+SKU-0171,Auto Parts,China,41,100.43,0.0289,271.24,68,High
+SKU-0172,Auto Parts,China,36,296.56,0.0328,935.05,355,High
+SKU-0173,Auto Parts,China,43,266.15,0.0483,905.5,326,High
+SKU-0174,Auto Parts,China,36,297.53,0.027,1436.53,342,High
+SKU-0175,Auto Parts,Japan,17,69.43,0.0266,177.69,400,Medium
+SKU-0176,Auto Parts,Germany,21,36.2,0.0491,168.38,467,Medium
+SKU-0177,Auto Parts,Turkey,22,232.31,0.0409,571.87,417,Medium
+SKU-0178,Auto Parts,China,33,82.67,0.0361,312.4,311,High
+SKU-0179,Auto Parts,China,41,56.26,0.0467,273.81,437,High
+SKU-0180,Auto Parts,Taiwan,36,203.47,0.0365,460.04,233,High
+SKU-0181,Food & Beverage,Germany,25,42.19,0.0224,112.25,357,Low
+SKU-0182,Food & Beverage,China,35,68.84,0.0349,236.93,316,Medium
+SKU-0183,Food & Beverage,Taiwan,42,47.43,0.028,219.88,408,Medium
+SKU-0184,Food & Beverage,South Korea,22,68.79,0.046,283.76,426,Low
+SKU-0185,Food & Beverage,South Korea,37,61.45,0.0248,285.29,442,Low
+SKU-0186,Food & Beverage,China,60,66.94,0.0239,201.18,384,Medium
+SKU-0187,Food & Beverage,China,49,43.06,0.0202,123.2,327,Medium
+SKU-0188,Food & Beverage,Turkey,27,52.39,0.0278,204.43,292,Low
+SKU-0189,Food & Beverage,India,43,45.59,0.0489,137.94,334,Medium
+SKU-0190,Food & Beverage,Thailand,34,12.69,0.0481,51.57,80,Medium
+SKU-0191,Food & Beverage,China,41,48.66,0.0304,187.96,70,Medium
+SKU-0192,Food & Beverage,Vietnam,43,78.01,0.0491,331.46,108,Medium
+SKU-0193,Food & Beverage,India,38,62.78,0.0405,209.54,173,Medium
+SKU-0194,Food & Beverage,Turkey,12,36.96,0.0335,92.06,407,Low
+SKU-0195,Food & Beverage,South Korea,37,25.49,0.0485,62.53,244,Low
+SKU-0196,Food & Beverage,Thailand,49,36.48,0.0392,116.47,173,Medium
+SKU-0197,Food & Beverage,Turkey,30,22.25,0.0264,46.58,343,Low
+SKU-0198,Food & Beverage,Germany,19,69.83,0.0342,342.49,133,Low
+SKU-0199,Food & Beverage,Vietnam,49,68.36,0.0428,265.15,109,Medium
+SKU-0200,Food & Beverage,China,52,74.06,0.0385,325.09,266,Medium
+SKU-0201,Food & Beverage,China,48,37.27,0.026,129.51,78,Medium
+SKU-0202,Food & Beverage,Japan,22,25.17,0.0439,73.78,254,Low
+SKU-0203,Food & Beverage,China,43,41.0,0.038,117.87,362,Medium
+SKU-0204,Food & Beverage,Vietnam,35,63.49,0.0212,218.5,97,Medium
+SKU-0205,Food & Beverage,China,69,57.68,0.0368,117.05,196,Medium
+SKU-0206,Food & Beverage,Japan,27,11.59,0.0305,24.33,85,Low
+SKU-0207,Food & Beverage,Germany,21,56.71,0.044,147.47,125,Low
+SKU-0208,Food & Beverage,China,34,52.73,0.0412,110.46,471,Medium
+SKU-0209,Food & Beverage,China,63,70.32,0.0414,309.77,202,Medium
+SKU-0210,Food & Beverage,Taiwan,34,11.01,0.0468,40.11,417,Medium
+SKU-0211,Food & Beverage,Germany,23,59.87,0.0224,130.58,161,Low
+SKU-0212,Food & Beverage,China,66,70.38,0.0266,346.8,201,Medium
+SKU-0213,Food & Beverage,China,51,42.36,0.0367,176.12,152,Medium
+SKU-0214,Food & Beverage,Turkey,31,78.11,0.0395,202.98,356,Low
+SKU-0215,Food & Beverage,China,55,59.54,0.0423,195.08,205,Medium
+SKU-0216,Food & Beverage,Germany,20,79.07,0.0212,363.81,310,Low
+SKU-0217,Food & Beverage,Germany,20,70.51,0.047,230.23,174,Low
+SKU-0218,Food & Beverage,Japan,40,73.43,0.0263,284.09,334,Low
+SKU-0219,Food & Beverage,India,44,73.18,0.0254,198.51,487,Medium
+SKU-0220,Food & Beverage,China,38,69.08,0.0348,189.4,441,Medium
+SKU-0221,Food & Beverage,Germany,9,49.47,0.0249,156.98,486,Low
+SKU-0222,Food & Beverage,China,47,54.26,0.0298,234.43,108,Medium
+SKU-0223,Food & Beverage,Brazil,19,10.51,0.0251,37.41,201,Low
+SKU-0224,Food & Beverage,Taiwan,29,37.32,0.0275,143.74,368,Medium
+SKU-0225,Food & Beverage,China,53,40.6,0.0453,179.33,313,Medium
+SKU-0226,Food & Beverage,Vietnam,54,20.44,0.0234,57.42,75,Medium
+SKU-0227,Food & Beverage,Japan,27,75.04,0.0295,264.27,68,Low
+SKU-0228,Food & Beverage,China,34,79.0,0.049,159.17,478,Medium
+SKU-0229,Food & Beverage,South Korea,29,43.67,0.0347,174.71,112,Low
+SKU-0230,Food & Beverage,China,55,28.09,0.0411,73.19,353,Medium
+SKU-0231,Food & Beverage,Brazil,37,38.28,0.046,96.9,361,Low
+SKU-0232,Food & Beverage,Taiwan,26,75.85,0.0405,264.83,328,Medium
+SKU-0233,Food & Beverage,Vietnam,37,74.82,0.0407,301.49,147,Medium
+SKU-0234,Food & Beverage,South Korea,30,34.54,0.0395,80.13,346,Low
+SKU-0235,Food & Beverage,Turkey,31,63.68,0.037,268.43,445,Low
+SKU-0236,Food & Beverage,Germany,19,29.53,0.04,130.63,393,Low
+SKU-0237,Food & Beverage,India,55,14.02,0.0363,28.28,196,Medium
+SKU-0238,Food & Beverage,Germany,19,34.71,0.0409,109.88,251,Low
+SKU-0239,Food & Beverage,China,32,10.49,0.0381,42.01,328,Medium
+SKU-0240,Food & Beverage,Germany,17,33.48,0.0459,119.1,265,Low
+SKU-0241,Food & Beverage,China,33,34.91,0.0374,125.7,323,Medium
+SKU-0242,Food & Beverage,India,21,65.97,0.0415,321.05,58,Medium
+SKU-0243,Food & Beverage,China,42,74.53,0.0218,357.99,208,Medium
+SKU-0244,Food & Beverage,China,48,41.44,0.0277,118.3,188,Medium
+SKU-0245,Food & Beverage,Taiwan,16,50.78,0.0415,143.09,236,Medium
+SKU-0246,Food & Beverage,China,48,18.59,0.0404,47.3,286,Medium
+SKU-0247,Food & Beverage,South Korea,31,24.24,0.0489,83.64,412,Low
+SKU-0248,Food & Beverage,Japan,21,8.26,0.039,40.1,320,Low
+SKU-0249,Food & Beverage,Taiwan,29,20.9,0.0383,67.57,427,Medium
+SKU-0250,Food & Beverage,Mexico,15,31.51,0.0271,136.8,173,Low
+SKU-0251,Food & Beverage,Taiwan,46,12.17,0.0387,40.83,313,Medium
+SKU-0252,Food & Beverage,China,36,60.27,0.0459,159.73,93,Medium
+SKU-0253,Food & Beverage,China,57,46.0,0.027,145.95,317,Medium
+SKU-0254,Food & Beverage,Germany,29,79.08,0.0241,323.08,231,Low
+SKU-0255,Food & Beverage,Germany,25,79.34,0.0239,183.46,375,Low
+SKU-0256,Food & Beverage,Japan,35,25.56,0.0224,57.69,452,Low
+SKU-0257,Food & Beverage,China,33,31.62,0.0221,112.48,80,Medium
+SKU-0258,Food & Beverage,Taiwan,26,22.53,0.0362,104.54,342,Medium
+SKU-0259,Food & Beverage,Japan,19,55.21,0.0498,220.04,301,Low
+SKU-0260,Food & Beverage,India,25,39.89,0.0218,147.07,480,Medium
+SKU-0261,Chemicals,China,35,121.09,0.0229,405.79,390,High
+SKU-0262,Chemicals,China,51,143.03,0.0439,683.9,155,High
+SKU-0263,Chemicals,Germany,21,173.15,0.0356,670.22,90,Medium
+SKU-0264,Chemicals,India,49,51.71,0.0448,224.74,368,High
+SKU-0265,Chemicals,China,34,91.22,0.0226,438.85,299,High
+SKU-0266,Chemicals,China,36,97.49,0.0334,370.64,282,High
+SKU-0267,Chemicals,Mexico,15,174.74,0.0263,837.32,102,Medium
+SKU-0268,Chemicals,Taiwan,31,94.71,0.0463,436.06,412,High
+SKU-0269,Chemicals,India,33,98.51,0.0252,402.4,205,High
+SKU-0270,Chemicals,Brazil,32,138.97,0.0447,333.19,437,Medium
+SKU-0271,Chemicals,Thailand,60,160.02,0.0252,561.3,229,High
+SKU-0272,Chemicals,China,41,92.48,0.022,192.12,110,High
+SKU-0273,Chemicals,Brazil,40,103.52,0.0294,364.23,247,Medium
+SKU-0274,Chemicals,China,45,138.94,0.0265,536.14,342,High
+SKU-0275,Chemicals,China,38,199.13,0.0217,813.47,492,High
+SKU-0276,Chemicals,China,44,54.18,0.0236,157.65,95,High
+SKU-0277,Chemicals,South Korea,30,199.44,0.0444,766.98,187,Medium
+SKU-0278,Chemicals,South Korea,24,119.6,0.0328,286.1,448,Medium
+SKU-0279,Chemicals,Germany,18,100.4,0.0448,421.76,396,Medium
+SKU-0280,Chemicals,China,33,100.75,0.0344,207.3,166,High
+SKU-0281,Chemicals,India,41,66.58,0.0204,181.34,489,High
+SKU-0282,Chemicals,Taiwan,23,193.13,0.0346,449.84,296,High
+SKU-0283,Chemicals,Germany,15,85.19,0.0421,292.04,219,Medium
+SKU-0284,Chemicals,Germany,20,108.11,0.0436,505.55,479,Medium
+SKU-0285,Chemicals,India,53,104.39,0.0276,472.12,67,High
+SKU-0286,Chemicals,Mexico,9,108.45,0.0391,431.42,452,Medium
+SKU-0287,Chemicals,South Korea,25,118.13,0.0245,497.6,280,Medium
+SKU-0288,Chemicals,South Korea,31,37.08,0.0225,153.84,82,Medium
+SKU-0289,Chemicals,China,36,80.41,0.0305,347.69,347,High
+SKU-0290,Chemicals,China,57,59.6,0.023,237.26,393,High
+SKU-0291,Chemicals,China,51,94.93,0.0262,224.43,326,High
+SKU-0292,Chemicals,India,55,139.46,0.0359,296.47,485,High
+SKU-0293,Chemicals,India,57,157.17,0.0444,623.88,107,High
+SKU-0294,Chemicals,China,62,187.77,0.0267,585.19,244,High
+SKU-0295,Chemicals,Germany,23,70.92,0.0236,183.85,449,Medium
+SKU-0296,Chemicals,South Korea,31,78.6,0.0445,360.31,430,Medium
+SKU-0297,Chemicals,Mexico,17,108.29,0.0453,453.24,399,Medium
+SKU-0298,Chemicals,South Korea,24,60.16,0.0364,298.03,471,Medium
+SKU-0299,Chemicals,China,44,153.42,0.0445,405.11,277,High
+SKU-0300,Chemicals,Taiwan,31,154.58,0.0363,582.93,278,High
+SKU-0301,Chemicals,China,63,178.46,0.0391,764.41,122,High
+SKU-0302,Chemicals,Germany,24,31.59,0.0274,132.03,496,Medium
+SKU-0303,Chemicals,China,57,64.69,0.0367,271.65,327,High
+SKU-0304,Chemicals,China,40,90.42,0.0435,331.18,52,High
+SKU-0305,Chemicals,India,22,55.31,0.0292,256.08,498,High
+SKU-0306,Chemicals,Germany,15,106.26,0.0417,495.02,316,Medium
+SKU-0307,Chemicals,Germany,29,30.55,0.0386,93.68,407,Medium
+SKU-0308,Chemicals,China,37,129.99,0.0344,510.47,79,High
+SKU-0309,Chemicals,Japan,41,132.59,0.0403,585.38,171,Medium
+SKU-0310,Chemicals,Taiwan,47,114.7,0.0223,249.55,200,High
+SKU-0311,Chemicals,India,51,117.94,0.0332,288.05,197,High
+SKU-0312,Chemicals,Germany,24,45.06,0.0266,170.99,381,Medium
+SKU-0313,Chemicals,Turkey,26,101.61,0.0391,442.71,103,Medium
+SKU-0314,Chemicals,Germany,23,172.77,0.0315,641.95,314,Medium
+SKU-0315,Chemicals,China,30,34.45,0.0207,154.86,172,High
+SKU-0316,Chemicals,Japan,19,80.78,0.0482,224.4,243,Medium
+SKU-0317,Chemicals,Vietnam,38,166.45,0.0337,574.07,110,High
+SKU-0318,Chemicals,China,49,153.75,0.0349,509.0,378,High
+SKU-0319,Chemicals,India,44,53.01,0.0425,210.5,480,High
+SKU-0320,Chemicals,China,34,39.7,0.0285,110.57,161,High
+SKU-0321,Metals,Mexico,10,199.47,0.0335,863.73,79,Medium
+SKU-0322,Metals,Germany,16,47.06,0.0219,222.09,112,Medium
+SKU-0323,Metals,Japan,15,228.97,0.0207,913.9,483,Medium
+SKU-0324,Metals,Japan,20,236.73,0.0216,770.88,167,Medium
+SKU-0325,Metals,India,26,158.72,0.0339,780.27,323,High
+SKU-0326,Metals,China,50,63.96,0.0245,171.15,162,High
+SKU-0327,Metals,Vietnam,52,64.1,0.0458,267.2,80,High
+SKU-0328,Metals,South Korea,48,154.14,0.0225,520.21,268,Medium
+SKU-0329,Metals,China,40,126.47,0.0395,459.88,78,High
+SKU-0330,Metals,Japan,42,209.34,0.0338,451.31,403,Medium
+SKU-0331,Metals,China,37,109.35,0.0427,389.08,142,High
+SKU-0332,Metals,Vietnam,36,224.71,0.0461,610.4,253,High
+SKU-0333,Metals,Turkey,24,230.94,0.0362,806.77,97,Medium
+SKU-0334,Metals,South Korea,24,212.64,0.0314,920.06,484,Medium
+SKU-0335,Metals,China,26,206.5,0.0373,806.12,409,High
+SKU-0336,Metals,Germany,22,232.17,0.036,574.36,363,Medium
+SKU-0337,Metals,India,50,230.29,0.0283,1140.07,113,High
+SKU-0338,Metals,China,40,78.69,0.0468,311.84,118,High
+SKU-0339,Metals,Germany,17,225.31,0.0441,792.1,485,Medium
+SKU-0340,Metals,Germany,22,246.66,0.04,962.96,124,Medium
+SKU-0341,Metals,Vietnam,30,42.65,0.0368,152.78,373,High
+SKU-0342,Metals,Mexico,12,56.68,0.0419,145.23,436,Medium
+SKU-0343,Metals,Taiwan,46,106.01,0.0341,473.33,256,High
+SKU-0344,Metals,Germany,22,143.78,0.0448,432.15,128,Medium
+SKU-0345,Metals,South Korea,26,113.07,0.0335,480.15,343,Medium
+SKU-0346,Metals,South Korea,27,114.0,0.0452,389.18,490,Medium
+SKU-0347,Metals,South Korea,32,108.27,0.0406,239.16,128,Medium
+SKU-0348,Metals,Vietnam,34,87.71,0.0451,248.91,339,High
+SKU-0349,Metals,South Korea,16,84.66,0.021,246.52,343,Medium
+SKU-0350,Metals,Thailand,39,222.95,0.043,973.25,349,High
+SKU-0351,Metals,China,47,157.69,0.0233,526.87,257,High
+SKU-0352,Metals,Vietnam,48,154.8,0.0314,763.23,99,High
+SKU-0353,Metals,Germany,19,220.25,0.0288,1042.29,389,Medium
+SKU-0354,Metals,Taiwan,35,43.78,0.0489,183.0,187,High
+SKU-0355,Metals,Taiwan,37,63.64,0.0411,230.51,93,High
+SKU-0356,Metals,China,41,42.6,0.0341,123.7,319,High
+SKU-0357,Metals,China,55,50.11,0.0471,228.34,350,High
+SKU-0358,Metals,Japan,21,227.38,0.0256,508.63,157,Medium
+SKU-0359,Metals,India,40,249.04,0.0457,887.66,78,High
+SKU-0360,Metals,Taiwan,28,165.79,0.0234,378.26,459,High
+SKU-0361,Metals,South Korea,34,130.39,0.0295,430.78,398,Medium
+SKU-0362,Metals,Japan,46,227.43,0.0333,869.07,334,Medium
+SKU-0363,Metals,Japan,20,147.6,0.0231,465.46,269,Medium
+SKU-0364,Metals,South Korea,35,239.61,0.038,1013.74,277,Medium
+SKU-0365,Metals,South Korea,29,115.99,0.0342,247.86,113,Medium
+SKU-0366,Metals,China,43,244.02,0.0299,840.92,138,High
+SKU-0367,Metals,Japan,21,148.48,0.0202,300.37,148,Medium
+SKU-0368,Metals,China,38,62.69,0.0302,276.32,307,High
+SKU-0369,Metals,Japan,30,123.37,0.0226,475.12,101,Medium
+SKU-0370,Metals,China,43,146.56,0.0462,510.12,366,High
+SKU-0371,Metals,Turkey,22,122.86,0.0327,397.21,458,Medium
+SKU-0372,Metals,South Korea,25,167.66,0.0293,749.67,479,Medium
+SKU-0373,Metals,Taiwan,33,184.18,0.0234,580.45,255,High
+SKU-0374,Metals,Germany,17,65.42,0.0326,278.27,81,Medium
+SKU-0375,Metals,China,50,180.4,0.0404,556.67,317,High
+SKU-0376,Metals,China,43,173.58,0.0474,666.15,443,High
+SKU-0377,Metals,India,40,69.85,0.0204,228.14,182,High
+SKU-0378,Metals,Germany,17,161.21,0.0213,381.91,301,Medium
+SKU-0379,Metals,China,53,217.58,0.0408,715.79,352,High
+SKU-0380,Metals,China,57,104.33,0.0437,348.38,409,High
+SKU-0381,Pharmaceuticals,Taiwan,17,507.54,0.0311,1930.29,367,Medium
+SKU-0382,Pharmaceuticals,South Korea,25,362.19,0.025,1192.18,114,Low
+SKU-0383,Pharmaceuticals,Mexico,10,117.81,0.0394,460.72,203,Low
+SKU-0384,Pharmaceuticals,China,40,386.74,0.0293,1559.09,322,Medium
+SKU-0385,Pharmaceuticals,Germany,30,198.39,0.0346,413.17,277,Low
+SKU-0386,Pharmaceuticals,Brazil,30,368.94,0.0212,772.14,224,Low
+SKU-0387,Pharmaceuticals,China,26,730.06,0.0235,3553.75,191,Medium
+SKU-0388,Pharmaceuticals,Vietnam,38,522.06,0.0448,2585.26,179,Medium
+SKU-0389,Pharmaceuticals,Brazil,19,338.27,0.0362,832.97,299,Low
+SKU-0390,Pharmaceuticals,Japan,17,633.33,0.045,2103.49,186,Low
+SKU-0391,Pharmaceuticals,China,32,776.49,0.0367,2361.95,311,Medium
+SKU-0392,Pharmaceuticals,China,36,410.83,0.0388,1424.22,230,Medium
+SKU-0393,Pharmaceuticals,Turkey,26,498.56,0.0386,1298.22,227,Low
+SKU-0394,Pharmaceuticals,China,53,432.88,0.0363,1161.52,483,Medium
+SKU-0395,Pharmaceuticals,Mexico,15,708.98,0.0239,3099.33,106,Low
+SKU-0396,Pharmaceuticals,India,61,293.04,0.0463,1416.01,116,Medium
+SKU-0397,Pharmaceuticals,Germany,20,704.48,0.0377,2202.2,178,Low
+SKU-0398,Pharmaceuticals,China,48,633.26,0.0316,2237.83,271,Medium
+SKU-0399,Pharmaceuticals,Japan,36,635.17,0.0372,3092.1,140,Low
+SKU-0400,Pharmaceuticals,China,41,697.77,0.0332,3168.51,451,Medium
+SKU-0401,Pharmaceuticals,China,43,457.3,0.0388,2185.5,58,Medium
+SKU-0402,Pharmaceuticals,Germany,26,581.41,0.0417,2370.76,110,Low
+SKU-0403,Pharmaceuticals,China,56,295.13,0.0263,1437.97,53,Medium
+SKU-0404,Pharmaceuticals,Turkey,21,573.77,0.0449,1654.67,56,Low
+SKU-0405,Pharmaceuticals,India,46,200.0,0.0426,861.35,346,Medium
+SKU-0406,Pharmaceuticals,India,48,692.15,0.0384,1568.28,269,Medium
+SKU-0407,Pharmaceuticals,China,28,146.21,0.0305,341.11,413,Medium
+SKU-0408,Pharmaceuticals,Thailand,23,150.62,0.0487,537.37,184,Medium
+SKU-0409,Pharmaceuticals,China,59,594.96,0.0215,1320.04,231,Medium
+SKU-0410,Pharmaceuticals,China,45,262.67,0.0284,1158.49,468,Medium
+SKU-0411,Pharmaceuticals,Germany,19,433.51,0.0268,1699.98,490,Low
+SKU-0412,Pharmaceuticals,Japan,32,350.47,0.0394,830.18,449,Low
+SKU-0413,Pharmaceuticals,Japan,43,537.35,0.0222,2175.11,158,Low
+SKU-0414,Pharmaceuticals,South Korea,20,675.77,0.0441,2471.63,284,Low
+SKU-0415,Pharmaceuticals,China,37,447.69,0.0285,1075.12,333,Medium
+SKU-0416,Pharmaceuticals,China,53,624.05,0.0295,1248.35,280,Medium
+SKU-0417,Pharmaceuticals,China,54,143.88,0.0452,289.41,161,Medium
+SKU-0418,Pharmaceuticals,India,27,321.39,0.0231,990.11,171,Medium
+SKU-0419,Pharmaceuticals,Taiwan,40,724.31,0.033,3425.86,219,Medium
+SKU-0420,Pharmaceuticals,Brazil,28,162.5,0.0406,565.73,224,Low
+SKU-0421,Pharmaceuticals,South Korea,33,566.47,0.049,2426.26,477,Low
+SKU-0422,Pharmaceuticals,South Korea,24,308.64,0.0232,1341.19,339,Low
+SKU-0423,Pharmaceuticals,China,49,450.28,0.033,1518.84,143,Medium
+SKU-0424,Pharmaceuticals,Germany,20,358.87,0.0216,1544.11,237,Low
+SKU-0425,Pharmaceuticals,Taiwan,28,560.15,0.0342,2599.36,147,Medium
+SKU-0426,Pharmaceuticals,South Korea,33,525.43,0.0289,1266.18,343,Low
+SKU-0427,Pharmaceuticals,India,52,376.59,0.0414,978.25,450,Medium
+SKU-0428,Pharmaceuticals,China,31,357.45,0.0217,834.48,282,Medium
+SKU-0429,Pharmaceuticals,China,29,113.53,0.0237,367.94,271,Medium
+SKU-0430,Pharmaceuticals,Germany,15,471.66,0.0379,957.36,258,Low
+SKU-0431,Pharmaceuticals,Brazil,55,318.3,0.0432,1374.66,284,Low
+SKU-0432,Pharmaceuticals,Brazil,37,187.89,0.0205,809.9,413,Low
+SKU-0433,Pharmaceuticals,China,54,462.57,0.0304,1441.01,50,Medium
+SKU-0434,Pharmaceuticals,China,37,552.52,0.0492,2509.09,60,Medium
+SKU-0435,Pharmaceuticals,Mexico,16,420.6,0.0319,1223.42,79,Low
+SKU-0436,Pharmaceuticals,China,51,272.62,0.0345,1156.54,263,Medium
+SKU-0437,Pharmaceuticals,China,50,152.92,0.031,409.24,138,Medium
+SKU-0438,Pharmaceuticals,China,45,535.69,0.0434,2000.75,116,Medium
+SKU-0439,Pharmaceuticals,Taiwan,21,571.89,0.0278,1736.02,462,Medium
+SKU-0440,Pharmaceuticals,China,60,428.99,0.0467,1768.8,77,Medium
+SKU-0441,Pharmaceuticals,China,34,770.55,0.0359,2100.27,275,Medium
+SKU-0442,Pharmaceuticals,South Korea,28,153.37,0.0282,678.03,256,Low
+SKU-0443,Pharmaceuticals,Japan,24,216.02,0.0334,567.6,72,Low
+SKU-0444,Pharmaceuticals,Taiwan,31,786.83,0.0438,3589.01,158,Medium
+SKU-0445,Pharmaceuticals,Brazil,35,281.68,0.0331,1064.94,82,Low
+SKU-0446,Pharmaceuticals,South Korea,32,786.82,0.0257,3444.53,458,Low
+SKU-0447,Pharmaceuticals,Thailand,38,784.12,0.0427,1948.55,264,Medium
+SKU-0448,Pharmaceuticals,South Korea,34,273.14,0.0392,1092.51,123,Low
+SKU-0449,Pharmaceuticals,Japan,27,108.47,0.0203,333.12,466,Low
+SKU-0450,Pharmaceuticals,China,60,544.05,0.0267,1613.11,431,Medium
+SKU-0451,Textiles,India,38,12.63,0.0344,50.36,103,Medium
+SKU-0452,Textiles,China,36,45.81,0.0476,228.12,70,Medium
+SKU-0453,Textiles,India,23,77.88,0.0476,377.93,309,Medium
+SKU-0454,Textiles,Germany,12,80.88,0.0275,298.63,211,Low
+SKU-0455,Textiles,South Korea,25,92.64,0.0231,325.9,149,Low
+SKU-0456,Textiles,China,39,13.24,0.0253,60.91,177,Medium
+SKU-0457,Textiles,Brazil,19,62.21,0.0355,266.03,177,Low
+SKU-0458,Textiles,Germany,30,90.47,0.0484,423.19,238,Low
+SKU-0459,Textiles,India,35,28.42,0.0377,72.71,199,Medium
+SKU-0460,Textiles,Vietnam,7,28.64,0.0221,63.21,473,Medium
+SKU-0461,Textiles,Japan,36,85.22,0.03,347.77,397,Low
+SKU-0462,Textiles,South Korea,27,23.64,0.0463,85.51,177,Low
+SKU-0463,Textiles,Germany,24,14.92,0.0492,39.96,186,Low
+SKU-0464,Textiles,China,19,30.74,0.02,128.74,485,Medium
+SKU-0465,Textiles,China,57,86.36,0.0327,251.2,196,Medium
+SKU-0466,Textiles,South Korea,35,83.51,0.0254,259.95,455,Low
+SKU-0467,Textiles,Taiwan,43,69.49,0.0224,252.49,369,Medium
+SKU-0468,Textiles,China,27,80.26,0.0375,389.8,69,Medium
+SKU-0469,Textiles,China,29,74.3,0.0428,171.45,281,Medium
+SKU-0470,Textiles,Japan,33,43.24,0.048,193.82,363,Low
+SKU-0471,Textiles,South Korea,35,72.51,0.0419,332.46,173,Low
+SKU-0472,Textiles,Taiwan,31,27.57,0.0304,82.9,490,Medium
+SKU-0473,Textiles,Vietnam,52,60.59,0.0484,211.38,221,Medium
+SKU-0474,Textiles,China,54,80.76,0.042,254.64,61,Medium
+SKU-0475,Textiles,Taiwan,31,31.15,0.0411,138.66,295,Medium
+SKU-0476,Textiles,Brazil,39,14.65,0.0351,60.88,438,Low
+SKU-0477,Textiles,China,47,45.69,0.024,209.99,120,Medium
+SKU-0478,Textiles,China,58,36.1,0.0461,145.05,408,Medium
+SKU-0479,Textiles,China,56,84.95,0.0472,173.0,353,Medium
+SKU-0480,Textiles,China,64,59.4,0.0286,173.47,208,Medium
+SKU-0481,Textiles,South Korea,38,46.41,0.0221,201.94,178,Low
+SKU-0482,Textiles,Germany,16,71.69,0.03,155.55,218,Low
+SKU-0483,Textiles,Thailand,50,66.91,0.026,217.79,387,Medium
+SKU-0484,Textiles,China,56,35.01,0.0283,115.39,491,Medium
+SKU-0485,Textiles,China,31,97.36,0.0234,312.6,382,Medium
+SKU-0486,Textiles,South Korea,30,48.05,0.0304,153.42,168,Low
+SKU-0487,Textiles,China,27,35.87,0.0397,175.96,321,Medium
+SKU-0488,Textiles,China,43,16.8,0.0485,48.58,91,Medium
+SKU-0489,Textiles,Japan,38,34.07,0.0205,166.77,162,Low
+SKU-0490,Textiles,South Korea,38,73.6,0.0383,216.29,171,Low
+SKU-0491,Textiles,Japan,26,62.88,0.041,254.06,233,Low
+SKU-0492,Textiles,China,47,62.46,0.0276,209.29,480,Medium
+SKU-0493,Textiles,Germany,19,70.52,0.0493,162.6,53,Low
+SKU-0494,Textiles,Germany,23,18.34,0.0425,87.0,245,Low
+SKU-0495,Textiles,China,61,10.81,0.0377,41.51,336,Medium
+SKU-0496,Textiles,China,40,74.26,0.0227,192.91,444,Medium
+SKU-0497,Textiles,India,31,32.28,0.0219,109.0,379,Medium
+SKU-0498,Textiles,Japan,21,70.56,0.0224,342.53,427,Low
+SKU-0499,Textiles,Taiwan,20,65.51,0.0423,276.04,284,Medium
+SKU-0500,Textiles,China,47,43.4,0.0476,162.9,292,Medium

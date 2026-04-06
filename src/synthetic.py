@@ -216,12 +216,22 @@ def generate_weekly_demand(skus_df: pd.DataFrame, rng: np.random.RandomState = N
     """
     Generate 156 weeks of weekly demand per SKU (78,000 total rows).
     Includes Poisson base demand with seasonality and 3 disruption events.
+
+    Stockout model:
+    - Baseline: 1% for Low, 1.5% for Medium, 2% for High sensitivity SKUs
+    - During disruptions: 7-9% (scaled by severity)
+    - Post-disruption lag (4-6 weeks after end): 3-5% (inventory depletion)
     """
     if rng is None:
         rng = np.random.RandomState(SEED + 1)
 
     base_date = datetime(2022, 1, 3)  # First Monday of 2022
     weeks = [base_date + timedelta(weeks=w) for w in range(NUM_WEEKS)]
+
+    # Baseline stockout rates by sensitivity
+    BASELINE_STOCKOUT = {'Low': 0.010, 'Medium': 0.015, 'High': 0.020}
+    # Post-disruption lag: weeks after event end, stockout rate decays over 6 weeks
+    POST_DISRUPTION_LAG_WEEKS = 6
 
     rows = []
     total_skus = len(skus_df)
@@ -231,14 +241,19 @@ def generate_weekly_demand(skus_df: pd.DataFrame, rng: np.random.RandomState = N
         category = sku['category']
         supplier_country = sku['supplier_country']
         base_lt = sku['lead_time_days']
+        sensitivity = sku['disruption_sensitivity']
 
         # Base demand parameters
         demand_mean, demand_std = CATEGORY_BASE_DEMAND[category]
         # Add per-SKU variation
         sku_demand_mean = max(10, int(rng.normal(demand_mean, demand_std * 0.3)))
 
+        # Sensitivity multiplier for stockout rates
+        sens_mult = {'Low': 1.0, 'Medium': 1.25, 'High': 1.5}.get(sensitivity, 1.0)
+
         for week_idx in range(NUM_WEEKS):
             week_date = weeks[week_idx]
+            week_num = week_idx + 1  # 1-indexed
 
             # Seasonality: 1 + 0.3 * sin(2π * week/52)
             seasonal_factor = 1.0 + 0.3 * np.sin(2 * np.pi * (week_idx % 52) / 52)
@@ -252,16 +267,19 @@ def generate_weekly_demand(skus_df: pd.DataFrame, rng: np.random.RandomState = N
 
             stockout = False
             event_id = None
+            in_disruption = False
+            in_post_disruption = False
 
             # Check disruption events
             for evt in DISRUPTION_EVENTS:
-                if evt['start_week'] <= week_idx + 1 <= evt['end_week']:
+                if evt['start_week'] <= week_num <= evt['end_week']:
                     # Check if this SKU is affected
                     country_affected = supplier_country in evt['affected_countries']
                     category_affected = category in evt['affected_categories']
 
                     if country_affected or category_affected:
                         event_id = evt['event_id']
+                        in_disruption = True
 
                         # Severity scales with how affected the SKU is
                         severity_mult = 1.0
@@ -282,11 +300,40 @@ def generate_weekly_demand(skus_df: pd.DataFrame, rng: np.random.RandomState = N
                         d_mult = rng.uniform(d_low, d_high)
                         demand = int(demand * (1 + (d_mult - 1) * severity_mult))
 
-                        # Stockout probability
-                        if rng.random() < evt['stockout_prob'] * severity_mult:
+                        # Disruption stockout probability (7-9% base, scaled)
+                        stockout_rate = evt['stockout_prob'] * severity_mult * sens_mult
+                        if rng.random() < stockout_rate:
                             stockout = True
 
                         break  # Only apply one disruption event per week
+
+                # Post-disruption lag: 4-6 weeks after event end
+                elif evt['end_week'] < week_num <= evt['end_week'] + POST_DISRUPTION_LAG_WEEKS:
+                    country_affected = supplier_country in evt['affected_countries']
+                    category_affected = category in evt['affected_categories']
+
+                    if country_affected or category_affected:
+                        in_post_disruption = True
+                        weeks_after = week_num - evt['end_week']
+                        # Decaying stockout rate: starts at ~5%, decays linearly
+                        decay = 1.0 - (weeks_after / (POST_DISRUPTION_LAG_WEEKS + 1))
+                        lag_stockout_rate = 0.05 * decay * sens_mult
+
+                        # Slightly elevated lead times during recovery
+                        actual_lt = int(actual_lt * (1.0 + 0.15 * decay))
+
+                        if rng.random() < lag_stockout_rate:
+                            stockout = True
+                        break
+
+            # Baseline stockouts (demand spikes, supplier noise, poor ordering)
+            if not in_disruption and not in_post_disruption and not stockout:
+                baseline_rate = BASELINE_STOCKOUT.get(sensitivity, 0.01)
+                # Occasional demand spikes cause stockouts
+                if rng.random() < baseline_rate:
+                    stockout = True
+                    # Baseline stockouts often come with a small demand spike
+                    demand = int(demand * rng.uniform(1.05, 1.20))
 
             rows.append({
                 'week_start_date': week_date.strftime('%Y-%m-%d'),
@@ -301,7 +348,8 @@ def generate_weekly_demand(skus_df: pd.DataFrame, rng: np.random.RandomState = N
             print(f"    ... generated demand for {idx + 1}/{total_skus} SKUs")
 
     df = pd.DataFrame(rows)
-    print(f"  ✓ Generated {len(df):,} weekly demand records")
+    stockout_rate = df['stockout_flag'].mean() * 100
+    print(f"  ✓ Generated {len(df):,} weekly demand records (overall stockout rate: {stockout_rate:.1f}%)")
     return df
 
 
@@ -315,40 +363,78 @@ def generate_synthetic_fred_data(rng: np.random.RandomState = None) -> pd.DataFr
 
     series_config = {
         'BDIY': {'name': 'Baltic Dry Index', 'base': 1500, 'std': 400,
-                 'disruption_2022': 1.4, 'disruption_2023': 1.3},
+                 'disruption_2020': 2.5, 'disruption_2022': 1.4, 'disruption_2023': 1.3,
+                 'custom_profile': True},
         'WTISPLC': {'name': 'WTI Crude Oil Spot Price', 'base': 65, 'std': 15,
-                    'disruption_2022': 1.6, 'disruption_2023': 1.2},
+                    'disruption_2020': 0.4, 'disruption_2022': 1.6, 'disruption_2023': 1.2},
         'PNGASEUUSDM': {'name': 'EU Natural Gas Price', 'base': 8, 'std': 3,
-                        'disruption_2022': 3.0, 'disruption_2023': 1.5},
+                        'disruption_2020': 0.6, 'disruption_2022': 3.0, 'disruption_2023': 1.5},
         'PWHEAMTUSDM': {'name': 'Global Wheat Price', 'base': 220, 'std': 40,
-                        'disruption_2022': 1.8, 'disruption_2023': 1.1},
+                        'disruption_2020': 1.1, 'disruption_2022': 1.8, 'disruption_2023': 1.1},
         'PSUNOUSDM': {'name': 'Sunflower Oil Price', 'base': 800, 'std': 150,
-                      'disruption_2022': 2.0, 'disruption_2023': 1.1},
+                      'disruption_2020': 1.2, 'disruption_2022': 2.0, 'disruption_2023': 1.1},
         'PALUMUSDM': {'name': 'Aluminum Price', 'base': 2000, 'std': 400,
-                      'disruption_2022': 1.5, 'disruption_2023': 1.2},
+                      'disruption_2020': 0.85, 'disruption_2022': 1.5, 'disruption_2023': 1.2},
         'PNICKUSDM': {'name': 'Nickel Price', 'base': 15000, 'std': 3000,
-                      'disruption_2022': 1.8, 'disruption_2023': 1.3},
+                      'disruption_2020': 0.85, 'disruption_2022': 1.8, 'disruption_2023': 1.3},
         'CPIAUCSL': {'name': 'US CPI', 'base': 260, 'std': 5,
-                     'disruption_2022': 1.05, 'disruption_2023': 1.02},
+                     'disruption_2020': 0.98, 'disruption_2022': 1.05, 'disruption_2023': 1.02},
         'UNRATE': {'name': 'US Unemployment Rate', 'base': 3.7, 'std': 0.5,
-                   'disruption_2022': 1.0, 'disruption_2023': 1.0},
+                   'disruption_2020': 3.0, 'disruption_2022': 1.0, 'disruption_2023': 1.0},
         'MRTSSM44X72USS': {'name': 'US Retail Sales', 'base': 550000, 'std': 30000,
-                           'disruption_2022': 0.98, 'disruption_2023': 1.02},
+                           'disruption_2020': 0.85, 'disruption_2022': 0.98, 'disruption_2023': 1.02},
     }
 
     dates = pd.date_range('2018-01-01', '2024-12-31', freq='MS')
     rows = []
 
+    # BDIY custom profile: matches real Baltic Dry Index pattern
+    BDIY_PROFILE = {}
+    for date in dates:
+        y, m = date.year, date.month
+        if y <= 2020:
+            BDIY_PROFILE[date] = 1600  # baseline
+        elif y == 2021 and m < 9:
+            BDIY_PROFILE[date] = 1800  # gradual rise
+        elif y == 2021 and m >= 9:
+            BDIY_PROFILE[date] = 3500 + (m - 9) * 300  # pandemic spike to ~5000
+        elif y == 2022 and m <= 3:
+            BDIY_PROFILE[date] = 2800  # elevated post-spike + Ukraine
+        elif y == 2022 and m <= 8:
+            BDIY_PROFILE[date] = 2400  # gradual easing
+        elif y == 2022:
+            BDIY_PROFILE[date] = 1800  # normalizing
+        elif y == 2023 and m < 10:
+            BDIY_PROFILE[date] = 1600  # back to baseline
+        elif y == 2023 and m >= 10:
+            BDIY_PROFILE[date] = 3000 + (m - 10) * 100  # Red Sea spike
+        elif y == 2024 and m <= 3:
+            BDIY_PROFILE[date] = 2600  # elevated from Red Sea
+        else:
+            BDIY_PROFILE[date] = 1800  # normalizing
+
     for series_id, cfg in series_config.items():
         values = []
         for i, date in enumerate(dates):
+            # BDIY uses custom profile instead of generic disruption multipliers
+            if cfg.get('custom_profile') and series_id == 'BDIY':
+                value = BDIY_PROFILE[date]
+                value += rng.normal(0, cfg['std'] * 0.4)
+                values.append(max(200, value))
+                continue
+
             # Base value with trend
             trend = 1.0 + 0.002 * i  # Slight upward trend
             seasonal = 1.0 + 0.05 * np.sin(2 * np.pi * date.month / 12)
 
             # Disruption effects
             disruption = 1.0
-            if date.year == 2022 and date.month >= 2 and date.month <= 6:
+            if date.year == 2020 and date.month >= 3 and date.month <= 6:
+                disruption = cfg.get('disruption_2020', 1.0)
+            elif date.year == 2020 and date.month > 6:
+                # Gradual recovery from COVID
+                disruption = 1.0 + (cfg.get('disruption_2020', 1.0) - 1.0) * 0.5
+            elif date.year == 2022 and date.month >= 2 and date.month <= 6:
                 disruption = cfg['disruption_2022']
             elif date.year == 2022 and date.month > 6:
                 # Gradual decay
@@ -434,7 +520,13 @@ def generate_synthetic_comtrade_data(rng: np.random.RandomState = None) -> pd.Da
 
                     # Apply disruption effects
                     disruption_mult = 1.0
-                    if year == 2022:
+                    if year == 2020:
+                        disruption_mult = 0.8  # Generic trade slowdown
+                        if hs_code in ['8703', '8708', '2709']:
+                            disruption_mult = 0.6
+                        elif hs_code in ['8541']:
+                            disruption_mult = 1.2  # Remote work electronics boost
+                    elif year == 2022:
                         if hs_code in ['1001', '1512', '2814']:
                             disruption_mult = 0.6 if flow_type == 'Import' else 1.3
                         elif hs_code in ['2804', '7601', '7502']:
@@ -512,14 +604,14 @@ def save_all(output_dir: str = 'data/raw/synthetic') -> dict:
     # 4. Synthetic FRED data
     print("\n[4/5] Generating synthetic FRED indicators...")
     fred_df = generate_synthetic_fred_data(rng)
-    fred_path = os.path.join(output_dir, 'fred_synthetic.csv')
+    fred_path = os.path.join(output_dir, 'fred_data.csv')
     fred_df.to_csv(fred_path, index=False)
     print(f"      Saved to {fred_path}")
 
     # 5. Synthetic Comtrade data
     print("\n[5/5] Generating synthetic trade flow data...")
     comtrade_df = generate_synthetic_comtrade_data(rng)
-    comtrade_path = os.path.join(output_dir, 'comtrade_synthetic.csv')
+    comtrade_path = os.path.join(output_dir, 'comtrade_data.csv')
     comtrade_df.to_csv(comtrade_path, index=False)
     print(f"      Saved to {comtrade_path}")
 

@@ -13,8 +13,10 @@ import lightgbm as lgb
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     average_precision_score, precision_recall_curve,
-    confusion_matrix, classification_report
+    confusion_matrix, classification_report,
+    recall_score
 )
+import pickle
 from sklearn.model_selection import cross_val_predict
 import shap
 from pathlib import Path
@@ -211,15 +213,18 @@ def build_ensemble(xgb_results: dict, lgb_results: dict,
         precision_at_k = y_test.iloc[top_k_indices].mean()
         print(f"    Precision@10%: {precision_at_k:.4f}")
 
-        # Confusion matrix at threshold 0.5
-        test_pred = (test_proba > 0.5).astype(int)
+        # Confusion matrix and recall at threshold 0.3 (matches disruption_score threshold)
+        test_pred = (test_proba >= 0.3).astype(int)
         cm = confusion_matrix(y_test, test_pred)
+        test_recall = recall_score(y_test, test_pred, zero_division=0)
+        print(f"    Recall@0.3: {test_recall:.4f}")
         print(f"    Confusion Matrix:\n{cm}")
 
         test_results = {
             'test_proba': test_proba,
             'test_prauc': test_prauc,
             'precision_at_k': precision_at_k,
+            'test_recall': test_recall,
             'confusion_matrix': cm,
             'xgb_test_proba': xgb_test_proba,
             'lgb_test_proba': lgb_test_proba,
@@ -320,12 +325,11 @@ def compute_prediction_lead_time(feature_matrix: pd.DataFrame,
     Compute average prediction lead time: how many weeks before
     actual stockout does the model first flag a SKU.
     """
-    test_data = feature_matrix[feature_matrix['week_num'] > 130].copy()
+    test_data = feature_matrix[feature_matrix['week_start_date'] >= '2023-10-01'].copy()
 
-    if len(test_data) == 0:
+    if len(test_data) != len(test_proba):
         return 0.0
 
-    test_data = test_data.iloc[:len(test_proba)].copy()
     test_data['pred_risk'] = test_proba
 
     lead_times = []
@@ -402,7 +406,41 @@ def run_module_e(feature_matrix: pd.DataFrame = None) -> dict:
     if 'test_prauc' in ensemble_results:
         print(f"     Ensemble Test PR-AUC:  {ensemble_results['test_prauc']:.4f}")
         print(f"     Precision@10%:         {ensemble_results.get('precision_at_k', 0):.4f}")
+        print(f"     Recall@0.3:            {ensemble_results.get('test_recall', 0):.4f}")
     print(f"     Prediction Lead Time:  {lead_time:.1f} weeks")
+
+    # ── Serialize results for dashboard consumption ──
+    output_dir = PROJECT_ROOT / 'data' / 'processed'
+    output_dir.mkdir(parents=True, exist_ok=True)
+    results_path = output_dir / 'model_results.pkl'
+
+    # Build predictions DataFrame with SKU-level probabilities
+    test_data = feature_matrix[feature_matrix['week_start_date'] >= '2023-10-01'].copy()
+    if 'test_proba' in ensemble_results:
+        test_data['stockout_probability'] = ensemble_results['test_proba']
+        test_data['risk_level'] = pd.cut(
+            test_data['stockout_probability'],
+            bins=[0, 0.3, 0.6, 1.0],
+            labels=['Low', 'Medium', 'High']
+        )
+
+    serializable = {
+        'predictions': test_data,
+        'metrics': {
+            'test_prauc': ensemble_results.get('test_prauc', 0),
+            'precision_at_k': ensemble_results.get('precision_at_k', 0),
+            'test_recall': ensemble_results.get('test_recall', 0),
+            'prediction_lead_time': lead_time,
+            'confusion_matrix': ensemble_results.get('confusion_matrix', np.zeros((2, 2))),
+        },
+        'shap_importance': shap_results.get('feature_importance', {}),
+        'shap_group_importance': shap_results.get('group_importance', {}),
+        'feature_names': feature_names,
+    }
+
+    with open(results_path, 'wb') as f:
+        pickle.dump(serializable, f)
+    print(f"\n  ✓ Model results saved to {results_path}")
 
     return {
         'feature_matrix': feature_matrix,

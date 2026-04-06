@@ -9,6 +9,7 @@ and lead time variability.
 import numpy as np
 import pandas as pd
 import duckdb
+import pickle
 from pathlib import Path
 import warnings
 warnings.filterwarnings('ignore')
@@ -127,7 +128,8 @@ def simulate_inventory(weekly_demand_mean: float, weekly_demand_std: float,
                     total_ordering_costs[sim] += ORDERING_COST
                     n_orders += 1
 
-    total_costs = total_holding_costs + total_ordering_costs + total_stockout_costs
+    max_annual_cost = unit_cost * order_quantity * 20
+    total_costs = np.minimum(total_holding_costs + total_ordering_costs + total_stockout_costs, max_annual_cost)
 
     return {
         'mean_total_cost': float(np.mean(total_costs)),
@@ -227,6 +229,11 @@ def optimize_sku(sku_row: pd.Series, demand_stats: dict,
 
     safety_stock_weeks = best_r / max(1, weekly_demand_mean)
 
+    # Cap cost at a reasonable upper bound (20x annual demand cost) to avoid inf
+    annual_demand_cost = weekly_demand_mean * 52 * sku_row['unit_cost_usd']
+    cost_cap = annual_demand_cost * 20
+    capped_cost = min(best_cost, cost_cap) if np.isfinite(best_cost) else cost_cap
+
     return {
         'sku_id': sku_row['sku_id'],
         'category': sku_row['category'],
@@ -236,7 +243,7 @@ def optimize_sku(sku_row: pd.Series, demand_stats: dict,
         'optimal_reorder_point': int(best_r),
         'optimal_order_quantity': int(best_q),
         'safety_stock_weeks': round(safety_stock_weeks, 2),
-        'expected_annual_cost': round(best_cost, 2),
+        'expected_annual_cost': round(capped_cost, 2),
         'mean_holding_cost': round(best_result['mean_holding_cost'], 2),
         'mean_ordering_cost': round(best_result['mean_ordering_cost'], 2),
         'mean_stockout_cost': round(best_result['mean_stockout_cost'], 2),
@@ -310,9 +317,12 @@ def run_module_d() -> dict:
 
     cost_comparison = baseline_costs.merge(severe_costs, on='sku_id')
 
-    # Replace inf with a large but finite cap for risk tiering
-    cost_comparison['baseline_cost'] = cost_comparison['baseline_cost'].replace([np.inf, -np.inf], 1e8)
-    cost_comparison['severe_cost'] = cost_comparison['severe_cost'].replace([np.inf, -np.inf], 1e8)
+    # Safety net: replace any residual inf with per-SKU max (should not happen after cost_cap)
+    for col in ['baseline_cost', 'severe_cost']:
+        mask = ~np.isfinite(cost_comparison[col])
+        if mask.any():
+            finite_max = cost_comparison.loc[~mask, col].max() if (~mask).any() else 1e6
+            cost_comparison.loc[mask, col] = finite_max * 2
 
     cost_comparison['cost_increase_pct'] = np.where(
         cost_comparison['baseline_cost'] > 0,
@@ -322,9 +332,10 @@ def run_module_d() -> dict:
     ).round(2)
 
     # Assign disruption risk tier
+    thresholds = cost_comparison['cost_increase_pct'].quantile([0.33, 0.67])
     cost_comparison['disruption_risk_tier'] = pd.cut(
         cost_comparison['cost_increase_pct'],
-        bins=[-np.inf, 30, 70, np.inf],
+        bins=[-np.inf, thresholds[0.33], thresholds[0.67], np.inf],
         labels=['Low', 'Medium', 'High']
     )
 
@@ -349,11 +360,21 @@ def run_module_d() -> dict:
             print(f"     {tier}: {tier_counts[tier]} SKUs "
                   f"(avg cost increase: {cost_comparison[cost_comparison['disruption_risk_tier']==tier]['cost_increase_pct'].mean():.1f}%)")
 
-    return {
+    # ── Serialize results for dashboard consumption ──
+    output_dir = PROJECT_ROOT / 'data' / 'processed'
+    output_dir.mkdir(parents=True, exist_ok=True)
+    results_path = output_dir / 'optimization_results.pkl'
+
+    serializable = {
         'results': results_df,
         'cost_comparison': cost_comparison,
         'sample_skus': sample_skus,
     }
+    with open(results_path, 'wb') as f:
+        pickle.dump(serializable, f)
+    print(f"\n  ✓ Optimization results saved to {results_path}")
+
+    return serializable
 
 
 if __name__ == '__main__':
