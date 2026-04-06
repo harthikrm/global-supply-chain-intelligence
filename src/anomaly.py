@@ -175,9 +175,9 @@ def mahalanobis_detection(wide_df: pd.DataFrame,
         baseline = data_normalized.iloc[:split_idx]
 
     # Compute baseline statistics
-    mu = baseline.mean().values.copy()
-    cov = baseline.cov().values.copy()
-
+    mu = np.asarray(baseline.mean(), dtype=np.float64)
+    cov = np.asarray(baseline.cov(), dtype=np.float64)
+    
     # Regularize covariance matrix
     cov = cov + np.eye(len(numeric_cols)) * 1e-6
 

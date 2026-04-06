@@ -751,6 +751,9 @@ with tab3:
 
     if len(macro) > 0:
         try:
+            import importlib
+            import src.anomaly
+            importlib.reload(src.anomaly)
             from src.anomaly import load_macro_data, run_cusum_all_series, mahalanobis_detection, compute_disruption_score
 
             def run_detection():
