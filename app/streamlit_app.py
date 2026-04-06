@@ -753,7 +753,6 @@ with tab3:
         try:
             from src.anomaly import load_macro_data, run_cusum_all_series, mahalanobis_detection, compute_disruption_score
 
-            @st.cache_data
             def run_detection():
                 con = get_db_connection()
                 wide_df = load_macro_data(con)
