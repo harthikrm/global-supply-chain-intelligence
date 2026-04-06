@@ -179,7 +179,7 @@ def mahalanobis_detection(wide_df: pd.DataFrame,
     cov = baseline.cov().values.copy()
 
     # Regularize covariance matrix
-    cov += np.eye(len(numeric_cols)) * 1e-6
+    cov = cov + np.eye(len(numeric_cols)) * 1e-6
 
     try:
         cov_inv = np.linalg.inv(cov)
