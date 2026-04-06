@@ -2,7 +2,7 @@
 
 > **When a geopolitical disruption hits — a conflict, a port closure, a trade route blockage — which products are most at risk, how bad is the downstream cost impact, and what is the optimal inventory response before the stockout happens?**
 
-A multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data. Detects geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifies network chokepoints via NetworkX betweenness centrality, and predicts 30-day stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.2884) across a 50-SKU representative sample and 78,000 demand records.
+A multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data. Detects geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifies network chokepoints via NetworkX betweenness centrality, and predicts 30-day stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.29) across a 50-SKU representative sample and 78,000 demand records.
 
 ---
 
@@ -17,7 +17,7 @@ A multi-source supply chain intelligence platform integrating UN Comtrade trade 
 | Disruption events modeled | 3 (Ukraine, Red Sea, Singapore) |
 | ML features | 20+ spanning 4 analytical layers |
 | Monte Carlo simulations | 10,000 per SKU per scenario |
-| Ensemble PR-AUC | 0.2884 |
+| Ensemble PR-AUC | **0.29** (test set) |
 
 ---
 
@@ -172,7 +172,7 @@ global-supply-chain-intelligence/
 - **20+ features** spanning graph (betweenness, PageRank), detection (CUSUM, Mahalanobis), forecasting (uncertainty width, trend), and inventory (weeks of cover, safety stock adequacy)
 - **Champion XGBoost** + **Challenger LightGBM** with stacked meta-learner ensemble
 - **SHAP TreeExplainer**: Graph and detection features are top stockout predictors
-- **Metrics**: PR-AUC 0.2884, Precision@10% 0.363, Recall 70.9%, avg prediction lead time of 5.5 weeks
+- **Metrics**: PR-AUC 0.29, Precision@10% 0.36, Recall 70.9%, avg prediction lead time 5.5 weeks
 
 ### Module F — Streamlit Dashboard
 6 interactive tabs with light premium theme (warm cream background, olive green accents):
@@ -198,6 +198,25 @@ global-supply-chain-intelligence/
 
 ---
 
-## License
+## 📝 Resume Bullet Angles
+
+**Supply Chain / Operations (Toyota, Amazon):**
+> Multi-source supply chain intelligence platform integrating UN Comtrade trade flows, FRED macroeconomic indicators, and synthetic manufacturing data — detecting geopolitical disruptions with CUSUM and multivariate Mahalanobis distance, quantifying network chokepoints via NetworkX betweenness centrality, and predicting stockout risk with an XGBoost/LightGBM ensemble (PR-AUC 0.29) across a 50-SKU representative sample and 78,000 demand records.
+
+**ML/DS Roles:**
+> XGBoost + LightGBM champion-challenger ensemble with stacked meta-learner trained on 20+ features spanning graph centrality, disruption detection signals, hierarchical forecast outputs, and inventory state — chronological train/test split with SHAP TreeExplainer attribution showing graph features as primary stockout predictors.
+
+**Data Engineering Roles:**
+> Multi-API ETL pipeline (FRED + UN Comtrade + synthetic generation) into DuckDB schema with 6 SQL feature engineering views including HHI supplier concentration index, CUSUM disruption scores, and rolling demand statistics using LAG/LEAD window functions.
+
+---
+
+## 🔗 LinkedIn Hook
+
+> "Red Sea shipping disruptions added 12 days to Asia-Europe freight in 2024. I built a system to detect supply chain disruptions before they peak, quantify which products are most at risk, and recommend the optimal inventory response. Here's what global trade data found."
+
+---
+
+## 📜 License
 
 MIT License — see [LICENSE](LICENSE) for details.
