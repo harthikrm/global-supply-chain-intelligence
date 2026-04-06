@@ -262,7 +262,7 @@ def run_module_d() -> dict:
     con = duckdb.connect(DB_PATH, read_only=True)
 
     # Load SKU and demand data
-    skus_df = con.execute("SELECT * FROM skus").fetchdf()
+    skus_df = con.execute("SELECT * FROM skus").fetchdf().copy()
     demand_stats_df = con.execute("""
         SELECT sku_id,
                AVG(demand_units) as mean,
@@ -270,7 +270,7 @@ def run_module_d() -> dict:
                SUM(demand_units) as total
         FROM weekly_demand
         GROUP BY sku_id
-    """).fetchdf()
+    """).fetchdf().copy()
 
     con.close()
 

@@ -28,7 +28,7 @@ def load_macro_data(con: duckdb.DuckDBPyConnection = None) -> pd.DataFrame:
         SELECT date, series_id, value
         FROM macro_indicators
         ORDER BY date
-    """).fetchdf()
+    """).fetchdf().copy()
 
     df['date'] = pd.to_datetime(df['date'])
 
@@ -285,7 +285,7 @@ def validate_detection(disruption_scores: pd.DataFrame,
     if con is None:
         con = duckdb.connect(DB_PATH, read_only=True)
 
-    events = con.execute("SELECT * FROM disruption_events").fetchdf()
+    events = con.execute("SELECT * FROM disruption_events").fetchdf().copy()
     events['start_date'] = pd.to_datetime(events['start_date'])
     events['end_date'] = pd.to_datetime(events['end_date'])
 

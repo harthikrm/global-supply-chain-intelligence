@@ -51,13 +51,13 @@ def build_supply_chain_graph(con: duckdb.DuckDBPyConnection = None) -> nx.DiGrap
     G = nx.DiGraph()
 
     # ── Load data ──
-    skus_df = con.execute("SELECT * FROM skus").fetchdf()
+    skus_df = con.execute("SELECT * FROM skus").fetchdf().copy()
     trade_df = con.execute("""
         SELECT hs_code, reporter_name, SUM(trade_value_usd) as total_value
         FROM trade_flows
         WHERE flow_type = 'Import'
         GROUP BY hs_code, reporter_name
-    """).fetchdf()
+    """).fetchdf().copy()
 
     demand_df = con.execute("""
         SELECT s.category, s.supplier_country,
@@ -66,7 +66,7 @@ def build_supply_chain_graph(con: duckdb.DuckDBPyConnection = None) -> nx.DiGrap
         FROM weekly_demand wd
         JOIN skus s ON wd.sku_id = s.sku_id
         GROUP BY s.category, s.supplier_country
-    """).fetchdf()
+    """).fetchdf().copy()
 
     # ── Layer 1: Supplier Nodes ──
     supplier_nodes = skus_df.groupby(['supplier_country', 'category']).agg(

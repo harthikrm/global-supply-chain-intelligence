@@ -433,15 +433,15 @@ def load_data():
 
     data = {}
     try:
-        data['skus'] = con.execute("SELECT * FROM skus").fetchdf()
+        data['skus'] = con.execute("SELECT * FROM skus").fetchdf().copy()
         data['demand'] = con.execute("""
             SELECT wd.*, s.category, s.supplier_country
             FROM weekly_demand wd
             JOIN skus s ON wd.sku_id = s.sku_id
-        """).fetchdf()
-        data['events'] = con.execute("SELECT * FROM disruption_events").fetchdf()
-        data['macro'] = con.execute("SELECT * FROM macro_indicators ORDER BY date").fetchdf()
-        data['trade'] = con.execute("SELECT * FROM trade_flows").fetchdf()
+        """).fetchdf().copy()
+        data['events'] = con.execute("SELECT * FROM disruption_events").fetchdf().copy()
+        data['macro'] = con.execute("SELECT * FROM macro_indicators ORDER BY date").fetchdf().copy()
+        data['trade'] = con.execute("SELECT * FROM trade_flows").fetchdf().copy()
 
         data['demand']['week_start_date'] = pd.to_datetime(data['demand']['week_start_date'])
         data['macro']['date'] = pd.to_datetime(data['macro']['date'])

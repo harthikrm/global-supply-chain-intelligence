@@ -55,7 +55,7 @@ def load_demand_data(con: duckdb.DuckDBPyConnection = None) -> dict:
         FROM weekly_demand wd
         JOIN skus s ON wd.sku_id = s.sku_id
         ORDER BY wd.sku_id, wd.week_start_date
-    """).fetchdf()
+    """).fetchdf().copy()
 
     demand_df['week_start_date'] = pd.to_datetime(demand_df['week_start_date'])
 
