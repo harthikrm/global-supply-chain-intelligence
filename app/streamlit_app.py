@@ -427,7 +427,7 @@ def get_db_connection():
 
 
 @st.cache_data(ttl=600)
-def load_data():
+def load_system_data():
     """Load all required data from DuckDB."""
     con = get_db_connection()
 
@@ -463,7 +463,7 @@ st.markdown('''
 st.markdown('<p class="subtitle">Real-time disruption detection, risk quantification, and inventory optimization across global supply networks</p>', unsafe_allow_html=True)
 
 # Load data
-data = load_data()
+data = load_system_data()
 
 if not data:
     st.error("No data loaded. Please run the data pipeline first: `python -m src.ingest`")
@@ -881,6 +881,8 @@ with tab3:
                 st.dataframe(events, use_container_width=True)
 
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             st.info(f"Detection module not available. ({e})")
     else:
         st.info("No macro indicator data available.")
